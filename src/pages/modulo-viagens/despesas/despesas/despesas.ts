@@ -1,5 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+
+import { Despesas } from '../../models/despesas.model';
 
 
 @IonicPage()
@@ -8,15 +11,27 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
   templateUrl: 'despesas.html',
 })
 export class DespesasPage {
+
+
+  despesas = {} as Despesas;
+  bancoDespesas: FirebaseListObservable<Despesas[]>;
   
-  despesa: string = "";
-  data: string = "" ;
-  valor: string = "" ;
-  
-  public contador: number = 1;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController, private banco: AngularFireDatabase) {
+
+      this.bancoDespesas = this.banco.list('lista-pessoas');      
+  }
+
+  adicionarDespesas(despesas: Despesas){
+    this.bancoDespesas.push({
+      
+      despesas: despesas.despesas,
+      data: despesas.data,
+      valor: despesas.valor
+      
+            });
+    
   }
 
   ngAfterViewInit() {
@@ -37,6 +52,8 @@ export class DespesasPage {
     
     this.navCtrl.pop();
   } 
+<<<<<<< HEAD
+=======
   invenTA: any = "R$" + this.valor;
 
   valida() {
@@ -49,4 +66,5 @@ export class DespesasPage {
     
       }
 
+>>>>>>> 4ee962d14066efd4c758d42d578a88693db09968
 }

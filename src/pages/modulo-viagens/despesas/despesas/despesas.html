@@ -9,10 +9,10 @@
     
       <ion-item>
         <ion-label floating>Despesas</ion-label>
-        <ion-select [(ngModel)]="despesa" (click)="valida()">
-          <ion-option value="1">Lanche</ion-option>
-          <ion-option value="2">Almoço</ion-option>
-          <ion-option value="3">Jantar</ion-option>
+        <ion-select [(ngModel)]="despesas.despesas" required #iptDespesa="ngModel">
+          <ion-option value="Lanche">Lanche</ion-option>
+          <ion-option value="Almoço">Almoço</ion-option>
+          <ion-option value="Jantar">Jantar</ion-option>
           <!-- <ion-option value="4">Almoçado</ion-option> 
           <ion-option value="5">Borracharia</ion-option>
           <ion-option value="6">Corrente</ion-option>
@@ -25,6 +25,16 @@
     
   <ion-item>
         <ion-label>Data</ion-label>
+<<<<<<< HEAD
+        <ion-input type="date" [(ngModel)]="despesas.data" required #iptData="ngModel"></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label floating>Valor</ion-label>
+        <ion-input type="float" type="number" [(ngModel)]="despesas.valor" required #iptValor="ngModel"></ion-input>
+      </ion-item> 
+  </ion-list> 
+  <button ion-button full (click)="adicionarDespesas(despesas);showAlert()"  >Adicionar</button>
+=======
         <ion-input type="date" [(ngModel)]="data" (ngModelChange)="valida()"></ion-input>
       </ion-item> 
       <ion-item>
@@ -33,4 +43,5 @@
       </ion-item> 
   </ion-list> 
   <button ion-button full (click)="showAlert()" [disabled]="!ngAfterViewInit()">Adicionar</button>
+>>>>>>> 4ee962d14066efd4c758d42d578a88693db09968
 </ion-content>
