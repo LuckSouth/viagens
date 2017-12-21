@@ -18,12 +18,12 @@ export class AbastecimentoPagamentoPage {
 
   valida() {
 
-    if (this.posto == "" || this.tipo == "" || this.pagamento == "" || this.data == "") {
+    if (this.posto.length < 3 || this.tipo == "" || this.pagamento == "" || this.data == "") {
       return false;
     } else {
       return true;
     }
-
+    
   }
 
 }

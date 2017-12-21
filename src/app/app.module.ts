@@ -9,6 +9,11 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { FormsModule } from '@angular/forms';     
 import { CustomFormsModule } from 'ng2-validation';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { firebaseConfig } from "./credenciaisfirebase";
+
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/modulo-viagens/home/home/home';
@@ -43,6 +48,7 @@ import { ArlaPostoPage } from '../pages/modulo-viagens/arla-32/arla-posto/arla-p
 import { Camera } from "@ionic-native/camera";
 import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -75,7 +81,9 @@ import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     CustomFormsModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
