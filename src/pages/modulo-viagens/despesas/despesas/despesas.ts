@@ -52,19 +52,4 @@ export class DespesasPage {
     
     this.navCtrl.pop();
   } 
-<<<<<<< HEAD
-=======
-  invenTA: any = "R$" + this.valor;
-
-  valida() {
-    
-        if (this.despesa == "" || this.data == "" || this.valor == "") {
-          return false;
-        } else {
-          return true;
-        }
-    
-      }
-
->>>>>>> 4ee962d14066efd4c758d42d578a88693db09968
 }
