@@ -12,12 +12,12 @@
                 </div>
             </ion-slide>
             <ion-slide>
-            <page-receitas-qnt></page-receitas-qnt>
+                {{this.ReceitasQnt.valida()}}<page-receitas-qnt></page-receitas-qnt>
         </ion-slide>
         </ion-slides>
 
         <ion-fab right bottom>
-            <button ion-fab color="primary" (click)="toGo()" >
+            <button ion-fab color="primary" [disabled]="!ngAfterViewInit()" (click)="toGo()" >
                 <ion-icon name="ios-arrow-forward"></ion-icon>
             </button>
         </ion-fab>

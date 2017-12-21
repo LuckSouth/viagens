@@ -3,6 +3,11 @@ import { IonicPage, NavController, NavParams, Slides, ToastController } from 'io
 import { FotoServicoProvider } from '../../../../providers/foto-servico/foto-servico';
 
 
+import { ReceitasFornecedorPage } from '../receita-fornecedor/receita-fornecedor';
+import { ReceitasFotoPage } from '../receitas-foto/receitas-foto';
+import { ReceitasQntPage } from '../receitas-qnt/receitas-qnt';
+
+
 @IonicPage()
 @Component({
   selector: 'page-rotas-receitas',
@@ -11,10 +16,13 @@ import { FotoServicoProvider } from '../../../../providers/foto-servico/foto-ser
 export class RotasReceitasPage {
 
   @ViewChild(Slides) slides: Slides;
+  @ViewChild(ReceitasFornecedorPage) ReceitasFornecedor: ReceitasFornecedorPage;
+  @ViewChild(ReceitasFotoPage) ReceitasFoto: ReceitasFotoPage;
+  @ViewChild(ReceitasQntPage) ReceitasQnt: ReceitasQntPage;
 
   contador: number = 1;
   cameraButton: boolean; 
-  fotoReceitas: string;
+  fotoReceitas: string = "dsfsdf";
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -25,6 +33,23 @@ export class RotasReceitasPage {
 
   ngAfterViewInit(){
     this.slides.lockSwipes(true);
+
+    if (this.contador == 1) {
+      return this.ReceitasFornecedor.valida();
+    }
+
+    if (this.contador == 2) {
+      if (this.fotoReceitas != undefined) {
+        return true;
+      }
+      
+    }
+
+    if (this.contador == 3) {
+      console.log(this.contador)
+      return this.ReceitasQnt.valida();
+    }
+
   }
 
   toBack() {

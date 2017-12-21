@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
+import { ArlaPagPage } from '../arla-pag/arla-pag';
+import { ArlaPostoPage } from '../arla-posto/arla-posto';
 
 
 @IonicPage()
@@ -11,6 +13,8 @@ import { Slides } from 'ionic-angular';
 export class RotasArlaPage {
 
   @ViewChild(Slides) slides: Slides;
+  @ViewChild(ArlaPagPage) arlaPagPage: ArlaPagPage;
+  @ViewChild(ArlaPostoPage) arlaPostoPage: ArlaPostoPage; 
 
   contador: number = 1;
 
@@ -20,7 +24,16 @@ export class RotasArlaPage {
 
   ngAfterViewInit(){
     this.slides.lockSwipes(true);
+     
+    if (this.contador == 1) {
+      return this.arlaPagPage.valida();
+    }
+
+    if (this.contador == 2) {
+      return this.arlaPostoPage.valida();
+    } 
   }
+  
 
   toBack() {
     this.slides.lockSwipes(false);

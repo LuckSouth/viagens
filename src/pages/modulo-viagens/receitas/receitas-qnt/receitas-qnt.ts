@@ -8,17 +8,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ReceitasQntPage {
 
-  idUnidadeMedida: string;
-  valorUnitario: number;
-  qntDescarregado: number;
-  a: number;
+  idUnidadeMedida: string = "";
+  idUnidadeBandeja: string = "";
+  caixa: string = "";
+  qntFaturado: string = ""; 
+  qntDescarregado: string = "";
+  valorUnitario: string = "";
+  valorTotal: string = "";
   
-  preco(){
-    return  this.valorUnitario * this.qntDescarregado
-  }
+  // preco(){
+  //   return  this.valorUnitario * this.qntDescarregado
+  // }
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  valida() {
+    if (this.idUnidadeMedida == "" || this.idUnidadeBandeja == "" && this.caixa == "" || this.qntFaturado == "" || this.qntDescarregado == "" || this.valorUnitario == "") {
+        return false
+      } else {
+        return true
+      }
+  }
+  
   apareceBandeja() {
     if (this.idUnidadeMedida == 'bd') {
       return true;
@@ -34,6 +46,4 @@ export class ReceitasQntPage {
       return false;
     }
   }
-
-
 }

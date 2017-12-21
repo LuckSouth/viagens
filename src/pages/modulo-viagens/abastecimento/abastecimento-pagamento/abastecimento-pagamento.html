@@ -6,30 +6,33 @@
 
 
 <ion-list>
- <ion-item>
-      <ion-label>Tipo</ion-label>
-      <ion-select [(ngModel)]="tipo" (click)="valida()">
-        <ion-option value="externo">Externo</ion-option>
-        <ion-option value="interno">Interno</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Posto</ion-label>
-      <ion-input type="text" [(ngModel)]="posto" (ngModelChange)="valida()"></ion-input>
-    </ion-item> 
   <ion-item>
-      <ion-label>Data</ion-label>
-      <ion-input type="date" [(ngModel)]="data" (click)="valida()"></ion-input>
-    </ion-item> 
- <ion-item>
-      <ion-label>Tipo de pagamento</ion-label>
-      <ion-select [(ngModel)]="pagamento" (click)="valida()">
-        <ion-option value="Dinheiro">Dinheiro</ion-option>
-        <ion-option value="crédito">Crédito</ion-option>
-        <ion-option value="Débito"> Débito</ion-option>
-        <ion-option value="Cheque">Cheque</ion-option>
-      </ion-select>
-    </ion-item>
-     
+    <ion-label>Tipo</ion-label>
+    <ion-select [(ngModel)]="tipo" (click)="valida()">
+      <ion-option value="externo">Externo</ion-option>
+      <ion-option value="interno">Interno</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Posto</ion-label>
+    <ion-input type="text" [(ngModel)]="posto" (ngModelChange)="valida()"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Data</ion-label>
+    <ion-input type="date" [(ngModel)]="data" (click)="valida()"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Tipo de pagamento</ion-label>
+    <ion-select [(ngModel)]="pagamento" (click)="valida()">
+      <ion-option value="Dinheiro">Dinheiro</ion-option>
+      <ion-option value="crédito">Crédito</ion-option>
+      <ion-option value="Débito"> Débito</ion-option>
+      <ion-option value="Cheque">Cheque</ion-option>
+    </ion-select>
+  </ion-item>
+
 
 </ion-list>

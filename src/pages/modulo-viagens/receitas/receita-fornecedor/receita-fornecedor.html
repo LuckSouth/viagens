@@ -8,21 +8,21 @@
 
     <ion-item>
       <ion-label floating>Fornecedor / Origem</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="fornecedorOrigem" (ngModelChange)="valida()"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Fornecedor / Destino</ion-label>
-      <ion-input type="text" name="fornecedor"></ion-input>
+      <ion-input type="text" name="fornecedorDestino" [(ngModel)]="fornecedorDestino" (ngModelChange)="valida()"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Produto</ion-label>
-      <ion-input type="text" name="produto"></ion-input>
+      <ion-input type="text" name="produto" [(ngModel)]="produto" (ngModelChange)="valida()"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Tipo de Pagamento</ion-label>
-      <ion-select [(ngModel)]="pagamento">
+      <ion-select [(ngModel)]="tipoPagmt" (click)="valida()">
         <ion-option value="proprio">Próprio</ion-option>
         <ion-option value="tercerizado">Tercerizado</ion-option>
         <ion-option value="quarterizado">Quarterizado</ion-option>

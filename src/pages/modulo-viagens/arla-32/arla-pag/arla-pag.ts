@@ -9,16 +9,27 @@ import { AlertController } from 'ionic-angular';
 })
 export class ArlaPagPage {
 
-  litros: number;
-  litro: number;
-  total: number;
+  litros: string = "";
+  //total: string = "";
+  litrosPreco: string = "";
+  select: string = "";
+  
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public alertCtrl: AlertController) {
   }
-  preco(){
-    return this.litros * this.litro;
-  }
+  // preco(){
+  //   return this.litros * this.litroPreco;
+  // }
+ 
+   valida() {
+     
+         if (this.litros == "" || this.litrosPreco ==  "" || this.select ==  "") {
+           return false;
+         }else{
+           return true;
+         }
+       }
  
   showAlert() {
     let alert = this.alertCtrl.create({

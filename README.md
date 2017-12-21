@@ -1,6 +1,6 @@
 Esse é um projeto da *Tijuca Alimentos* para os viajantes.
 
-*Esse trabalho é nosso*. Acesse a [pagina principal](http://www.tijucaalimentos.com/).
+*Esse trabalho é nosso*. Acesse a [página principal](http://www.tijucaalimentos.com/).
 
 ## Como usar o aplicativo?
 
