@@ -7,7 +7,7 @@
 <ion-list>
   <ion-item>
     <ion-label floating>Unidade de medida</ion-label>
-    <ion-select [(ngModel)]="idUnidadeMedida" (click)="valida()">
+    <ion-select [(ngModel)]="firebaseProvider.idUnidadeMedida" (click)="valida()">
       <ion-option value="bd">BD - Bandeja</ion-option>
       <ion-option value="cx">CX - Caixa</ion-option>
       <ion-option value="20">DZ - Duzia</ion-option>
@@ -29,7 +29,7 @@
 <div *ngIf="apareceBandeja()">
   <ion-item>
     <ion-label floating>Bandeja</ion-label>
-    <ion-select [(ngModel)]="idUnidadeBandeja" (click)="valida()">  
+    <ion-select [(ngModel)]="firebaseProvider.idUnidadeBandeja" (click)="valida()">  
       <ion-option value="5">BD - Bandeja</ion-option>
       <ion-option value="11">B1 - Bandeja c/12</ion-option>
       <ion-option value="9">B2 - Bandeja c/20</ion-option>
@@ -43,7 +43,7 @@
 <div *ngIf="apareceCaixa()">
   <ion-item>
     <ion-label floating>Caixa</ion-label>
-    <ion-select [(ngModel)]="caixa" (click)="valida()"> 
+    <ion-select [(ngModel)]="firebaseProvider.caixa" (click)="valida()"> 
       <ion-option value="6">CX - Caixa </ion-option>
       <ion-option value="14">CC - Caixa 06 BD / 30 Ovos</ion-option>
       <ion-option value="15">C1 - Caixa 10 BD / 20 Ovos</ion-option>
@@ -57,17 +57,17 @@
 
 <ion-item>
   <ion-label floating>Qnt Faturado (Numeros)</ion-label>
-  <ion-input type="number" min="0" [(ngModel)]="qntFaturado" (ngModelChange)="valida()"></ion-input>
+  <ion-input type="number" min="0" [(ngModel)]="firebaseProvider.qntFaturado" (ngModelChange)="valida()"></ion-input>
 </ion-item>
 
 <ion-item>
   <ion-label floating>Qnt Descarregado (Numeros)</ion-label>
-  <ion-input [(ngModel)]="qntDescarregado" type="number" min="0" (ngModelChange)="valida()"></ion-input>
+  <ion-input [(ngModel)]="firebaseProvider.qntDescarregado" type="number" min="0" (ngModelChange)="valida()"></ion-input>
 </ion-item>
 
 <ion-item>
   <ion-label floating>Valor Unitário</ion-label>
-  <ion-input [(ngModel)]="valorUnitario" type="number" min="0" (ngModelChange)="valida()"></ion-input>
+  <ion-input [(ngModel)]="firebaseProvider.valorUnitario" type="number" min="0" (ngModelChange)="valida()"></ion-input>
 </ion-item>
 
 <!-- <ion-item>

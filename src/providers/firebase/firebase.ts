@@ -1,0 +1,92 @@
+import { Injectable } from '@angular/core';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+
+
+
+@Injectable()
+export class FirebaseProvider {
+
+  bancoReceitas: FirebaseListObservable<FirebaseProvider[]>;
+  bancoDespesas: FirebaseListObservable<FirebaseProvider[]>;
+  
+
+
+  constructor(public banco: AngularFireDatabase) {
+    this.bancoReceitas = this.banco.list('receitas');
+    this.bancoDespesas = this.banco.list('despesas');
+
+  }
+
+  //ID
+  $key?: string;  
+
+  //Dados Receitas
+  fornecedorOrigem: string = "";
+  fornecedorDestino: string = "";
+  produto: string = "";
+  tipoPagmt: string = "";
+  idUnidadeMedida: string = "";
+  idUnidadeBandeja: string = "";
+  caixa: string = "";
+  qntFaturado: string = "";
+  qntDescarregado: string = "";
+  valorUnitario: string = "";
+
+  //Dados despesas
+  despesas: string;   
+  data: string;
+  valor: string;
+  
+
+  //Adicionar dados de receitas no BD
+  adicionarReceitas() {
+
+    this.bancoReceitas.push({
+
+      fornecedorOrigem: this.fornecedorOrigem,
+      fornecedorDestino: this.fornecedorDestino,
+      produto: this.produto,
+      tipoPagmt: this.tipoPagmt,
+      idUnidadeMedida: this.idUnidadeMedida,
+      idUnidadeBandeja: this.idUnidadeBandeja,
+      caixa: this.caixa,
+      qntFaturado: this.qntFaturado,
+      qntDescarregado: this.qntDescarregado,
+      valorUnitario: this.valorUnitario
+
+    });
+
+    this.fornecedorOrigem = "";
+    this.fornecedorDestino = "";
+    this.produto = "";
+    this.tipoPagmt = "";
+    this.idUnidadeMedida = "";
+    this.idUnidadeBandeja = "";
+    this.caixa = "";
+    this.qntFaturado = "";
+    this.qntDescarregado = "";
+    this.valorUnitario = "";
+  }
+
+
+  //Adicionar dados de despesas no BD
+  adicionarDespesas() {
+    this.bancoDespesas.push({
+
+      despesas: this.despesas,
+      data: this.data,
+      valor: this.valor
+
+    });
+
+    this.despesas = "";
+    this.data = "";
+    this.valor = "";
+
+  }
+
+
+
+
+
+}

@@ -9,7 +9,7 @@
     
       <ion-item>
         <ion-label floating>Despesas</ion-label>
-        <ion-select [(ngModel)]="despesas.despesas" required #iptDespesa="ngModel">
+        <ion-select [(ngModel)]="firebaseProvider.despesas" required #iptDespesa="ngModel">
           <ion-option value="Lanche">Lanche</ion-option>
           <ion-option value="Almoço">Almoço</ion-option>
           <ion-option value="Jantar">Jantar</ion-option>
@@ -25,23 +25,12 @@
     
   <ion-item>
         <ion-label>Data</ion-label>
-<<<<<<< HEAD
-        <ion-input type="date" [(ngModel)]="despesas.data" required #iptData="ngModel"></ion-input>
+        <ion-input type="date" [(ngModel)]="firebaseProvider.data" required #iptData="ngModel"></ion-input>
       </ion-item> 
       <ion-item>
         <ion-label floating>Valor</ion-label>
-        <ion-input type="float" type="number" [(ngModel)]="despesas.valor" required #iptValor="ngModel"></ion-input>
+        <ion-input type="float" type="number" [(ngModel)]="firebaseProvider.valor" required #iptValor="ngModel"></ion-input>
       </ion-item> 
   </ion-list> 
-  <button ion-button full (click)="adicionarDespesas(despesas);showAlert()"  >Adicionar</button>
-=======
-        <ion-input type="date" [(ngModel)]="data" (ngModelChange)="valida()"></ion-input>
-      </ion-item> 
-      <ion-item>
-        <ion-label floating>Valor</ion-label>
-        <ion-input type="float" type="number" [(ngModel)]="valor" (ngModelChange)="valida()"></ion-input>
-      </ion-item> 
-  </ion-list> 
-  <button ion-button full (click)="showAlert()" [disabled]="!ngAfterViewInit()">Adicionar</button>
->>>>>>> 4ee962d14066efd4c758d42d578a88693db09968
+  <button ion-button full (click)="adicionarDados();showAlert()">Adicionar</button>
 </ion-content>
