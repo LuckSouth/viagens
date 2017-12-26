@@ -1,11 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides, ToastController } from 'ionic-angular';
 import { FotoServicoProvider } from '../../../../providers/foto-servico/foto-servico';
-
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 
 import { ReceitasFornecedorPage } from '../receita-fornecedor/receita-fornecedor';
 import { ReceitasFotoPage } from '../receitas-foto/receitas-foto';
 import { ReceitasQntPage } from '../receitas-qnt/receitas-qnt';
+import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+
+
 
 
 @IonicPage()
@@ -19,19 +22,26 @@ export class RotasReceitasPage {
   @ViewChild(ReceitasFornecedorPage) ReceitasFornecedor: ReceitasFornecedorPage;
   @ViewChild(ReceitasFotoPage) ReceitasFoto: ReceitasFotoPage;
   @ViewChild(ReceitasQntPage) ReceitasQnt: ReceitasQntPage;
+  // @ViewChild(Receitas) receitas: Receitas;
+  
+  bancoReceitas: FirebaseListObservable<FirebaseProvider[]>;
 
   contador: number = 1;
-  cameraButton: boolean; 
+  cameraButton: boolean;
   fotoReceitas: string = "dsfsdf";
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public foto: FotoServicoProvider) {
+    public foto: FotoServicoProvider,
+    public banco: AngularFireDatabase, public firebaseProvider: FirebaseProvider) {
+
+    this.bancoReceitas = this.banco.list('receitas');
+
   }
 
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.slides.lockSwipes(true);
 
     if (this.contador == 1) {
@@ -42,7 +52,7 @@ export class RotasReceitasPage {
       if (this.fotoReceitas != undefined) {
         return true;
       }
-      
+
     }
 
     if (this.contador == 3) {
@@ -73,6 +83,10 @@ export class RotasReceitasPage {
     this.contador += 1;
     if (this.contador == 4) {
 
+      //Armazenar no Firebase
+      this.firebaseProvider.adicionarReceitas();
+
+      // Toast
       let toast = this.toastCtrl.create({
         message: 'Receita adicionada com sucesso',
         duration: 2000
@@ -87,15 +101,16 @@ export class RotasReceitasPage {
       this.cameraButton = false;
     }
     this.slides.lockSwipes(true);
-  }  
-  mostrar(){
-    
-        this.foto.getFoto('picture')
-        .then(responses => {
-        
-          if (this.contador == 2 ){
-            this.fotoReceitas = this.foto.ultimaFoto;
-            console.log(this.fotoReceitas);}
-          })    
+  }
+  mostrar() {
+
+    this.foto.getFoto('picture')
+      .then(responses => {
+
+        if (this.contador == 2) {
+          this.fotoReceitas = this.foto.ultimaFoto;
+          console.log(this.fotoReceitas);
         }
+      })
+  }
 }

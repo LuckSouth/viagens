@@ -47,6 +47,7 @@ import { ArlaPostoPage } from '../pages/modulo-viagens/arla-32/arla-posto/arla-p
 
 import { Camera } from "@ionic-native/camera";
 import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
+import { FirebaseProvider } from '../providers/firebase/firebase';
 
 
 @NgModule({
@@ -118,7 +119,8 @@ import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FotoServicoProvider,
-    ScreenOrientation
+    ScreenOrientation,
+    FirebaseProvider
   ]
 })
 export class AppModule {}

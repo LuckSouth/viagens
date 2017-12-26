@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { Slides } from 'ionic-angular';
 import { ArlaPagPage } from '../arla-pag/arla-pag';
 import { ArlaPostoPage } from '../arla-posto/arla-posto';
+import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 
 
 @IonicPage()
@@ -14,26 +16,36 @@ export class RotasArlaPage {
 
   @ViewChild(Slides) slides: Slides;
   @ViewChild(ArlaPagPage) arlaPagPage: ArlaPagPage;
-  @ViewChild(ArlaPostoPage) arlaPostoPage: ArlaPostoPage; 
+  @ViewChild(ArlaPostoPage) arlaPostoPage: ArlaPostoPage;
+
+  bancoArla: FirebaseListObservable<FirebaseProvider[]>;
+
 
   contador: number = 1;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController ) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public toastCtrl: ToastController,
+    public firebaseProvider: FirebaseProvider,
+    public banco: AngularFireDatabase, ) {
+
+    this.bancoArla = this.banco.list('arla');
+
   }
 
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.slides.lockSwipes(true);
-     
+
     if (this.contador == 1) {
       return this.arlaPagPage.valida();
     }
 
     if (this.contador == 2) {
       return this.arlaPostoPage.valida();
-    } 
+    }
   }
-  
+
 
   toBack() {
     this.slides.lockSwipes(false);
@@ -41,7 +53,7 @@ export class RotasArlaPage {
     this.slides.slidePrev(400)
     if (this.contador == 0) {
       this.navCtrl.pop();
-    } 
+    }
     this.slides.lockSwipes(true);
   }
 
@@ -51,6 +63,9 @@ export class RotasArlaPage {
     this.contador += 1;
     if (this.contador == 3) {
 
+      //Armazenar no Firebase
+      this.firebaseProvider.adicionarArla();
+
       let toast = this.toastCtrl.create({
         message: 'Arla32 adicionada com sucesso',
         duration: 2000
@@ -58,7 +73,7 @@ export class RotasArlaPage {
       toast.present();
 
       this.navCtrl.pop();
-    } 
+    }
     this.slides.lockSwipes(true);
   }
 
