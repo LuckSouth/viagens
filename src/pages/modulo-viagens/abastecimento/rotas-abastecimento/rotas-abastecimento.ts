@@ -8,7 +8,7 @@ import { AbastecimentoBomba1Page } from '../abastecimento-bomba-1/abastecimento-
 import { AbastecimentoBomba2Page } from '../abastecimento-bomba-2/abastecimento-bomba-2';
 
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
-import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 
 @IonicPage()
 @Component({
