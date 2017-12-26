@@ -21,7 +21,7 @@ export class DespesasPage {
   }
 
   valida() {
-    if (this.firebaseProvider.despesas == "" || this.firebaseProvider.data == "" || this.firebaseProvider.valor == "") {
+    if (this.firebaseProvider.despesas == "" || this.firebaseProvider.dataDespesas == "" || this.firebaseProvider.valorDespesas == "") {
         return false
       } else {
         return true

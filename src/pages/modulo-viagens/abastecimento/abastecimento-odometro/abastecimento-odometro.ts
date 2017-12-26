@@ -10,7 +10,6 @@ import { FirebaseProvider } from '../../../../providers/firebase/firebase';
   templateUrl: 'abastecimento-odometro.html',
 })
 export class AbastecimentoOdometroPage {
-  odometro: string = "";
 
   constructor(public navCtrl: NavController,
     public firebaseProvider: FirebaseProvider) {
@@ -18,7 +17,7 @@ export class AbastecimentoOdometroPage {
 
   valida() {
     
-        if (this.odometro == "") {
+        if (this.firebaseProvider.odometro == "") {
           return false;
         }else{
           return true;

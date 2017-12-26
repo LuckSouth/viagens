@@ -8,12 +8,13 @@ export class FirebaseProvider {
 
   bancoReceitas: FirebaseListObservable<FirebaseProvider[]>;
   bancoDespesas: FirebaseListObservable<FirebaseProvider[]>;
-  
+  bancoAbastecimento: FirebaseListObservable<FirebaseProvider[]>;
 
 
   constructor(public banco: AngularFireDatabase) {
     this.bancoReceitas = this.banco.list('receitas');
     this.bancoDespesas = this.banco.list('despesas');
+    this.bancoAbastecimento = this.banco.list('abastecimento')
 
   }
 
@@ -32,11 +33,27 @@ export class FirebaseProvider {
   qntDescarregado: string = "";
   valorUnitario: string = "";
 
+
   //Dados despesas
-  despesas: string;   
-  data: string;
-  valor: string;
+  despesas: string = "";   
+  dataDespesas: string = "";
+  valorDespesas: string = "";
   
+
+  //Dados Abastecimento
+  tipoAbastecimento: string = "";
+  postoAbastecimento: string = "";
+  dataAbastecimento: string = "";
+  tipoPagmtAbastecimento: string = "";
+
+  odometro: string = "";
+
+  litrosBomb1: string = "";
+  precoBomb1: string = "";
+
+  litrosBomb2: string = "";
+  precoBomb2: string = "";
+
 
   //Adicionar dados de receitas no BD
   adicionarReceitas() {
@@ -74,14 +91,46 @@ export class FirebaseProvider {
     this.bancoDespesas.push({
 
       despesas: this.despesas,
-      data: this.data,
-      valor: this.valor
+      data: this.dataDespesas,
+      valor: this.valorDespesas
 
     });
 
     this.despesas = "";
-    this.data = "";
-    this.valor = "";
+    this.dataDespesas = "";
+    this.valorDespesas = "";
+
+  }
+
+  // Adicionar dados de abastecimento no BD
+  adicionarAbastecimento() {
+    this.bancoAbastecimento.push({
+      tipo: this.tipoAbastecimento, 
+      posto: this.postoAbastecimento, 
+      firebaseData: this.dataAbastecimento,
+      firebaseTipoPagmt: this.tipoPagmtAbastecimento,
+    
+      odometro: this.odometro,  
+    
+      litrosBomb1: this.litrosBomb1, 
+      precoBomb1: this.precoBomb1,
+    
+      litrosBomb2: this.litrosBomb2,
+      precoBomb2: this.precoBomb2
+    });
+
+    this.tipoAbastecimento  = "";
+    this.postoAbastecimento  = "";
+    this.dataAbastecimento = "";
+    this.tipoPagmtAbastecimento = "";
+  
+    this.odometro = "";
+  
+    this.litrosBomb1 = "";
+    this.precoBomb1 = "";
+  
+    this.litrosBomb2 = "";
+    this.precoBomb2 = "";
 
   }
 

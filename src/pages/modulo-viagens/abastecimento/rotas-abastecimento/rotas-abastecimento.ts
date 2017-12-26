@@ -8,7 +8,6 @@ import { AbastecimentoBomba1Page } from '../abastecimento-bomba-1/abastecimento-
 import { AbastecimentoBomba2Page } from '../abastecimento-bomba-2/abastecimento-bomba-2';
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 
-
 @IonicPage()
 @Component({
   selector: 'page-rotas-abastecimento',
@@ -20,6 +19,7 @@ export class RotasAbastecimentoPage {
   @ViewChild(AbastecimentoOdometroPage) abastecimentoOdometro: AbastecimentoOdometroPage;
   @ViewChild(AbastecimentoBomba1Page) abastecimentoBomba1: AbastecimentoBomba1Page;
   @ViewChild(AbastecimentoBomba2Page) abastecimentoBomba2: AbastecimentoBomba2Page;
+
 
 
   public contador: number = 1;

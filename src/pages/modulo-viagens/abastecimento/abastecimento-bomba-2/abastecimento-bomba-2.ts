@@ -11,8 +11,7 @@ import { FirebaseProvider } from '../../../../providers/firebase/firebase';
   templateUrl: 'abastecimento-bomba-2.html',
 })
 export class AbastecimentoBomba2Page {
-  preco: string = "";
-  litros: string = "";
+ 
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -23,7 +22,7 @@ export class AbastecimentoBomba2Page {
 
   valida() {
     
-        if (this.preco == "" || this.litros == "") {
+        if (this.firebaseProvider.litrosBomb2 == "" || this.firebaseProvider.precoBomb2 == "") {
           return false;
         }else{
           return true;
