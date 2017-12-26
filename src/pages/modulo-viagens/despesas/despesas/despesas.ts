@@ -14,15 +14,19 @@ import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 export class DespesasPage {
 
 
-  bancoDespesas: FirebaseListObservable<Despesas[]>;
-
-
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public toastCtrl: ToastController, private banco: AngularFireDatabase,
     public firebaseProvider: FirebaseProvider) {
 
-    this.bancoDespesas = this.banco.list('despesas');
   }
+
+  valida() {
+    if (this.firebaseProvider.despesas == "" || this.firebaseProvider.data == "" || this.firebaseProvider.valor == "") {
+        return false
+      } else {
+        return true
+      }
+    }
 
   adicionarDados() {
     this.firebaseProvider.adicionarDespesas();

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+
 @IonicPage()
 @Component({
   selector: 'page-abastecimento-bomba-1',
@@ -10,7 +12,9 @@ export class AbastecimentoBomba1Page {
   preco: string = "";
   litros: string = "";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public firebaseProvider: FirebaseProvider) {
   }
 
   valida() {

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 
+import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+
+
 @IonicPage()
 @Component({
   selector: 'page-abastecimento-pagamento',
@@ -12,7 +15,8 @@ export class AbastecimentoPagamentoPage {
   tipo: string = "";
   posto: string = "";
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+    public firebaseProvider: FirebaseProvider) {
 
   }
 

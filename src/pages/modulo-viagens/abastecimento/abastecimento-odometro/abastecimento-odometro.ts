@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 
+import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+
+
 @IonicPage()
 @Component({
   selector: 'page-abastecimento-odometro',
@@ -9,7 +12,8 @@ import { IonicPage, NavController } from 'ionic-angular';
 export class AbastecimentoOdometroPage {
   odometro: string = "";
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+    public firebaseProvider: FirebaseProvider) {
   }
 
   valida() {
