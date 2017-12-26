@@ -8,12 +8,13 @@ export class FirebaseProvider {
 
   bancoReceitas: FirebaseListObservable<FirebaseProvider[]>;
   bancoDespesas: FirebaseListObservable<FirebaseProvider[]>;
-  
+  bancoAbastecimento: FirebaseListObservable<FirebaseProvider[]>;
 
 
   constructor(public banco: AngularFireDatabase) {
     this.bancoReceitas = this.banco.list('receitas');
     this.bancoDespesas = this.banco.list('despesas');
+    this.bancoAbastecimento = this.banco.list('abastecimento')
 
   }
 
@@ -33,10 +34,24 @@ export class FirebaseProvider {
   valorUnitario: string = "";
 
   //Dados despesas
-  despesas: string;   
-  data: string;
-  valor: string;
+  despesas: string = "";   
+  data: string = "";
+  valor: string = "";
   
+  //Dados Abastecimento
+  tipo: string = "";
+  posto: string = "";
+  firebaseData: string = "";
+  firebaseTipoPagmt: string = "";
+
+  odometro: string = "";
+
+  litrosBomb1: string = "";
+  precoBomb1: string = "";
+
+  litrosBomb2: string = "";
+  precoBomb2: string = "";
+
 
   //Adicionar dados de receitas no BD
   adicionarReceitas() {
@@ -82,6 +97,38 @@ export class FirebaseProvider {
     this.despesas = "";
     this.data = "";
     this.valor = "";
+
+  }
+
+  // Adicionar dados de abastecimento no BD
+  adicionarAbastecimento() {
+    this.bancoAbastecimento.push({
+      tipo: this.tipo, 
+      posto: this.posto, 
+      firebaseData: this.firebaseData,
+      firebaseTipoPagmt: this.firebaseTipoPagmt,
+    
+      odometro: this.odometro,  
+    
+      litrosBomb1: this.litrosBomb1, 
+      precoBomb1: this.precoBomb1,
+    
+      litrosBomb2: this.litrosBomb2,
+      precoBomb2: this.precoBomb2
+    });
+
+    this.tipo  = "";
+    this.posto  = "";
+    this.firebaseData = "";
+    this.firebaseTipoPagmt = "";
+  
+    this.odometro = "";
+  
+    this.litrosBomb1 = "";
+    this.precoBomb1 = "";
+  
+    this.litrosBomb2 = "";
+    this.precoBomb2 = "";
 
   }
 

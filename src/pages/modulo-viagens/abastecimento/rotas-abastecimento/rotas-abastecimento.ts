@@ -7,6 +7,9 @@ import { AbastecimentoOdometroPage } from '../abastecimento-odometro/abastecimen
 import { AbastecimentoBomba1Page } from '../abastecimento-bomba-1/abastecimento-bomba-1';
 import { AbastecimentoBomba2Page } from '../abastecimento-bomba-2/abastecimento-bomba-2';
 
+import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+
 @IonicPage()
 @Component({
   selector: 'page-rotas-abastecimento',
@@ -19,6 +22,8 @@ export class RotasAbastecimentoPage {
   @ViewChild(AbastecimentoBomba1Page) abastecimentoBomba1: AbastecimentoBomba1Page;
   @ViewChild(AbastecimentoBomba2Page) abastecimentoBomba2: AbastecimentoBomba2Page;
 
+  bancoAbastecimento: FirebaseListObservable<FirebaseProvider[]>;
+
 
   public contador: number = 1;
   cameraButton: boolean;
@@ -30,8 +35,12 @@ export class RotasAbastecimentoPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public foto: FotoServicoProvider
+    public foto: FotoServicoProvider,
+    public banco: AngularFireDatabase,
+    public firebaseProvider: FirebaseProvider
   ) {
+
+    this.bancoAbastecimento = this.banco.list('abastecimeto');
 
   }
 
