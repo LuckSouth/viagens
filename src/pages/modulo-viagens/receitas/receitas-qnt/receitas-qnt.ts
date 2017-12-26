@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+
+
+
 @IonicPage()
 @Component({
   selector: 'page-receitas-qnt',
@@ -8,31 +12,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ReceitasQntPage {
 
-  idUnidadeMedida: string = "";
-  idUnidadeBandeja: string = "";
-  caixa: string = "";
-  qntFaturado: string = ""; 
-  qntDescarregado: string = "";
-  valorUnitario: string = "";
-  valorTotal: string = "";
-  
-  // preco(){
-  //   return  this.valorUnitario * this.qntDescarregado
-  // }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
+    
   }
 
   valida() {
-    if (this.idUnidadeMedida == "" || this.idUnidadeBandeja == "" && this.caixa == "" || this.qntFaturado == "" || this.qntDescarregado == "" || this.valorUnitario == "") {
+    if (this.firebaseProvider.idUnidadeMedida == "" || this.firebaseProvider.idUnidadeBandeja == "" && this.firebaseProvider.caixa == "" || this.firebaseProvider.qntFaturado == "" || this.firebaseProvider.qntDescarregado == "" || this.firebaseProvider.valorUnitario == "") {
         return false
       } else {
         return true
       }
+      
   }
   
   apareceBandeja() {
-    if (this.idUnidadeMedida == 'bd') {
+    if (this.firebaseProvider.idUnidadeMedida == 'bd') {
       return true;
     } else {
       return false;
@@ -40,7 +36,7 @@ export class ReceitasQntPage {
   }
 
   apareceCaixa() {
-    if (this.idUnidadeMedida == 'cx') {
+    if (this.firebaseProvider.idUnidadeMedida == 'cx') {
       return true;
     } else {
       return false;
