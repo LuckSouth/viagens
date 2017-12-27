@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 
 
 
@@ -8,18 +8,19 @@ export class FirebaseProvider {
 
   bancoReceitas: FirebaseListObservable<FirebaseProvider[]>;
   bancoDespesas: FirebaseListObservable<FirebaseProvider[]>;
+  bancoArla: FirebaseListObservable<FirebaseProvider[]>;
   bancoAbastecimento: FirebaseListObservable<FirebaseProvider[]>;
-
 
   constructor(public banco: AngularFireDatabase) {
     this.bancoReceitas = this.banco.list('receitas');
     this.bancoDespesas = this.banco.list('despesas');
+    this.bancoArla = this.banco.list('arla');
     this.bancoAbastecimento = this.banco.list('abastecimento')
 
   }
 
   //ID
-  $key?: string;  
+  $key?: string;
 
   //Dados Receitas
   fornecedorOrigem: string = "";
@@ -28,7 +29,7 @@ export class FirebaseProvider {
   tipoPagmt: string = "";
   idUnidadeMedida: string = "";
   idUnidadeBandeja: string = "";
-  caixa: string = "";
+  caixa?: string = "";
   qntFaturado: string = "";
   qntDescarregado: string = "";
   valorUnitario: string = "";
@@ -40,19 +41,57 @@ export class FirebaseProvider {
   valorDespesas: string = "";
   
 
-  //Dados Abastecimento
+  //Dados arla
+  dataArla: string = "";
+  postoArla: string = "";
+  tipoArla: string = "";
+  km: string = "";
+  litrosArla: string = "";
+  litrosPrecoArla: string = "";
+  selectArla: string = "";
+
+
+  //Dados abastecimento
   tipoAbastecimento: string = "";
   postoAbastecimento: string = "";
   dataAbastecimento: string = "";
   tipoPagmtAbastecimento: string = "";
 
-  odometro: string = "";
+  
+  odometro: string = ""
 
-  litrosBomb1: string = "";
-  precoBomb1: string = "";
+  litrosBomb1:string = "";
+  precoBomb1:string = "";
+  
 
-  litrosBomb2: string = "";
-  precoBomb2: string = "";
+  litrosBomb2:string = "";
+  precoBomb2:string = "";
+
+  
+  adicionarArla() {
+
+    this.bancoArla.push({
+
+      dataArla: this.dataArla,
+      posto: this.postoArla,
+      tipo: this.tipoArla,
+      km: this.km,
+      litros: this.litrosArla,
+      litrosPreco: this.litrosPrecoArla,
+      select: this.selectArla
+
+    });
+
+    this.dataArla = ""
+    this.postoArla = ""
+    this.tipoArla = ""
+    this.km = ""
+    this.litrosArla = ""
+    this.litrosPrecoArla = ""
+    this.selectArla = ""
+  }
+
+
 
 
   //Adicionar dados de receitas no BD
@@ -114,7 +153,7 @@ export class FirebaseProvider {
     
       litrosBomb1: this.litrosBomb1, 
       precoBomb1: this.precoBomb1,
-    
+
       litrosBomb2: this.litrosBomb2,
       precoBomb2: this.precoBomb2
     });
@@ -125,10 +164,10 @@ export class FirebaseProvider {
     this.tipoPagmtAbastecimento = "";
   
     this.odometro = "";
-  
+
     this.litrosBomb1 = "";
     this.precoBomb1 = "";
-  
+
     this.litrosBomb2 = "";
     this.precoBomb2 = "";
 

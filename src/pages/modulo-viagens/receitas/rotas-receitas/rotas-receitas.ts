@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides, ToastController } from 'ionic-angular';
 import { FotoServicoProvider } from '../../../../providers/foto-servico/foto-servico';
-import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 
 import { ReceitasFornecedorPage } from '../receita-fornecedor/receita-fornecedor';
 import { ReceitasFotoPage } from '../receitas-foto/receitas-foto';

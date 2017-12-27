@@ -7,7 +7,7 @@
 
   <ion-item>
     <ion-label floating>Tipo Abastecimento</ion-label>
-    <ion-select [(ngModel)]="tipo" (ngModelChange)="valida()">
+    <ion-select [(ngModel)]="firebaseProvider.tipoArla" (ngModelChange)="valida()">
       <ion-option value="ext">Externo</ion-option>
       <ion-option value="int">Interno</ion-option>
     </ion-select>
@@ -15,17 +15,17 @@
 
   <ion-item>
     <ion-label floating>Posto Combustivel</ion-label>
-    <ion-input type="text" [(ngModel)]="posto" (ngModelChange)="valida()"></ion-input>
+    <ion-input type="text" [(ngModel)]="firebaseProvider.postoArla" (ngModelChange)="valida()"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Data</ion-label>
-    <ion-input type="date" [(ngModel)]="data" (ngModelChange)="valida()"></ion-input>
+    <ion-input type="date" [(ngModel)]="firebaseProvider.dataArla" (ngModelChange)="valida()"></ion-input>
   </ion-item>
   
   <ion-item>
     <ion-label floating>Km</ion-label>
-    <ion-input type="number" min="0"  [(ngModel)]="km" (ngModelChange)="valida()"></ion-input>
+    <ion-input type="number" min="0"  [(ngModel)]="firebaseProvider.km" (ngModelChange)="valida()"></ion-input>
   </ion-item>
 
 </ion-list>

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
-import { Despesas } from '../../models/despesas.model';
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 
 
@@ -14,8 +12,9 @@ import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 export class DespesasPage {
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public toastCtrl: ToastController, private banco: AngularFireDatabase,
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public toastCtrl: ToastController,
     public firebaseProvider: FirebaseProvider) {
 
   }
