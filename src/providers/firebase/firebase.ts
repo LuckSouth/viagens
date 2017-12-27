@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 
 
 
@@ -14,7 +14,7 @@ export class FirebaseProvider {
   constructor(public banco: AngularFireDatabase) {
     this.bancoReceitas = this.banco.list('receitas');
     this.bancoDespesas = this.banco.list('despesas');
-    this.bancoArla = this.banco.list('Arla');
+    this.bancoArla = this.banco.list('arla');
     this.bancoAbastecimento = this.banco.list('abastecimento')
 
   }
@@ -29,30 +29,35 @@ export class FirebaseProvider {
   tipoPagmt: string = "";
   idUnidadeMedida: string = "";
   idUnidadeBandeja: string = "";
-  caixa: string = "";
+  caixa?: string = "";
   qntFaturado: string = "";
   qntDescarregado: string = "";
   valorUnitario: string = "";
 
+
   //Dados despesas
-  despesas: string;
-  data: string;
-  valor: string;
+  despesas: string = "";   
+  dataDespesas: string = "";
+  valorDespesas: string = "";
+  
 
   //Dados arla
-
   dataArla: string = "";
-  posto: string = "";
-  tipo: string = "";
+  postoArla: string = "";
+  tipoArla: string = "";
   km: string = "";
-  litros: string = "";
-  litrosPreco: string = "";
-  select: string = "";
+  litrosArla: string = "";
+  litrosPrecoArla: string = "";
+  selectArla: string = "";
+
 
   //Dados abastecimento
+  tipoAbastecimento: string = "";
+  postoAbastecimento: string = "";
+  dataAbastecimento: string = "";
+  tipoPagmtAbastecimento: string = "";
 
-  firebaseData: string = "";
-  firebaseTipoPagmt: string = ""
+  
   odometro: string = ""
 
   litrosBomb1:string = "";
@@ -61,32 +66,30 @@ export class FirebaseProvider {
 
   litrosBomb2:string = "";
   precoBomb2:string = "";
+
   
   adicionarArla() {
 
     this.bancoArla.push({
 
       dataArla: this.dataArla,
-      posto: this.posto,
-      tipo: this.tipo,
+      posto: this.postoArla,
+      tipo: this.tipoArla,
       km: this.km,
-      litros: this.litros,
-      litrosPreco: this.litrosPreco,
-      select: this.select
+      litros: this.litrosArla,
+      litrosPreco: this.litrosPrecoArla,
+      select: this.selectArla
 
     });
 
     this.dataArla = ""
-    this.posto = ""
-    this.tipo = ""
+    this.postoArla = ""
+    this.tipoArla = ""
     this.km = ""
-    this.litros = ""
-    this.litrosPreco = ""
-    this.select = ""
+    this.litrosArla = ""
+    this.litrosPrecoArla = ""
+    this.selectArla = ""
   }
-
-
-
 
 
 
@@ -127,39 +130,39 @@ export class FirebaseProvider {
     this.bancoDespesas.push({
 
       despesas: this.despesas,
-      data: this.data,
-      valor: this.valor
+      data: this.dataDespesas,
+      valor: this.valorDespesas
 
     });
 
     this.despesas = "";
-    this.data = "";
-    this.valor = "";
+    this.dataDespesas = "";
+    this.valorDespesas = "";
 
   }
 
   // Adicionar dados de abastecimento no BD
   adicionarAbastecimento() {
     this.bancoAbastecimento.push({
-      tipo: this.tipo,
-      posto: this.posto,
-      firebaseData: this.firebaseData,
-      firebaseTipoPagmt: this.firebaseTipoPagmt,
-
-      odometro: this.odometro,
-
-      litrosBomb1: this.litrosBomb1,
+      tipo: this.tipoAbastecimento, 
+      posto: this.postoAbastecimento, 
+      firebaseData: this.dataAbastecimento,
+      firebaseTipoPagmt: this.tipoPagmtAbastecimento,
+    
+      odometro: this.odometro,  
+    
+      litrosBomb1: this.litrosBomb1, 
       precoBomb1: this.precoBomb1,
 
       litrosBomb2: this.litrosBomb2,
       precoBomb2: this.precoBomb2
     });
 
-    this.tipo  = "";
-    this.posto  = "";
-    this.firebaseData = "";
-    this.firebaseTipoPagmt = "";
-
+    this.tipoAbastecimento  = "";
+    this.postoAbastecimento  = "";
+    this.dataAbastecimento = "";
+    this.tipoPagmtAbastecimento = "";
+  
     this.odometro = "";
 
     this.litrosBomb1 = "";

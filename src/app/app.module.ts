@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { firebaseConfig } from "./credenciaisfirebase";
 
 
@@ -120,7 +120,8 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FotoServicoProvider,
     ScreenOrientation,
-    FirebaseProvider
+    FirebaseProvider,
+    AngularFireDatabase
   ]
 })
 export class AppModule {}

@@ -56,7 +56,7 @@ export class RotasReceitasPage {
     }
 
     if (this.contador == 3) {
-      console.log(this.contador)
+      // console.log(this.contador)
       return this.ReceitasQnt.valida();
     }
 

@@ -25,12 +25,12 @@
     
   <ion-item>
         <ion-label>Data</ion-label>
-        <ion-input type="date" [(ngModel)]="firebaseProvider.data" required #iptData="ngModel"></ion-input>
+        <ion-input type="date" [(ngModel)]="firebaseProvider.dataDespesas" required #iptData="ngModel"></ion-input>
       </ion-item> 
       <ion-item>
         <ion-label floating>Valor</ion-label>
-        <ion-input type="float" type="number" [(ngModel)]="firebaseProvider.valor" required #iptValor="ngModel"></ion-input>
+        <ion-input type="float" type="number" [(ngModel)]="firebaseProvider.valorDespesas"></ion-input>
       </ion-item> 
   </ion-list> 
-  <button ion-button full (click)="adicionarDados();showAlert()">Adicionar</button>
+  <button ion-button full (click)="adicionarDados();showAlert()" [disabled]="!valida()">Adicionar</button>
 </ion-content>

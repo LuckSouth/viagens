@@ -4,7 +4,6 @@ import { Slides } from 'ionic-angular';
 import { ArlaPagPage } from '../arla-pag/arla-pag';
 import { ArlaPostoPage } from '../arla-posto/arla-posto';
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
-import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 
 
 @IonicPage()
@@ -18,7 +17,6 @@ export class RotasArlaPage {
   @ViewChild(ArlaPagPage) arlaPagPage: ArlaPagPage;
   @ViewChild(ArlaPostoPage) arlaPostoPage: ArlaPostoPage;
 
-  bancoArla: FirebaseListObservable<FirebaseProvider[]>;
 
 
   contador: number = 1;
@@ -26,10 +24,8 @@ export class RotasArlaPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public firebaseProvider: FirebaseProvider,
-    public banco: AngularFireDatabase, ) {
+    public firebaseProvider: FirebaseProvider) {
 
-    this.bancoArla = this.banco.list('arla');
 
   }
 

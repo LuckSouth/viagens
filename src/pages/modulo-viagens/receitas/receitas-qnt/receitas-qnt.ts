@@ -15,18 +15,30 @@ export class ReceitasQntPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
-    
+
   }
 
   valida() {
-    if (this.firebaseProvider.idUnidadeMedida == "" || this.firebaseProvider.idUnidadeBandeja == "" && this.firebaseProvider.caixa == "" || this.firebaseProvider.qntFaturado == "" || this.firebaseProvider.qntDescarregado == "" || this.firebaseProvider.valorUnitario == "") {
+
+    if (!(this.firebaseProvider.idUnidadeMedida == "cx" || this.firebaseProvider.idUnidadeMedida == undefined || this.firebaseProvider.idUnidadeMedida == "bd"))  { 
+      if (this.firebaseProvider.idUnidadeMedida == "" || this.firebaseProvider.qntFaturado == "" || this.firebaseProvider.qntDescarregado == "" || this.firebaseProvider.valorUnitario == "") {
         return false
       } else {
         return true
       }
-      
+
+    }else{
+      if (this.firebaseProvider.idUnidadeMedida == "" || this.firebaseProvider.idUnidadeBandeja == "" && this.firebaseProvider.caixa == "" || this.firebaseProvider.qntFaturado == "" || this.firebaseProvider.qntDescarregado == "" || this.firebaseProvider.valorUnitario == "") {
+        return false
+      } else {
+        return true
+      }
+
+    }
+
+
   }
-  
+
   apareceBandeja() {
     if (this.firebaseProvider.idUnidadeMedida == 'bd') {
       return true;
