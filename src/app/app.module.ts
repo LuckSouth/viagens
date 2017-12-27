@@ -48,6 +48,7 @@ import { ArlaPostoPage } from '../pages/modulo-viagens/arla-32/arla-posto/arla-p
 import { Camera } from "@ionic-native/camera";
 import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
 import { FirebaseProvider } from '../providers/firebase/firebase';
+import { AngularFireDatabase } from "angularfire2/database-deprecated";
 
 
 @NgModule({
@@ -117,6 +118,7 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     StatusBar,
     SplashScreen,
     Camera,
+    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FotoServicoProvider,
     ScreenOrientation,

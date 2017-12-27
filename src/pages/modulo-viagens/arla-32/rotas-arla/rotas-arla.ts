@@ -4,7 +4,7 @@ import { Slides } from 'ionic-angular';
 import { ArlaPagPage } from '../arla-pag/arla-pag';
 import { ArlaPostoPage } from '../arla-posto/arla-posto';
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
-import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 
 
 @IonicPage()
