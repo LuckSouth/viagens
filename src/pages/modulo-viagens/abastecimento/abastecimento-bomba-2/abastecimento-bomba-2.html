@@ -7,9 +7,9 @@
 </ion-header>
 <ion-item>
     <ion-label floating>Litros</ion-label>
-    <ion-input type="number" min="0" [(ngModel)]="litros" (ngModelChange)="valida()"></ion-input>
+    <ion-input type="number" min="0" [(ngModel)]="firebaseProvider.litrosBomb2" (ngModelChange)="valida()"></ion-input>
 </ion-item>
 <ion-item>
     <ion-label floating>Preço/L</ion-label>
-    <ion-input type="number" min="0" [(ngModel)]="preco" (ngModelChange)="valida()"></ion-input>
+    <ion-input type="number" min="0" [(ngModel)]="firebaseProvider.precoBomb2" (ngModelChange)="valida()"></ion-input>
 </ion-item>

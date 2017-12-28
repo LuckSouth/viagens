@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 
-import { Despesas } from '../../models/despesas.model';
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 
 
@@ -14,15 +12,20 @@ import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 export class DespesasPage {
 
 
-  bancoDespesas: FirebaseListObservable<Despesas[]>;
-
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public toastCtrl: ToastController, private banco: AngularFireDatabase,
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public toastCtrl: ToastController,
     public firebaseProvider: FirebaseProvider) {
 
-    this.bancoDespesas = this.banco.list('despesas');
   }
+
+  valida() {
+    if (this.firebaseProvider.despesas == "" || this.firebaseProvider.dataDespesas == "" || this.firebaseProvider.valorDespesas == "") {
+        return false
+      } else {
+        return true
+      }
+    }
 
   adicionarDados() {
     this.firebaseProvider.adicionarDespesas();

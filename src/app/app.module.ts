@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { firebaseConfig } from "./credenciaisfirebase";
 
 
@@ -48,7 +48,7 @@ import { ArlaPostoPage } from '../pages/modulo-viagens/arla-32/arla-posto/arla-p
 import { Camera } from "@ionic-native/camera";
 import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
 import { FirebaseProvider } from '../providers/firebase/firebase';
-import { AngularFireDatabase } from "angularfire2/database-deprecated";
+// import { AngularFireDatabase } from "angularfire2/database-deprecated";
 
 
 @NgModule({
@@ -122,7 +122,8 @@ import { AngularFireDatabase } from "angularfire2/database-deprecated";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FotoServicoProvider,
     ScreenOrientation,
-    FirebaseProvider
+    FirebaseProvider,
+    AngularFireDatabase
   ]
 })
 export class AppModule {}
