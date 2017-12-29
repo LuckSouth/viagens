@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+import { RelatoriosPage } from '../../relatorios/relatorios';
 
 
 @IonicPage()
@@ -30,6 +31,10 @@ export class DespesasPage {
   adicionarDados() {
     this.firebaseProvider.adicionarDespesas();
 
+  }
+
+  abreStorage(){
+    this.navCtrl.push(RelatoriosPage)
   }
 
   showAlert() {

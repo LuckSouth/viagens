@@ -15,8 +15,31 @@
 
     <ion-card-content>
       <span id="local">{{item.despesas}}</span>
-      <br><span id="valor"> Valor: {{item.valor}} </span>
-      <br><span id="horario">{{item.data}}</span>
+      <br>
+      <span id="valor"> Valor: {{item.valor}} </span>
+      <br>
+      <span id="horario">{{item.data}}</span>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="storage.despesa" placeholder="Despesa"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="storage.valor" placeholder="Valor"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button outline (click)="adicionar()">Adicionar</button>
+  <ion-card *ngFor="let storage of storages">
+    <ion-card-header>
+      {{storage.despesa}}
+    </ion-card-header>
+    <ion-card-content>
+      {{storage.valor}}
     </ion-card-content>
   </ion-card>
 

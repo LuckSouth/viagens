@@ -49,6 +49,8 @@ import { Camera } from "@ionic-native/camera";
 import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 // import { AngularFireDatabase } from "angularfire2/database-deprecated";
+import { IonicStorageModule } from '@ionic/storage';
+import { StorageProvider } from '../providers/storage/storage'
 
 
 @NgModule({
@@ -85,7 +87,8 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     CustomFormsModule,
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -123,7 +126,8 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     FotoServicoProvider,
     ScreenOrientation,
     FirebaseProvider,
-    AngularFireDatabase
+    AngularFireDatabase,
+    StorageProvider
   ]
 })
 export class AppModule {}
