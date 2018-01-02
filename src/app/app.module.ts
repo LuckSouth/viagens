@@ -16,6 +16,8 @@ import { firebaseConfig } from "./credenciaisfirebase";
 
 
 import { MyApp } from './app.component';
+
+
 import { HomePage } from '../pages/modulo-viagens/home/home/home';
 import { PrincipalPage } from '../pages/principal/principal/principal';
 import { ViagensPage } from '../pages/modulo-viagens/viagens/viagens';
@@ -51,12 +53,13 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
 // import { AngularFireDatabase } from "angularfire2/database-deprecated";
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage'
+import { LoginPage } from '../pages/login/login';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    LoginPage,
     PrincipalPage,
     ViagensPage,
     ReceitasFornecedorPage,
@@ -93,7 +96,7 @@ import { StorageProvider } from '../providers/storage/storage'
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    LoginPage,
     PrincipalPage,
     ViagensPage,
     ReceitasFornecedorPage,
