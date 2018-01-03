@@ -4,14 +4,12 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 import { RelatoriosPage } from '../../relatorios/relatorios';
 
-
 @IonicPage()
 @Component({
   selector: 'page-despesas',
   templateUrl: 'despesas.html',
 })
 export class DespesasPage {
-
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
