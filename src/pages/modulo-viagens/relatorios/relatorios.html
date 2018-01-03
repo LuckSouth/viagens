@@ -29,18 +29,49 @@
     </ion-item>
 
     <ion-item>
+        <ion-input type="text" [(ngModel)]="storage.data" placeholder="Data"></ion-input>
+      </ion-item>
+
+    <ion-item>
       <ion-input type="text" [(ngModel)]="storage.valor" placeholder="Valor"></ion-input>
     </ion-item>
 
   </ion-list>
-  <button ion-button outline (click)="adicionar()">Adicionar</button>
+
+  <!-- Quando o editando for falso ele vai exibir esse botão -->
+  <button *ngIf="!editando" ion-button outline (click)="adicionar()">Adicionar</button>
+
+  <!-- Quando for verdadeiro ele vai exibir os dois botões, e o adicionar vai sumir -->
+  <button *ngIf="editando"ion-button outline (click)="atualizar()">Atualizar</button>
+  <button *ngIf="editando" ion-button outline (click)="cancelarEditar()">Cancelar</button>  
+
   <ion-card *ngFor="let storage of storages">
     <ion-card-header>
       {{storage.despesa}}
     </ion-card-header>
+    <ion-card-header>
+        {{storage.data}}
+      </ion-card-header>
     <ion-card-content>
       {{storage.valor}}
     </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <!-- Quando ele clicar no Editar ele vai saber qual Storage editar (storge)= ao objeto storage do *ngFor-->
+        <button ion-button icon-left clear small (click)="editar(storage)">
+          <ion-icon name="create"></ion-icon>
+          <div>Editar</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small (click)="deletar(storage)">
+          <ion-icon name="trash"></ion-icon>
+          <div>Deletar</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
   </ion-card>
 
 
