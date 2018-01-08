@@ -15,31 +15,13 @@
     <ion-card-header>
       <span id="titulo">Despesas</span>
     </ion-card-header>
-    <ion-card-header>
-      <span>Despesas: {{storage.despesa}} </span>
-      <br>
-      <span>Data: {{storage.data}}</span>
-      <br>
-      <span>Valor: {{storage.valor}}</span>
-    </ion-card-header>
 
-    <ion-row>
-      <ion-col>
-        <!-- Quando ele clicar no Editar ele vai saber qual Storage editar (storge)= ao objeto storage do *ngFor-->
-        <button ion-button icon-left clear small (click)="editar(storage)">
-          <ion-icon name="create"></ion-icon>
-          <div>Editar</div>
-        </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-left clear small (click)="deletar(storage)">
-          <ion-icon name="trash"></ion-icon>
-          <div>Deletar</div>
-        </button>
-      </ion-col>
-    </ion-row>
-
+    <ion-card-content>
+      <span id="local">{{storage.despesas}}</span>
+      <span id="valor">{{storage.dataDespesas}} </span>
+      <span id="horario"> {{storage.valorDespesas}}</span>
+      <span id="horario"> {{storage.fornecedorOrigem}}</span>
+    </ion-card-content>
   </ion-card>
-
 
 </ion-content>

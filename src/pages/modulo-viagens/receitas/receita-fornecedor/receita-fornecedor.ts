@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+import { StorageProvider } from '../../../../providers/storage/storage';
 
 @IonicPage()
 @Component({
@@ -10,13 +10,12 @@ import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 })
 export class ReceitasFornecedorPage {
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storageProvider: StorageProvider) {
 
   }
  
 valida() {
-    if (this.firebaseProvider.fornecedorOrigem == "" || this.firebaseProvider.fornecedorDestino == "" || this.firebaseProvider.produto == "" || this.firebaseProvider.tipoPagmt == "") {
+    if (this.storageProvider.receitas.fornecedorOrigem == "" || this.storageProvider.receitas.fornecedorDestino == "" || this.storageProvider.receitas.produto == "" || this.storageProvider.receitas.tipoPagmt == "") {
       return false;
     } else {
       return true;

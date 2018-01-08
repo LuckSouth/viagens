@@ -4,6 +4,57 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class StorageProvider {
 
+  //Dados Receitas
+
+  receitas = {
+    fornecedorOrigem: "",
+    fornecedorDestino: "",
+    produto: "",
+    tipoPagmt: "",
+    idUnidadeMedida: "",
+    idUnidadeBandeja: "",
+    caixa: "",
+    qntFaturado: "",
+    qntDescarregado: "",
+    valorUnitario: ""
+  }
+
+
+  //Dados despesas
+  despesas = {
+    despesas: '',
+    dataDespesas: '',
+    valorDespesas: ''
+  }
+
+
+  //Dados arla
+  dataArla: string = "";
+  postoArla: string = "";
+  tipoArla: string = "";
+  km: string = "";
+  litrosArla: string = "";
+  litrosPrecoArla: string = "";
+  selectArla: string = "";
+
+
+  //Dados abastecimento
+  tipoAbastecimento: string = "";
+  postoAbastecimento: string = "";
+  dataAbastecimento: string = "";
+  tipoPagmtAbastecimento: string = "";
+
+
+  odometro: string = ""
+
+  litrosBomb1: string = "";
+  precoBomb1: string = "";
+
+
+  litrosBomb2: string = "";
+  precoBomb2: string = "";
+
+
   lista: any[];
   chave: string = "storages";
 
@@ -27,9 +78,16 @@ export class StorageProvider {
   }
 
   // Adicionar o registro á lista, e persistir ela no BD através do método SET
-  adicionar(registro: any) {
+  adicionarReceitas() {
     this.storage.ready().then(() => {
-      this.lista.push(registro);
+      this.lista.push(this.receitas);
+      this.storage.set(this.chave, this.lista);
+    });
+  }
+
+  adicionarDespesas() {
+    this.storage.ready().then(() => {
+      this.lista.push(this.despesas);
       this.storage.set(this.chave, this.lista);
     });
   }

@@ -7,8 +7,7 @@ import { ReceitasFornecedorPage } from '../receita-fornecedor/receita-fornecedor
 import { ReceitasFotoPage } from '../receitas-foto/receitas-foto';
 import { ReceitasQntPage } from '../receitas-qnt/receitas-qnt';
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
-
-
+import { StorageProvider } from '../../../../providers/storage/storage';
 
 
 @IonicPage()
@@ -34,14 +33,14 @@ export class RotasReceitasPage {
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public foto: FotoServicoProvider,
-    public banco: AngularFireDatabase, public firebaseProvider: FirebaseProvider) {
-
-    this.bancoReceitas = this.banco.list('receitas');
+    public firebaseProvider: FirebaseProvider,
+    public storageProvider: StorageProvider) {
 
   }
 
 
   ngAfterViewInit() {
+
     this.slides.lockSwipes(true);
 
     if (this.contador == 1) {
@@ -84,8 +83,12 @@ export class RotasReceitasPage {
     if (this.contador == 4) {
 
       //Armazenar no Firebase
-      this.firebaseProvider.adicionarReceitas();
+      // this.firebaseProvider.adicionarReceitas();
 
+      //Armazenar no Storage
+      this.storageProvider.adicionarReceitas();
+
+     
       // Toast
       let toast = this.toastCtrl.create({
         message: 'Receita adicionada com sucesso',
