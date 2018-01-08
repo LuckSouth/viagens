@@ -7,6 +7,9 @@
 </ion-header>
 <ion-content padding>
 
+  <!-- Quando for verdadeiro ele vai exibir os dois botões, e o adicionar vai sumir -->
+  <button *ngIf="editando" ion-button outline (click)="atualizar()">Atualizar</button>
+  <button *ngIf="editando" ion-button outline (click)="cancelarEditar()">Cancelar</button>
 
   <ion-card *ngFor="let storage of storages">
     <ion-card-header>
