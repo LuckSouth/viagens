@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+import { StorageProvider } from '../../../../providers/storage/storage';
 import { RelatoriosPage } from '../../relatorios/relatorios';
 
 @IonicPage()
@@ -14,26 +15,19 @@ export class DespesasPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public firebaseProvider: FirebaseProvider) {
+    public firebaseProvider: FirebaseProvider,
+    public storageProvider: StorageProvider) {
 
   }
 
   valida() {
-    if (this.firebaseProvider.despesas == "" || this.firebaseProvider.dataDespesas == "" || this.firebaseProvider.valorDespesas == "") {
+    if (this.storageProvider.despesas.despesas == "" || this.storageProvider.despesas.dataDespesas == "" || this.storageProvider.despesas.valorDespesas == "") {
         return false
       } else {
         return true
       }
     }
 
-  adicionarDados() {
-    this.firebaseProvider.adicionarDespesas();
-
-  }
-
-  abreStorage(){
-    this.navCtrl.push(RelatoriosPage)
-  }
 
   showAlert() {
 

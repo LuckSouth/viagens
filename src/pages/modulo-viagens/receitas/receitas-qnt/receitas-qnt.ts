@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+import { StorageProvider } from '../../../../providers/storage/storage';
 
 
 
@@ -14,21 +15,21 @@ export class ReceitasQntPage {
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storageProvider: StorageProvider) {
 
   }
 
   valida() {
 
-    if (!(this.firebaseProvider.idUnidadeMedida == "cx" || this.firebaseProvider.idUnidadeMedida == undefined || this.firebaseProvider.idUnidadeMedida == "bd"))  { 
-      if (this.firebaseProvider.idUnidadeMedida == "" || this.firebaseProvider.qntFaturado == "" || this.firebaseProvider.qntDescarregado == "" || this.firebaseProvider.valorUnitario == "") {
+    if (!(this.storageProvider.receitas.idUnidadeMedida == "cx" || this.storageProvider.receitas.idUnidadeMedida == undefined || this.storageProvider.receitas.idUnidadeMedida == "bd"))  { 
+      if (this.storageProvider.receitas.idUnidadeMedida == "" || this.storageProvider.receitas.qntFaturado == "" || this.storageProvider.receitas.qntDescarregado == "" || this.storageProvider.receitas.valorUnitario == "") {
         return false
       } else {
         return true
       }
 
     }else{
-      if (this.firebaseProvider.idUnidadeMedida == "" || this.firebaseProvider.idUnidadeBandeja == "" && this.firebaseProvider.caixa == "" || this.firebaseProvider.qntFaturado == "" || this.firebaseProvider.qntDescarregado == "" || this.firebaseProvider.valorUnitario == "") {
+      if (this.storageProvider.receitas.idUnidadeMedida == "" || this.storageProvider.receitas.idUnidadeBandeja == "" && this.storageProvider.receitas.caixa == "" || this.storageProvider.receitas.qntFaturado == "" || this.storageProvider.receitas.qntDescarregado == "" || this.storageProvider.receitas.valorUnitario == "") {
         return false
       } else {
         return true
@@ -40,7 +41,7 @@ export class ReceitasQntPage {
   }
 
   apareceBandeja() {
-    if (this.firebaseProvider.idUnidadeMedida == 'bd') {
+    if (this.storageProvider.receitas.idUnidadeMedida == 'bd') {
       return true;
     } else {
       return false;
@@ -48,7 +49,7 @@ export class ReceitasQntPage {
   }
 
   apareceCaixa() {
-    if (this.firebaseProvider.idUnidadeMedida == 'cx') {
+    if (this.storageProvider.receitas.idUnidadeMedida == 'cx') {
       return true;
     } else {
       return false;

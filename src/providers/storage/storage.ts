@@ -4,6 +4,57 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class StorageProvider {
 
+  //Dados Receitas
+
+  receitas = {
+    fornecedorOrigem: "",
+    fornecedorDestino: "",
+    produto: "",
+    tipoPagmt: "",
+    idUnidadeMedida: "",
+    idUnidadeBandeja: "",
+    caixa: "",
+    qntFaturado: "",
+    qntDescarregado: "",
+    valorUnitario: ""
+  }
+
+
+  //Dados despesas
+  despesas = {
+    despesas: '',
+    dataDespesas: '',
+    valorDespesas: ''
+  }
+
+
+  //Dados arla
+  dataArla: string = "";
+  postoArla: string = "";
+  tipoArla: string = "";
+  km: string = "";
+  litrosArla: string = "";
+  litrosPrecoArla: string = "";
+  selectArla: string = "";
+
+
+  //Dados abastecimento
+  tipoAbastecimento: string = "";
+  postoAbastecimento: string = "";
+  dataAbastecimento: string = "";
+  tipoPagmtAbastecimento: string = "";
+
+
+  odometro: string = ""
+
+  litrosBomb1: string = "";
+  precoBomb1: string = "";
+
+
+  litrosBomb2: string = "";
+  precoBomb2: string = "";
+
+
   lista: any[];
   chave: string = "storages";
 
@@ -27,29 +78,36 @@ export class StorageProvider {
   }
 
   // Adicionar o registro á lista, e persistir ela no BD através do método SET
-  adicionar(registro: any) {
+  adicionarReceitas() {
     this.storage.ready().then(() => {
-      this.lista.push(registro);
+      this.lista.push(this.receitas);
+      this.storage.set(this.chave, this.lista);
+    });
+  }
+
+  adicionarDespesas() {
+    this.storage.ready().then(() => {
+      this.lista.push(this.despesas);
       this.storage.set(this.chave, this.lista);
     });
   }
 
   // 1º vai ser o "Storage" que quer atualizar -- 2º os "Dados" que vai chegar do formulário
   // Atualizar determinados registros
-  atualizar(storage,dados){
-    for(let chave in this.lista){
-      if(this.lista[chave] == storage){
+  atualizar(storage, dados) {
+    for (let chave in this.lista) {
+      if (this.lista[chave] == storage) {
         this.lista[chave] = dados;
         this.storage.set(this.chave, this.lista);
       }
     }
   }
- 
+
   // Deletar Storage
-  deletar(storage){
-    for(let chave in this.lista){
-      if(this.lista[chave] == storage){
-        this.lista.splice(parseInt(chave),1);
+  deletar(storage) {
+    for (let chave in this.lista) {
+      if (this.lista[chave] == storage) {
+        this.lista.splice(parseInt(chave), 1);
         this.storage.set(this.chave, this.lista);
       }
     }

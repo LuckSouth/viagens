@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PrincipalPage } from '../pages/principal/principal/principal'; 
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { FirebaseProvider } from '../providers/firebase/firebase';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class MyApp {
             platform: Platform, 
             statusBar: StatusBar, 
             splashScreen: SplashScreen,
-    private screenOrientation: ScreenOrientation
+    private screenOrientation: ScreenOrientation,
+    public fire: FirebaseProvider
     
   ) {
 

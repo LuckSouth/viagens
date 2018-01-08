@@ -6,6 +6,8 @@ import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/databa
 @Injectable()
 export class FirebaseProvider {
 
+  b:boolean = false;
+
   motorista = "henrique"
   viagem: number;
   
@@ -41,6 +43,8 @@ export class FirebaseProvider {
   despesas: string = "";
   dataDespesas: string = "";
   valorDespesas: string = "";
+
+  storageDespesas = {despesas: '', dataDespesas: '',valorDespesas: ''}
 
 
   //Dados arla
