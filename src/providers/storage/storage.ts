@@ -31,13 +31,16 @@ export class StorageProvider {
 
 
   //Dados arla
-  dataArla: string = "";
-  postoArla: string = "";
-  tipoArla: string = "";
-  km: string = "";
-  litrosArla: string = "";
-  litrosPrecoArla: string = "";
-  selectArla: string = "";
+  arla = {
+    title: 'Arla',
+    dataArla: "",
+    postoArla: "",
+    tipoArla: "",
+    km: "",
+    litrosArla: "",
+    litrosPrecoArla: "",
+    selectArla: "",
+  }
 
 
   //Dados abastecimento
@@ -83,11 +86,18 @@ export class StorageProvider {
       this.storage.set(this.chave, this.lista);
     });
   }
-
+  // Adicionar Despesas
   adicionarDespesas() {
     this.title = "Despesas";
     this.storage.ready().then(() => {
       this.lista.push(this.despesas);
+      this.storage.set(this.chave, this.lista);
+    });
+  }
+  // Adicionar Arla
+  adicionarArla() {
+    this.storage.ready().then(() => {
+      this.lista.push(this.arla);
       this.storage.set(this.chave, this.lista);
     });
   }
