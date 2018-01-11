@@ -54,6 +54,7 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage'
 import { LoginPage } from '../pages/login/login';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 
 @NgModule({
@@ -130,7 +131,8 @@ import { LoginPage } from '../pages/login/login';
     ScreenOrientation,
     FirebaseProvider,
     AngularFireDatabase,
-    StorageProvider
+    StorageProvider,
+    GooglePlus
   ]
 })
 export class AppModule {}
