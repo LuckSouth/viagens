@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import { AlertController } from 'ionic-angular'; 
 
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+import { StorageProvider } from '../../../../providers/storage/storage';
 
 
 @IonicPage()
@@ -17,12 +18,12 @@ export class AbastecimentoBomba2Page {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public viewCtrl: ViewController,
-    public firebaseProvider: FirebaseProvider) {
+    public storageProvider: StorageProvider) {
   }
 
   valida() {
     
-        if (this.firebaseProvider.litrosBomb2 == "" || this.firebaseProvider.precoBomb2 == "") {
+        if (this.storageProvider.abastecimento.litrosBomb2 == "" || this.storageProvider.abastecimento.precoBomb2 == "") {
           return false;
         }else{
           return true;

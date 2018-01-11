@@ -13,7 +13,7 @@
 
   <ion-card *ngFor="let storage of storages">
     <ion-card-header>
-      <span id="titulo">Despesas</span>
+      <span id="titulo">{{storage.title}}</span>
     </ion-card-header>
 
     <ion-card-content>
@@ -21,6 +21,7 @@
       <span id="valor">{{storage.dataDespesas}} </span>
       <span id="horario"> {{storage.valorDespesas}}</span>
       <span id="horario"> {{storage.fornecedorOrigem}}</span>
+      <span id="horario"> {{storage.tipoAbastecimento}}</span>
     </ion-card-content>
   </ion-card>
 

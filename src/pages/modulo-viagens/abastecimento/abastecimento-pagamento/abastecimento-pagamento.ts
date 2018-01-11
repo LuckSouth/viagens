@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+import { StorageProvider } from '../../../../providers/storage/storage';
 
 
 @IonicPage()
@@ -13,13 +14,13 @@ export class AbastecimentoPagamentoPage {
 
 
   constructor(public navCtrl: NavController,
-    public firebaseProvider: FirebaseProvider) {
+    public storageProvider: StorageProvider) {
 
   }
 
   valida() {
 
-    if (this.firebaseProvider.tipoAbastecimento.length < 3 || this.firebaseProvider.postoAbastecimento == "" || this.firebaseProvider.dataAbastecimento == "" || this.firebaseProvider.tipoPagmtAbastecimento == "") {
+    if (this.storageProvider.abastecimento.tipoAbastecimento.length < 3 || this.storageProvider.abastecimento.postoAbastecimento == "" || this.storageProvider.abastecimento.dataAbastecimento == "" || this.storageProvider.abastecimento.tipoPagmtAbastecimento == "") {
       return false;
     } else {
       return true;
