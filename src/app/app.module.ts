@@ -46,10 +46,10 @@ import { ArlaPostoPage } from '../pages/modulo-viagens/arla-32/arla-posto/arla-p
 import { Camera } from "@ionic-native/camera";
 import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
 import { FirebaseProvider } from '../providers/firebase/firebase';
-// import { AngularFireDatabase } from "angularfire2/database-deprecated";
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage'
-
+import { DadosProvider } from '../providers/dados/dados';
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -86,7 +86,8 @@ import { StorageProvider } from '../providers/storage/storage'
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -125,7 +126,9 @@ import { StorageProvider } from '../providers/storage/storage'
     ScreenOrientation,
     FirebaseProvider,
     AngularFireDatabase,
-    StorageProvider
+    StorageProvider,
+    DadosProvider,
+    HttpClient,
   ]
 })
 export class AppModule {}
