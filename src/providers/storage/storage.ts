@@ -7,6 +7,7 @@ export class StorageProvider {
   //Dados Receitas
 
   receitas = {
+    title: "Receitas",
     fornecedorOrigem: "",
     fornecedorDestino: "",
     produto: "",
@@ -43,20 +44,17 @@ export class StorageProvider {
 
 
   //Dados abastecimento
-  tipoAbastecimento: string = "";
-  postoAbastecimento: string = "";
-  dataAbastecimento: string = "";
-  tipoPagmtAbastecimento: string = "";
-
-
-  odometro: string = ""
-
-  litrosBomb1: string = "";
-  precoBomb1: string = "";
-
-
-  litrosBomb2: string = "";
-  precoBomb2: string = "";
+  abastecimento = {
+    tipoAbastecimento: "",
+    postoAbastecimento: "",
+    dataAbastecimento: "",
+    tipoPagmtAbastecimento: "",
+    odometro: "",
+    litrosBomb1: "",
+    precoBomb1: "",
+    litrosBomb2: "",
+    precoBomb2: "",
+  }
 
 
   lista: any[];
@@ -84,12 +82,13 @@ export class StorageProvider {
   // Adicionar o registro á lista, e persistir ela no BD através do método SET
   adicionarReceitas() {
     this.storage.ready().then(() => {
-      this.lista.push(this.receitas);
+      this.lista.push(this.receitas, this.title);
       this.storage.set(this.chave, this.lista);
     });
   }
   // Adicionar Despesas
   adicionarDespesas() {
+    this.title = "Despesas";
     this.storage.ready().then(() => {
       this.lista.push(this.despesas);
       this.storage.set(this.chave, this.lista);
@@ -99,6 +98,14 @@ export class StorageProvider {
   adicionarArla() {
     this.storage.ready().then(() => {
       this.lista.push(this.arla);
+      this.storage.set(this.chave, this.lista);
+    });
+  }
+
+
+  adicionarAbastecimento() {
+    this.storage.ready().then(() => {
+      this.lista.push(this.abastecimento);
       this.storage.set(this.chave, this.lista);
     });
   }

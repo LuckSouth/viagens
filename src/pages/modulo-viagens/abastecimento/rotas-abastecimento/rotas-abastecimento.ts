@@ -7,6 +7,7 @@ import { AbastecimentoOdometroPage } from '../abastecimento-odometro/abastecimen
 import { AbastecimentoBomba1Page } from '../abastecimento-bomba-1/abastecimento-bomba-1';
 import { AbastecimentoBomba2Page } from '../abastecimento-bomba-2/abastecimento-bomba-2';
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+import { StorageProvider } from '../../../../providers/storage/storage';
 
 @IonicPage()
 @Component({
@@ -33,7 +34,8 @@ export class RotasAbastecimentoPage {
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public foto: FotoServicoProvider,
-    public firebaseProvider: FirebaseProvider
+    public firebaseProvider: FirebaseProvider,
+    public storageProvider: StorageProvider
   ) {
 
   }
@@ -101,7 +103,7 @@ export class RotasAbastecimentoPage {
     this.contador += 1;
     if (this.contador == 8) {
 
-      this.firebaseProvider.adicionarAbastecimento();
+      this.storageProvider.adicionarAbastecimento();
 
       let toast = this.toastCtrl.create({
         message: 'Abastecimento adicionada com sucesso',

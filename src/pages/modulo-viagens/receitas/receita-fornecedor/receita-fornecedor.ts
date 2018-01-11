@@ -10,7 +10,9 @@ import { StorageProvider } from '../../../../providers/storage/storage';
 })
 export class ReceitasFornecedorPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storageProvider: StorageProvider) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public storageProvider: StorageProvider) {
 
   }
  
