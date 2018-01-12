@@ -8,7 +8,7 @@ import { AbastecimentoBomba1Page } from '../abastecimento-bomba-1/abastecimento-
 import { AbastecimentoBomba2Page } from '../abastecimento-bomba-2/abastecimento-bomba-2';
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 import { StorageProvider } from '../../../../providers/storage/storage';
-
+import { DadosProvider } from "../../../../providers/dados/dados";
 @IonicPage()
 @Component({
   selector: 'page-rotas-abastecimento',
@@ -29,17 +29,41 @@ export class RotasAbastecimentoPage {
   fotoBomba2: string = "asda";
   fotoOdometro: string = "asdasd";
   permissao: boolean;
+  litrosBomb1;
+  abastecimento = "";
+  motorista = "Dick vigarista" //Somente para teste
+
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public foto: FotoServicoProvider,
     public firebaseProvider: FirebaseProvider,
-    public storageProvider: StorageProvider
+    public storageProvider: StorageProvider,
+    public dados: DadosProvider
   ) {
 
   }
 
+
+
+  salvar() {
+    this.dados.abastecimento(
+      this.motorista,
+      this.abastecimentoPagamento.storageProvider.abastecimento.tipoAbastecimento,
+      this.abastecimentoPagamento.storageProvider.abastecimento.postoAbastecimento,
+      this.abastecimentoPagamento.storageProvider.abastecimento.dataAbastecimento,
+      this.abastecimentoPagamento.storageProvider.abastecimento.tipoPagmtAbastecimento,
+      this.abastecimentoPagamento.storageProvider.abastecimento.odometro,
+      this.abastecimentoPagamento.storageProvider.abastecimento.litrosBomb1,
+      this.abastecimentoPagamento.storageProvider.abastecimento.precoBomb1,
+      this.abastecimentoPagamento.storageProvider.abastecimento.litrosBomb2,
+      this.abastecimentoPagamento.storageProvider.abastecimento.precoBomb2,
+    
+    )
+    console.log("salvar chamado")
+
+  }
 
   ngAfterViewInit() {
     this.slides.lockSwipes(true);
@@ -102,7 +126,7 @@ export class RotasAbastecimentoPage {
     this.slides.slideTo(this.contador, 400)
     this.contador += 1;
     if (this.contador == 8) {
-
+      this.salvar()
       this.storageProvider.adicionarAbastecimento();
 
       let toast = this.toastCtrl.create({

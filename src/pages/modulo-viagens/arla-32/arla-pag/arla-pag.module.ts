@@ -6,6 +6,7 @@ import { ArlaPagPage } from './arla-pag';
   declarations: [
     ArlaPagPage,
   ],
+  
   imports: [
     IonicPageModule.forChild(ArlaPagPage),
   ],
