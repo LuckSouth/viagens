@@ -13,14 +13,31 @@
 
   <ion-card *ngFor="let storage of storages">
     <ion-card-header>
-      <span id="titulo">Despesas</span>
+      <span id="titulo">{{storage.title}}</span>
     </ion-card-header>
 
     <ion-card-content>
+
       <span id="local">{{storage.despesas}}</span>
       <span id="valor">{{storage.dataDespesas}} </span>
       <span id="horario"> {{storage.valorDespesas}}</span>
       <span id="horario"> {{storage.fornecedorOrigem}}</span>
+      <span id="horario"> {{storage.tipoAbastecimento}}</span>
+
+      <span id="local">Despesas: {{storage.depesas}}</span><br/>
+      <span id="valor">Data: {{storage.dataDespesas}} </span><br/>
+      <span id="horario">Valor: {{storage.valorDespesas}}</span><br/>
+
+      <span id="horario">Fornecedor: {{storage.fornecedorOrigem}}</span><br/>
+
+      <span id="horario">Litros: {{storage.litrosArla}}</span><br/>
+      <span id="horario">Litros Preco: {{storage.litrosPrecoArla}}</span><br/>
+      <span id="horario">Forma Pagamento: {{storage.selectArla}}</span><br/>
+      <span id="horario">Tipo Abastecimento: {{storage.tipoArla}}</span><br/>
+      <span id="horario">Posto Combustivel: {{storage.postoArla}}</span><br/>
+      <span id="horario">Data: {{storage.dataArla}}</span><br/>
+      <span id="horario">Km: {{storage.km}}</span>
+
     </ion-card-content>
   </ion-card>
 

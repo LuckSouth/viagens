@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+import { StorageProvider } from '../../../../providers/storage/storage';
 
 
 @IonicPage()
@@ -12,12 +13,12 @@ import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 export class AbastecimentoOdometroPage {
 
   constructor(public navCtrl: NavController,
-    public firebaseProvider: FirebaseProvider) {
+    public storageProvider: StorageProvider) {
   }
 
   valida() {
     
-        if (this.firebaseProvider.odometro == "") {
+        if (this.storageProvider.abastecimento.odometro == "") {
           return false;
         }else{
           return true;
