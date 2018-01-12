@@ -5,6 +5,7 @@ import { ArlaPagPage } from '../arla-pag/arla-pag';
 import { ArlaPostoPage } from '../arla-posto/arla-posto';
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 import { StorageProvider } from '../../../../providers/storage/storage';
+import { DadosProvider } from '../../../../providers/dados/dados';
 
 
 @IonicPage()
@@ -18,7 +19,7 @@ export class RotasArlaPage {
   @ViewChild(ArlaPagPage) arlaPagPage: ArlaPagPage;
   @ViewChild(ArlaPostoPage) arlaPostoPage: ArlaPostoPage;
 
-
+  motorista = "Richosvaldo"
 
   contador: number = 1;
 
@@ -26,8 +27,25 @@ export class RotasArlaPage {
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public firebaseProvider: FirebaseProvider,
-    public storageProvider: StorageProvider) {
+    public storageProvider: StorageProvider,
+    public dados: DadosProvider) {
 
+
+  }
+
+  salvar() {
+    this.dados.arla(
+      this.motorista,
+      this.arlaPagPage.storageProvider.arla.litrosArla,
+      this.arlaPagPage.storageProvider.arla.litrosPrecoArla,
+      this.arlaPagPage.storageProvider.arla.selectArla,
+      this.arlaPagPage.storageProvider.arla.tipoArla,
+      this.arlaPagPage.storageProvider.arla.postoArla,
+      this.arlaPagPage.storageProvider.arla.dataArla,
+      this.arlaPagPage.storageProvider.arla.km,
+ 
+    )
+    console.log("salvar chamado")
 
   }
 
@@ -60,7 +78,7 @@ export class RotasArlaPage {
     this.slides.slideTo(this.contador, 400)
     this.contador += 1;
     if (this.contador == 3) {
-
+      this.salvar()
       //Armazenar no Storage
       this.storageProvider.adicionarArla();
 

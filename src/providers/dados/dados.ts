@@ -87,5 +87,42 @@ export class DadosProvider {
       });
   }
 
+  arla(
+    motorista: string,
+    tipoPosto: string,
+    posto: string,
+    data: string,
+    formaPagamento: string,
+    km: string,
+    litros: string,
+    preco: string,
+
+  ): void {
+    let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
+      options: any = {
+        "key": "arla",
+        "motorista": motorista,
+        "tipoPosto": tipoPosto,
+        "data": data,
+        "formaPagamento": formaPagamento,
+        "km": km,
+        "litros": litros,
+        "preco": preco
+      
+      },
+      url: any = this.baseURI + "manage-data.php";
+
+    this.http.post(url, JSON.stringify(options), headers)
+      .subscribe((data: any) => {
+        console.log(data)
+        // If the request was successful notify the user
+        console.log(data)
+        this.hideForm = true;
+      },
+      (error: any) => {
+        console.log(error)
+      });
+  }
+
 
 }
