@@ -7,7 +7,7 @@ import { DespesasPage } from '../despesas/despesas/despesas';
 import { RotasArlaPage } from '../arla-32/rotas-arla/rotas-arla';
 import { RotasReceitasPage } from '../receitas/rotas-receitas/rotas-receitas';
 import { RelatoriosPage } from '../relatorios/relatorios';
-
+import { DadosProvider } from "../../../providers/dados/dados";
 @IonicPage()
 @Component({
   selector: 'page-viagens',
@@ -15,31 +15,32 @@ import { RelatoriosPage } from '../relatorios/relatorios';
 })
 export class ViagensPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public dados: DadosProvider) {
   }
- 
-  linkAbastecimento(){
+
+  linkAbastecimento() {
     this.navCtrl.push(RotasAbastecimentoPage);
   }
 
-  linkReceitas(){
+  linkReceitas() {
     this.navCtrl.push(RotasReceitasPage);
   }
-  
-  linkDespesas(){
-      this.navCtrl.push(DespesasPage);
+
+  linkDespesas() {
+    this.navCtrl.push(DespesasPage);
   }
 
-  linkArla32(){
+  linkArla32() {
     this.navCtrl.push(RotasArlaPage);
   }
 
-  linkGeral(){
+  linkGeral() {
     this.navCtrl.push(GeralPage);
   }
-  
-  linkRelatorios(){
+
+  linkRelatorios() {
     this.navCtrl.push(RelatoriosPage);
   }
-  
+
+
 }

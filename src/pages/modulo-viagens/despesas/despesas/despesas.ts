@@ -4,12 +4,13 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 import { StorageProvider } from '../../../../providers/storage/storage';
 import { RelatoriosPage } from '../../relatorios/relatorios';
-
+import { DadosProvider } from "../../../../providers/dados/dados";
 interface IStorage {
   despesa: string;
   data: string;
   valor: string;
 }
+
 
 @IonicPage()
 @Component({
@@ -19,6 +20,7 @@ interface IStorage {
 export class DespesasPage {
 
   despesa="";
+  motorista = "bino"
 
   storage: IStorage = { despesa: '', data: '', valor: '' };
   storages: IStorage[];
@@ -29,7 +31,8 @@ export class DespesasPage {
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public firebaseProvider: FirebaseProvider,
-    public storageProvider: StorageProvider) {
+    public storageProvider: StorageProvider,
+    public dados: DadosProvider) {
 
   }
 
@@ -51,5 +54,10 @@ export class DespesasPage {
     toast.present();
 
     this.navCtrl.pop();
+  }
+
+
+  salvar(){
+    this.dados.despesa(this.motorista,this.storageProvider.despesas.despesas,this.storageProvider.despesas.dataDespesas, this.storageProvider.despesas.valorDespesas)
   }
 }
