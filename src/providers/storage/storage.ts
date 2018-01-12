@@ -3,6 +3,7 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class StorageProvider {
+  title: any;
 
   //Dados Receitas
 
