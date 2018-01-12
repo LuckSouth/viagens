@@ -1,12 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides, ToastController } from 'ionic-angular';
 import { FotoServicoProvider } from '../../../../providers/foto-servico/foto-servico';
-import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 
 import { ReceitasFornecedorPage } from '../receita-fornecedor/receita-fornecedor';
 import { ReceitasFotoPage } from '../receitas-foto/receitas-foto';
 import { ReceitasQntPage } from '../receitas-qnt/receitas-qnt';
-import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 import { StorageProvider } from '../../../../providers/storage/storage';
 
 
@@ -23,7 +21,6 @@ export class RotasReceitasPage {
   @ViewChild(ReceitasQntPage) ReceitasQnt: ReceitasQntPage;
   // @ViewChild(Receitas) receitas: Receitas;
   
-  bancoReceitas: FirebaseListObservable<FirebaseProvider[]>;
 
   contador: number = 1;
   cameraButton: boolean;
@@ -33,7 +30,6 @@ export class RotasReceitasPage {
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public foto: FotoServicoProvider,
-    public firebaseProvider: FirebaseProvider,
     public storageProvider: StorageProvider) {
 
   }

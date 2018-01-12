@@ -5,9 +5,8 @@ import { Storage } from '@ionic/storage';
 export class StorageProvider {
 
   //Dados Receitas
-
   receitas = {
-    title: "Receitas",
+    id: 1,
     fornecedorOrigem: "",
     fornecedorDestino: "",
     produto: "",
@@ -23,7 +22,7 @@ export class StorageProvider {
 
   //Dados despesas
   despesas = {
-    title: 'Despesas',
+    id: 2,
     despesas: '',
     dataDespesas: '',
     valorDespesas: ''
@@ -79,13 +78,12 @@ export class StorageProvider {
   // Adicionar o registro á lista, e persistir ela no BD através do método SET
   adicionarReceitas() {
     this.storage.ready().then(() => {
-      this.lista.push(this.receitas, this.title);
+      this.lista.push(this.receitas);
       this.storage.set(this.chave, this.lista);
     });
   }
 
   adicionarDespesas() {
-    this.title = "Despesas";
     this.storage.ready().then(() => {
       this.lista.push(this.despesas);
       this.storage.set(this.chave, this.lista);

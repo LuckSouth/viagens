@@ -9,10 +9,6 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { FormsModule } from '@angular/forms';     
 import { CustomFormsModule } from 'ng2-validation';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database-deprecated';
-import { firebaseConfig } from "./credenciaisfirebase";
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/modulo-viagens/home/home/home';
 import { PrincipalPage } from '../pages/principal/principal/principal';
@@ -38,15 +34,15 @@ import { AbastecimentoFotoOdometroPage } from '../pages/modulo-viagens/abastecim
 import { RotasArlaPage } from '../pages/modulo-viagens/arla-32/rotas-arla/rotas-arla';
 import { RotasReceitasPage } from '../pages/modulo-viagens/receitas/rotas-receitas/rotas-receitas';
 
-import { RelatoriosPage } from '../pages/modulo-viagens/relatorios/relatorios';
+import { RelatoriosPage } from '../pages/modulo-viagens/relatorios/relatorios-page/relatorios';
+import { DespesasRelatoriosPage } from '../pages/modulo-viagens/relatorios/relatorios-page/despesas-relatorios/despesas-relatorios';
+import { ReceitasRelatoriosPage } from '../pages/modulo-viagens/relatorios/relatorios-page/receitas-relatorios/receitas-relatorios';
 
 import { ArlaPagPage } from '../pages/modulo-viagens/arla-32/arla-pag/arla-pag';
 import { ArlaPostoPage } from '../pages/modulo-viagens/arla-32/arla-posto/arla-posto';
 
 import { Camera } from "@ionic-native/camera";
 import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
-import { FirebaseProvider } from '../providers/firebase/firebase';
-// import { AngularFireDatabase } from "angularfire2/database-deprecated";
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage'
 
@@ -76,7 +72,9 @@ import { StorageProvider } from '../providers/storage/storage'
     AbastecimentoFotoBomba_1Page,
     AbastecimentoFotoBomba_2Page,
     AbastecimentoFotoOdometroPage,
-    RelatoriosPage
+    RelatoriosPage,
+    DespesasRelatoriosPage,
+    ReceitasRelatoriosPage
     
   ],
   imports: [
@@ -84,8 +82,6 @@ import { StorageProvider } from '../providers/storage/storage'
     IonicModule.forRoot(MyApp),
     CustomFormsModule,
     FormsModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -113,18 +109,17 @@ import { StorageProvider } from '../providers/storage/storage'
     AbastecimentoFotoBomba_1Page,
     AbastecimentoFotoBomba_2Page,
     AbastecimentoFotoOdometroPage,
-    RelatoriosPage
+    RelatoriosPage,
+    DespesasRelatoriosPage,
+    ReceitasRelatoriosPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Camera,
-    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FotoServicoProvider,
     ScreenOrientation,
-    FirebaseProvider,
-    AngularFireDatabase,
     StorageProvider
   ]
 })

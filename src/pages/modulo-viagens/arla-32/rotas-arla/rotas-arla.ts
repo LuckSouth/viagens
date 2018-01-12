@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { Slides } from 'ionic-angular';
 import { ArlaPagPage } from '../arla-pag/arla-pag';
 import { ArlaPostoPage } from '../arla-posto/arla-posto';
-import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 
 
 @IonicPage()

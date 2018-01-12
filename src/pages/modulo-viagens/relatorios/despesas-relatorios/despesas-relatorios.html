@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>despesas-relatorios</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!-- Quando for verdadeiro ele vai exibir os dois botões, e o adicionar vai sumir -->
+  <button *ngIf="editando" ion-button outline (click)="atualizar()">Atualizar</button>
+  <button *ngIf="editando" ion-button outline (click)="cancelarEditar()">Cancelar</button>
+
+  <ion-card *ngFor="let storage of storages">
+    <ion-card-header>
+      <span id="titulo" *ngIf="storage.id == 1">Receitas</span>
+      <br>
+      <span id="titulo" *ngIf="storage.id == 2">Despesas</span>
+
+    </ion-card-header>
+
+    <ion-card-content *ngIf="storage.id == 1">
+      <span id="local">{{storage.fornecedorOrigem}}</span>
+      <br>
+      <span id="valor">{{storage.fornecedorDestino}} </span>
+      <br>
+      <span id="horario"> {{storage.produto}}</span>
+      <br>
+      <span id="local">{{storage.tipoPagmt}}</span>
+      <br>
+      <span id="valor">{{storage.idUnidadeMedida}} </span>
+      <br>
+      <span id="horario"> {{storage.idUnidadeBandeja}}</span>
+      <br>
+      <span id="local">{{storage.caixa}}</span>
+      <br>
+      <span id="valor">{{storage.qntFaturado}} </span>
+      <br>
+      <span id="horario"> {{storage.qntDescarregado}}</span>
+      <br>
+      <span id="local">{{storage.valorUnitario}}</span>
+    </ion-card-content>
+
+    <ion-card-content *ngIf="storage.id == 2">
+      <span id="local">{{storage.despesas}}</span>
+      <br>
+      <span id="valor">{{storage.dataDespesas}} </span>
+      <br>
+      <span id="horario"> {{storage.valorDespesas}}</span>
+      <br>
+    </ion-card-content>
+
+
+  </ion-card>
+
+</ion-content>
