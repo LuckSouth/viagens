@@ -6,7 +6,6 @@ import { AbastecimentoPagamentoPage } from '../abastecimento-pagamento/abastecim
 import { AbastecimentoOdometroPage } from '../abastecimento-odometro/abastecimento-odometro';
 import { AbastecimentoBomba1Page } from '../abastecimento-bomba-1/abastecimento-bomba-1';
 import { AbastecimentoBomba2Page } from '../abastecimento-bomba-2/abastecimento-bomba-2';
-import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 import { StorageProvider } from '../../../../providers/storage/storage';
 
 @IonicPage()
@@ -34,7 +33,6 @@ export class RotasAbastecimentoPage {
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public foto: FotoServicoProvider,
-    public firebaseProvider: FirebaseProvider,
     public storageProvider: StorageProvider
   ) {
 

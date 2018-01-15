@@ -4,6 +4,9 @@ import { Slides } from 'ionic-angular';
 import { ArlaPagPage } from '../arla-pag/arla-pag';
 import { ArlaPostoPage } from '../arla-posto/arla-posto';
 
+import { StorageProvider } from '../../../../providers/storage/storage';
+
+
 
 @IonicPage()
 @Component({
@@ -23,7 +26,7 @@ export class RotasArlaPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public firebaseProvider: FirebaseProvider) {
+    public storageProvider: StorageProvider) {
 
 
   }
@@ -58,8 +61,8 @@ export class RotasArlaPage {
     this.contador += 1;
     if (this.contador == 3) {
 
-      //Armazenar no Firebase
-      this.firebaseProvider.adicionarArla();
+      //Armazenar no Storage
+      this.storageProvider.adicionarArla();
 
       let toast = this.toastCtrl.create({
         message: 'Arla32 adicionada com sucesso',

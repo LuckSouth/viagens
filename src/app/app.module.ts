@@ -35,8 +35,10 @@ import { RotasArlaPage } from '../pages/modulo-viagens/arla-32/rotas-arla/rotas-
 import { RotasReceitasPage } from '../pages/modulo-viagens/receitas/rotas-receitas/rotas-receitas';
 
 import { RelatoriosPage } from '../pages/modulo-viagens/relatorios/relatorios-page/relatorios';
-import { DespesasRelatoriosPage } from '../pages/modulo-viagens/relatorios/relatorios-page/despesas-relatorios/despesas-relatorios';
-import { ReceitasRelatoriosPage } from '../pages/modulo-viagens/relatorios/relatorios-page/receitas-relatorios/receitas-relatorios';
+import { ReceitasRelatoriosPage } from '../pages/modulo-viagens/relatorios/receitas-relatorios/receitas-relatorios';
+import { DespesasRelatoriosPage } from '../pages/modulo-viagens/relatorios/despesas-relatorios/despesas-relatorios';
+import { AbastecimentoRelatoriosPage } from '../pages/modulo-viagens/relatorios/abastecimento-relatorios/abastecimento-relatorios';
+import { ArlaRelatoriosPage } from '../pages/modulo-viagens/relatorios/arla-relatorios/arla-relatorios';
 
 import { ArlaPagPage } from '../pages/modulo-viagens/arla-32/arla-pag/arla-pag';
 import { ArlaPostoPage } from '../pages/modulo-viagens/arla-32/arla-posto/arla-posto';
@@ -45,6 +47,7 @@ import { Camera } from "@ionic-native/camera";
 import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage'
+
 
 
 @NgModule({
@@ -74,7 +77,9 @@ import { StorageProvider } from '../providers/storage/storage'
     AbastecimentoFotoOdometroPage,
     RelatoriosPage,
     DespesasRelatoriosPage,
-    ReceitasRelatoriosPage
+    ReceitasRelatoriosPage,
+    ArlaRelatoriosPage,
+    AbastecimentoRelatoriosPage
     
   ],
   imports: [
@@ -111,7 +116,9 @@ import { StorageProvider } from '../providers/storage/storage'
     AbastecimentoFotoOdometroPage,
     RelatoriosPage,
     DespesasRelatoriosPage,
-    ReceitasRelatoriosPage
+    ReceitasRelatoriosPage,
+    ArlaRelatoriosPage,
+    AbastecimentoRelatoriosPage
   ],
   providers: [
     StatusBar,

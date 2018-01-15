@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ArlaRelatoriosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { StorageProvider } from '../../../../providers/storage/storage';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ArlaRelatoriosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  storages;
+
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public storageProvider: StorageProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ArlaRelatoriosPage');
+    this.storages = this.storageProvider.listar();
   }
 
 }

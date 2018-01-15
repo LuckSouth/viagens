@@ -15,8 +15,9 @@ export class ReceitasRelatoriosPage {
 
 
   constructor(public navCtrl: NavController, 
-    public navParams: NavParams
+    public navParams: NavParams,
     public storageProvider: StorageProvider) {
+
   }
 
   ionViewDidLoad() {

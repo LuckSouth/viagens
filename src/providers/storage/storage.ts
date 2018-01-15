@@ -3,10 +3,19 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class StorageProvider {
+  login = true;
+
+  //Dados despesas
+  despesas = {
+    id: 1,
+    despesas: '',
+    dataDespesas: '',
+    valorDespesas: ''
+  }
 
   //Dados Receitas
   receitas = {
-    id: 1,
+    id: 2,
     fornecedorOrigem: "",
     fornecedorDestino: "",
     produto: "",
@@ -20,27 +29,22 @@ export class StorageProvider {
   }
 
 
-  //Dados despesas
-  despesas = {
-    id: 2,
-    despesas: '',
-    dataDespesas: '',
-    valorDespesas: ''
-  }
-
-
   //Dados arla
-  dataArla: string = "";
-  postoArla: string = "";
-  tipoArla: string = "";
-  km: string = "";
-  litrosArla: string = "";
-  litrosPrecoArla: string = "";
-  selectArla: string = "";
+  arla = {
+    id: 3,
+    dataArla: "",
+    postoArla: "",
+    tipoArla: "",
+    km: "",
+    litrosArla: "",
+    litrosPrecoArla: "",
+    selectArla: "",
+  }
 
 
   //Dados abastecimento
   abastecimento = {
+    id: 4,
     tipoAbastecimento: "",
     postoAbastecimento: "",
     dataAbastecimento: "",
@@ -52,15 +56,15 @@ export class StorageProvider {
     precoBomb2: "",
   }
 
-
   lista: any[];
-  chave: string = "storages";
+  chave: string = "storages"
+
 
   constructor(private storage: Storage) {
     this.storage.ready().then(() => {
       this.storage.get(this.chave).then((registros) => {
         if (registros) {
-          this.lista = registros;
+          this.lista = registros
         } else {
           this.lista = [];
         }
@@ -70,9 +74,24 @@ export class StorageProvider {
 
   }
 
+
   //  Vai retornar a lista
   listar() {
     return this.lista;
+  }
+
+  entrar() {
+    this.storage.ready().then(() => {
+      this.lista.push(this.login);
+      this.storage.set(this.chave, this.lista);
+    });
+  }
+  // Adicionar Despesas
+  adicionarDespesas() {
+    this.storage.ready().then(() => {
+      this.lista.push(this.despesas);
+      this.storage.set(this.chave, this.lista);
+    });
   }
 
   // Adicionar o registro á lista, e persistir ela no BD através do método SET
@@ -82,10 +101,10 @@ export class StorageProvider {
       this.storage.set(this.chave, this.lista);
     });
   }
-
-  adicionarDespesas() {
+  // Adicionar Arla
+  adicionarArla() {
     this.storage.ready().then(() => {
-      this.lista.push(this.despesas);
+      this.lista.push(this.arla);
       this.storage.set(this.chave, this.lista);
     });
   }
@@ -100,24 +119,24 @@ export class StorageProvider {
 
   // 1º vai ser o "Storage" que quer atualizar -- 2º os "Dados" que vai chegar do formulário
   // Atualizar determinados registros
-  atualizar(storage, dados) {
-    for (let chave in this.lista) {
-      if (this.lista[chave] == storage) {
-        this.lista[chave] = dados;
-        this.storage.set(this.chave, this.lista);
-      }
-    }
-  }
+  // atualizar(storage, dados) {
+  //   for (let chave in this.lista) {
+  //     if (this.lista[chave] == storage) {
+  //       this.lista[chave] = dados;
+  //       this.storage.set(this.chave, this.lista);
+  //     }
+  //   }
+  // }
 
-  // Deletar Storage
-  deletar(storage) {
-    for (let chave in this.lista) {
-      if (this.lista[chave] == storage) {
-        this.lista.splice(parseInt(chave), 1);
-        this.storage.set(this.chave, this.lista);
-      }
-    }
-  }
+  // // Deletar Storage
+  // deletar(storage) {
+  //   for (let chave in this.lista) {
+  //     if (this.lista[chave] == storage) {
+  //       this.lista.splice(parseInt(chave), 1);
+  //       this.storage.set(this.chave, this.lista);
+  //     }
+  //   }
+  // }
 
 
 }
