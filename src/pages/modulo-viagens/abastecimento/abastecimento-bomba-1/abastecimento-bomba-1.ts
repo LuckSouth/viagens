@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
+import { StorageProvider } from '../../../../providers/storage/storage';
 
 @IonicPage()
 @Component({
@@ -13,12 +14,12 @@ export class AbastecimentoBomba1Page {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public firebaseProvider: FirebaseProvider) {
+    public storageProvider: StorageProvider) {
   }
 
   valida() {
 
-    if (this.firebaseProvider.precoBomb1 == "" || this.firebaseProvider.litrosBomb1 == "") {
+    if (this.storageProvider.abastecimento.precoBomb1 == "" || this.storageProvider.abastecimento.litrosBomb1 == "") {
       return false;
     }else{
       return true;

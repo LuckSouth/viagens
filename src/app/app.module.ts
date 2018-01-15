@@ -13,8 +13,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { firebaseConfig } from "./credenciaisfirebase";
 
-
-
 import { MyApp } from './app.component';
 
 
@@ -55,6 +53,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage'
 import { LoginPage } from '../pages/login/login';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { NavParams } from 'ionic-angular/navigation/nav-params';
 
 
 @NgModule({

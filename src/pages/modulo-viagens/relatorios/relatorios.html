@@ -7,41 +7,38 @@
 </ion-header>
 <ion-content padding>
 
+  <!-- Quando for verdadeiro ele vai exibir os dois botões, e o adicionar vai sumir -->
+  <button *ngIf="editando" ion-button outline (click)="atualizar()">Atualizar</button>
+  <button *ngIf="editando" ion-button outline (click)="cancelarEditar()">Cancelar</button>
 
-  <ion-card *ngFor="let item of firebaseProvider.bancoDespesas$ | async">
-    <ion-card-header>
-      <span id="titulo">Despesas</span>
-    </ion-card-header>
-
-    <ion-card-content>
-      <span id="local">{{item.despesas}}</span>
-      <br>
-      <span id="valor"> Valor: {{item.valor}} </span>
-      <br>
-      <span id="horario">{{item.data}}</span>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-list>
-
-    <ion-item>
-      <ion-input type="text" [(ngModel)]="storage.despesa" placeholder="Despesa"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="text" [(ngModel)]="storage.valor" placeholder="Valor"></ion-input>
-    </ion-item>
-
-  </ion-list>
-  <button ion-button outline (click)="adicionar()">Adicionar</button>
   <ion-card *ngFor="let storage of storages">
     <ion-card-header>
-      {{storage.despesa}}
+      <span id="titulo"></span>
     </ion-card-header>
+
     <ion-card-content>
-      {{storage.valor}}
+
+      <span id="local">{{storage.despesas}}</span>
+      <span id="valor">{{storage.dataDespesas}} </span>
+      <span id="horario"> {{storage.valorDespesas}}</span>
+      <span id="horario"> {{storage.fornecedorOrigem}}</span>
+      <span id="horario"> {{storage.tipoAbastecimento}}</span>
+
+      <span id="local">Despesas: {{storage.depesas}}</span><br/>
+      <span id="valor">Data: {{storage.dataDespesas}} </span><br/>
+      <span id="horario">Valor: {{storage.valorDespesas}}</span><br/>
+
+      <span id="horario">Fornecedor: {{storage.fornecedorOrigem}}</span><br/>
+
+      <span id="horario">Litros: {{storage.litrosArla}}</span><br/>
+      <span id="horario">Litros Preco: {{storage.litrosPrecoArla}}</span><br/>
+      <span id="horario">Forma Pagamento: {{storage.selectArla}}</span><br/>
+      <span id="horario">Tipo Abastecimento: {{storage.tipoArla}}</span><br/>
+      <span id="horario">Posto Combustivel: {{storage.postoArla}}</span><br/>
+      <span id="horario">Data: {{storage.dataArla}}</span><br/>
+      <span id="horario">Km: {{storage.km}}</span>
+
     </ion-card-content>
   </ion-card>
-
 
 </ion-content>

@@ -7,11 +7,6 @@ import { AngularFireDatabase } from "angularfire2/database-deprecated";
 import { StorageProvider } from '../../../providers/storage/storage'
 
 
-interface IStorage{
-  despesa:string;
-  valor:string;
-}
-
 @IonicPage()
 @Component({
   selector: 'page-relatorios',
@@ -19,8 +14,7 @@ interface IStorage{
 })
 export class RelatoriosPage {
 
-  storage:IStorage = {despesa:'',valor:''};
-  storages:IStorage[];
+  storages;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -33,13 +27,4 @@ export class RelatoriosPage {
   ionViewDidEnter() {
     this.storages = this.storageProvider.listar();
   }
-
-  adicionar(){
-    if(this.storage.despesa != "" && this.storage.valor != ""){
-    this.storageProvider.adicionar(this.storage);  
-    this.storage = {despesa:'',valor:''}    
-    }
-
-  }
-
 }

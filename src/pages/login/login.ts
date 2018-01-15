@@ -3,6 +3,7 @@ import { IonicPage, NavParams } from 'ionic-angular';
 import { PrincipalPage } from '../principal/principal/principal';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { StorageProvider } from '../../providers/storage/storage';
 
 
 @IonicPage()
@@ -26,7 +27,9 @@ export class LoginPage {
   constructor(
     public navParams: NavParams, 
     public navCtrl: NavController, 
-    private googlePlus: GooglePlus) {
+    private googlePlus: GooglePlus,
+    public storageProvider: StorageProvider
+  ) {
 
 }
 
@@ -41,7 +44,10 @@ export class LoginPage {
       this.userId = res.userId;
       this.imageUrl = res.imageUrl;
       this.isLoggedIn = true;
+      this.storageProvider.login = true;
+      this.storageProvider.loginUser();
     })
+    .then(res => this.navCtrl.push(PrincipalPage))
     .catch(err => console.error(err))}
 
 

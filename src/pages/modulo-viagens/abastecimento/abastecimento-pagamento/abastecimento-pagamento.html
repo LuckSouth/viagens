@@ -8,7 +8,7 @@
 <ion-list>
   <ion-item>
     <ion-label>Tipo</ion-label>
-    <ion-select [(ngModel)]="firebaseProvider.tipoAbastecimento" (click)="valida()">
+    <ion-select [(ngModel)]="storageProvider.abastecimento.tipoAbastecimento" (click)="valida()">
       <ion-option value="externo">Externo</ion-option>
       <ion-option value="interno">Interno</ion-option>
     </ion-select>
@@ -16,17 +16,17 @@
 
   <ion-item>
     <ion-label floating>Posto</ion-label>
-    <ion-input type="text" [(ngModel)]="firebaseProvider.postoAbastecimento" (ngModelChange)="valida()"></ion-input>
+    <ion-input type="text" [(ngModel)]="storageProvider.abastecimento.postoAbastecimento" (ngModelChange)="valida()"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Data</ion-label>
-    <ion-input type="date" [(ngModel)]="firebaseProvider.dataAbastecimento" (click)="valida()"></ion-input>
+    <ion-input type="date" [(ngModel)]="storageProvider.abastecimento.dataAbastecimento" (click)="valida()"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Tipo de pagamento</ion-label>
-    <ion-select [(ngModel)]="firebaseProvider.tipoPagmtAbastecimento" (click)="valida()">
+    <ion-select [(ngModel)]="storageProvider.abastecimento.tipoPagmtAbastecimento" (click)="valida()">
       <ion-option value="Dinheiro">Dinheiro</ion-option>
       <ion-option value="crédito">Crédito</ion-option>
       <ion-option value="Débito"> Débito</ion-option>
