@@ -18,7 +18,8 @@ export class StorageProvider {
     caixa: "",
     qntFaturado: "",
     qntDescarregado: "",
-    valorUnitario: ""
+    valorUnitario: "",
+    idSubUnidade: ""
   }
 
 
