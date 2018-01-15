@@ -8,6 +8,7 @@ import { RotasArlaPage } from '../arla-32/rotas-arla/rotas-arla';
 import { RotasReceitasPage } from '../receitas/rotas-receitas/rotas-receitas';
 import { RelatoriosPage } from '../relatorios/relatorios';
 import { DadosProvider } from "../../../providers/dados/dados";
+import { Network } from "@ionic-native/network";
 @IonicPage()
 @Component({
   selector: 'page-viagens',
@@ -15,8 +16,15 @@ import { DadosProvider } from "../../../providers/dados/dados";
 })
 export class ViagensPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public dados: DadosProvider) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public dados: DadosProvider,
+    public network: Network) {
   }
+
+
+
+
 
   linkAbastecimento() {
     this.navCtrl.push(RotasAbastecimentoPage);
@@ -42,5 +50,18 @@ export class ViagensPage {
     this.navCtrl.push(RelatoriosPage);
   }
 
+
+
+  ionViewDidLoad() {
+    if (this.network.type === 'wifi') {
+      console.log('we got a wifi connection, woohoo!');
+    }
+    if (this.network.type === 'ethernet') {
+      console.log('we got a ethernet connection, woohoo!');
+    }else{
+      console.log('A net afundou')
+    }
+
+   }
 
 }

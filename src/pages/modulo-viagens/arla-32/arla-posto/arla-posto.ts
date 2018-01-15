@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FirebaseProvider } from "../../../../providers/firebase/firebase";
 import { Storage } from '@ionic/storage';
 import { StorageProvider } from '../../../../providers/storage/storage';
 
@@ -14,7 +13,6 @@ export class ArlaPostoPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public firebaseProvider: FirebaseProvider,
     public storageProvider: StorageProvider) {
   }
   valida() {
