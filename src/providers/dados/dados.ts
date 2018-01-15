@@ -125,4 +125,49 @@ export class DadosProvider {
   }
 
 
+
+
+  receitas(
+    motorista: string,
+    fornecedorOrigem: string,
+    fornecedorDestino: string,
+    produto: string,
+    tipoPagmt: string,
+    idUnidadeMedida: string,
+    qntFaturado: string,
+    qntDescarregado: string,
+    valorUnitario:string,
+    idSubUnidade: string,
+  ): void {
+    let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
+      options: any = {
+        "key": "receitas",
+        "motorista": motorista,
+        "fornecedorOrigem": fornecedorOrigem,
+        "fornecedorDestino": fornecedorDestino,
+        "produto": produto,
+        "tipoPagmt": tipoPagmt,
+        "qntFaturado": qntFaturado,
+        "qntDescarregado": qntDescarregado,
+        "valorUnitario": valorUnitario,
+        "idSubUnidade": idSubUnidade,
+        "idUnidadeMedida": idUnidadeMedida
+      },
+      url: any = this.baseURI + "manage-data.php";
+
+    this.http.post(url, JSON.stringify(options), headers)
+      .subscribe((data: any) => {
+        console.log(data)
+        // If the request was successful notify the user
+        console.log(data)
+        this.hideForm = true;
+      },
+      (error: any) => {
+        console.log(error)
+      });
+  }
+
+
+
+
 }

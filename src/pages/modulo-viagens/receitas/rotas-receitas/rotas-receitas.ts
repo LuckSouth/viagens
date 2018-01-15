@@ -8,7 +8,7 @@ import { ReceitasFotoPage } from '../receitas-foto/receitas-foto';
 import { ReceitasQntPage } from '../receitas-qnt/receitas-qnt';
 import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 import { StorageProvider } from '../../../../providers/storage/storage';
-
+import { DadosProvider } from "../../../../providers/dados/dados";
 
 @IonicPage()
 @Component({
@@ -22,20 +22,40 @@ export class RotasReceitasPage {
   @ViewChild(ReceitasFotoPage) ReceitasFoto: ReceitasFotoPage;
   @ViewChild(ReceitasQntPage) ReceitasQnt: ReceitasQntPage;
   // @ViewChild(Receitas) receitas: Receitas;
-  
+
   bancoReceitas: FirebaseListObservable<FirebaseProvider[]>;
 
   contador: number = 1;
   cameraButton: boolean;
   fotoReceitas: string = "dsfsdf";
-
+  motorista: string = "Vin Diesel";
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public foto: FotoServicoProvider,
     public firebaseProvider: FirebaseProvider,
-    public storageProvider: StorageProvider) {
+    public storageProvider: StorageProvider,
+    public dados: DadosProvider) {
 
+  }
+
+
+  salvar() {
+ 
+      this.dados.receitas(
+        this.motorista,
+        this.storageProvider.receitas.fornecedorOrigem,
+        this.storageProvider.receitas.fornecedorDestino,
+        this.storageProvider.receitas.produto,
+        this.storageProvider.receitas.tipoPagmt,
+        this.storageProvider.receitas.idUnidadeMedida,
+        this.storageProvider.receitas.qntFaturado,
+        this.storageProvider.receitas.qntDescarregado,
+        this.storageProvider.receitas.valorUnitario,
+        this.storageProvider.receitas.idSubUnidade
+      )    
+
+    console.log("Receitas chamado")
   }
 
 
@@ -82,13 +102,12 @@ export class RotasReceitasPage {
     this.contador += 1;
     if (this.contador == 4) {
 
-      //Armazenar no Firebase
-      // this.firebaseProvider.adicionarReceitas();
+      this.salvar();
 
       //Armazenar no Storage
       this.storageProvider.adicionarReceitas();
 
-     
+
       // Toast
       let toast = this.toastCtrl.create({
         message: 'Receita adicionada com sucesso',
