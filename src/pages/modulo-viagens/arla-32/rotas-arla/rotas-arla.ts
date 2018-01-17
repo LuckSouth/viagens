@@ -6,6 +6,7 @@ import { ArlaPostoPage } from '../arla-posto/arla-posto';
 import { StorageProvider } from '../../../../providers/storage/storage';
 
 
+
 @IonicPage()
 @Component({
   selector: 'page-rotas-arla',

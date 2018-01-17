@@ -6,11 +6,11 @@ import { GeralPage } from '../geral/geral-page/geral-page';
 import { DespesasPage } from '../despesas/despesas/despesas';
 import { RotasArlaPage } from '../arla-32/rotas-arla/rotas-arla';
 import { RotasReceitasPage } from '../receitas/rotas-receitas/rotas-receitas';
-import { RelatoriosPage } from '../relatorios/relatorios';
 import { DadosProvider } from "../../../providers/dados/dados";
 import { Network } from "@ionic-native/network";
 import { Storage } from "@ionic/storage";
 import { StorageProvider } from "../../../providers/storage/storage";
+import { RelatoriosPage } from "../relatorios/relatorios-page/relatorios";
 @IonicPage()
 @Component({
   selector: 'page-viagens',
@@ -51,10 +51,14 @@ export class ViagensPage {
   linkRelatorios() {
     this.navCtrl.push(RelatoriosPage);
   }
+  ionViewDidLoad() {
+   // this.naoEnviadas = this.provider.recuperaTamanho();
+    // return this.provider.recuperaTamanho();
+  }
 
   ngAfterViewInit() {
 
-    // this.naoEnviadas = this.provider.recuperaTamanho();
+    // 
 
   }
 

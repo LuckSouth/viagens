@@ -21,7 +21,6 @@ export class RotasReceitasPage {
   @ViewChild(ReceitasQntPage) ReceitasQnt: ReceitasQntPage;
   // @ViewChild(Receitas) receitas: Receitas;
 
-
   contador: number = 1;
   cameraButton: boolean;
   fotoReceitas: string = "dsfsdf";
