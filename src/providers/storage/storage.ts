@@ -137,7 +137,7 @@ export class StorageProvider {
     return this.arrayDespesas.length
   }
   tamanhoReceitas(){
-    this.arrayReceitas = this.listar()
+    this.arrayReceitas = this.listarReceitas()
     return this.arrayReceitas.length
   }
 

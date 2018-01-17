@@ -55,7 +55,7 @@ export class ViagensPage {
   linkRelatorios() {
     this.navCtrl.push(RelatoriosPage);
   }
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     // this.naoEnviadas = this.provider.recuperaTamanho();
     // return this.provider.recuperaTamanho();
 
