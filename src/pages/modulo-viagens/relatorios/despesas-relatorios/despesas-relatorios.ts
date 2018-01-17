@@ -24,6 +24,7 @@ export class DespesasRelatoriosPage {
 
     ionViewDidEnter() {
       this.storages = this.storageProvider.listar();
+      console.log(this.storages);
     }
 
 }

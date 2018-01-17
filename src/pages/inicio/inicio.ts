@@ -18,8 +18,8 @@ export class InicioPage {
   }
 
   ionViewDidLoad() {
-    this.storages = this.storageProvider.listar();
-    console.log(this.storageProvider.listar());
+    this.storages = this.storageProvider.listarAuth();
+    console.log(this.storageProvider.listarAuth());
   }
 
 }

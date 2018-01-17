@@ -3,9 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { Slides } from 'ionic-angular';
 import { ArlaPagPage } from '../arla-pag/arla-pag';
 import { ArlaPostoPage } from '../arla-posto/arla-posto';
-
 import { StorageProvider } from '../../../../providers/storage/storage';
-
 
 
 @IonicPage()
@@ -20,7 +18,6 @@ export class RotasArlaPage {
   @ViewChild(ArlaPostoPage) arlaPostoPage: ArlaPostoPage;
 
 
-
   contador: number = 1;
 
   constructor(public navCtrl: NavController,
@@ -30,8 +27,7 @@ export class RotasArlaPage {
 
 
   }
-
-
+  
   ngAfterViewInit() {
     this.slides.lockSwipes(true);
 

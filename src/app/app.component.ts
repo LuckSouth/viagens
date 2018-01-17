@@ -16,13 +16,13 @@ import { InicioPage } from '../pages/inicio/inicio';
 })
 export class MyApp {
 
-  rootPage: any = InicioPage;
+  rootPage: any = PrincipalPage;
   // principal: any = PrincipalPage;
   // login: any = DespesasPage;
   storages: any;
   lista: any[];
   chave: string = "storages";
-
+  listaAuth: any[];
   
 
   constructor(
@@ -33,6 +33,16 @@ export class MyApp {
     public storageProvider: StorageProvider,
     public storage: Storage
   ) {
+
+    // this.storage.get("Auth").then((registros) => {
+    //   if (registros) {
+    //     this.listaAuth = registros;
+    //   } else {
+    //     this.listaAuth = [];
+    //   };
+    // });
+
+    // console.log(this.listaAuth);
 
     // this.storages = this.storage.get(this.chave)
 

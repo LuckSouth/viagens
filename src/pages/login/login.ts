@@ -4,6 +4,7 @@ import { PrincipalPage } from '../principal/principal/principal';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { StorageProvider } from '../../providers/storage/storage';
+import { Storage } from '@ionic/storage/es2015/storage';
 
 
 @IonicPage()
@@ -22,24 +23,41 @@ export class LoginPage {
   imageUrl: any;
 
   isLoggedIn:boolean = false;
+  listaAuth: any = ["123"];
+  chaveAuth: string = "Auth"
 
 
   constructor(
     public navParams: NavParams, 
     public navCtrl: NavController, 
     private googlePlus: GooglePlus,
-    public storageProvider: StorageProvider
+    public storageProvider: StorageProvider,
+    public storage: Storage
   ) {
-    console.log(this.storageProvider.listar());
+    this.storage.ready().then(() => {
+      this.storage.get(this.chaveAuth).then((registros) => {
+        if (registros) {
+          this.listaAuth = registros;
+        } else {
+          this.listaAuth = ["123"];
+        }
+      });
+  
+    });
 
+}
+
+ngAfterViewInit(){
+  
+  return console.log(this.storageProvider.listarAuth());
 }
 
   login() {    
     this.isLoggedIn = true;
-    this.storageProvider.isLoggedIn = true;
-    this.storageProvider.loginUser();
+    this.storageProvider.login.isLoggedIn = "true";
+    console.log(this.listaAuth);
     this.googlePlus.login({})
-      .then(res => {
+    .then(res => {
       console.log(res);
       this.name = res.name;
       this.email = res.email;
@@ -49,8 +67,10 @@ export class LoginPage {
       this.imageUrl = res.imageUrl;
     })
     .then(res => this.navCtrl.push(PrincipalPage))
-    .catch(err => console.error(err))}
+    .catch(err => console.error(err))
 
+  }
+    
 
   logout() {
   this.googlePlus.logout()

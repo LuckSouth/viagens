@@ -7,6 +7,7 @@ import { DespesasPage } from '../despesas/despesas/despesas';
 import { RotasArlaPage } from '../arla-32/rotas-arla/rotas-arla';
 import { RotasReceitasPage } from '../receitas/rotas-receitas/rotas-receitas';
 import { RelatoriosPage } from '../relatorios/relatorios-page/relatorios';
+import { StorageProvider } from '../../../providers/storage/storage';
 
 @IonicPage()
 @Component({
@@ -15,9 +16,19 @@ import { RelatoriosPage } from '../relatorios/relatorios-page/relatorios';
 })
 export class ViagensPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  storages;
+
+  constructor(public navCtrl: NavController, 
+      public navParams: NavParams,
+      public storageProvider: StorageProvider) {
   }
- 
+
+
+  ionViewDidLoad() {
+    console.log(this.storageProvider.listarAuth());
+  }
+
+
   linkAbastecimento(){
     this.navCtrl.push(RotasAbastecimentoPage);
   }

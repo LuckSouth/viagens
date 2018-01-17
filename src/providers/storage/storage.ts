@@ -3,7 +3,10 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class StorageProvider {
-  isLoggedIn;
+
+  login = {
+    isLoggedIn:""
+  }
 
   //Dados despesas
   despesas = {
@@ -57,7 +60,9 @@ export class StorageProvider {
   }
 
   lista: any[];
-  chave: string = "storages"
+  listaAuth: any[];
+  chave: string = "storages";
+  chaveAuth: string = "Auth"
 
 
   constructor(private storage: Storage) {
@@ -72,6 +77,17 @@ export class StorageProvider {
 
     });
 
+    this.storage.ready().then(() => {
+      this.storage.get(this.chaveAuth).then((registros) => {
+        if (registros) {
+          this.listaAuth = registros;
+        } else {
+          this.listaAuth = [];
+        }
+      });
+
+    });
+
   }
 
   //  Vai retornar a lista
@@ -79,11 +95,18 @@ export class StorageProvider {
     return this.lista;
   }
 
+  listarAuth() {
+    return new Promise((resolve, reject) => {
+      this.listaAuth;
+
+    })
+  }
+
   //Verificação Login
   loginUser() {
     this.storage.ready().then(() => {
-      this.lista.push(this.isLoggedIn);
-      this.storage.set(this.chave, this.lista);
+      this.listaAuth.push(this.login);
+      this.storage.set(this.chaveAuth, this.listaAuth);
     });
   }
 
