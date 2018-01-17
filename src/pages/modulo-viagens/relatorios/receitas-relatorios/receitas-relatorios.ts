@@ -23,7 +23,7 @@ export class ReceitasRelatoriosPage {
   }
 
   ionViewDidEnter() {
-    this.storages = this.storageProvider.listar();
+    this.storages = this.storageProvider.listarReceitas();
   }
 
  

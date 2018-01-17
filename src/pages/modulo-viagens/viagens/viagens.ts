@@ -26,7 +26,11 @@ export class ViagensPage {
     public provider: StorageProvider) {
   }
 
-  naoEnviadas;
+
+  abastecimentoPendente;
+  arlaPendente;
+  despesasPendente;
+  receitasPendente;
 
   linkAbastecimento() {
     this.navCtrl.push(RotasAbastecimentoPage);
@@ -52,13 +56,22 @@ export class ViagensPage {
     this.navCtrl.push(RelatoriosPage);
   }
   ionViewDidLoad() {
-   // this.naoEnviadas = this.provider.recuperaTamanho();
+    // this.naoEnviadas = this.provider.recuperaTamanho();
     // return this.provider.recuperaTamanho();
+
+    this.arlaPendente = this.provider.tamanhoArla();
+    this.abastecimentoPendente = this.provider.tamanhoAbastecimento();
+    this.despesasPendente = this.provider.tamanhoDespesas();
+    this.receitasPendente = this.provider.tamanhoReceitas();
+
   }
 
   ngAfterViewInit() {
 
-    // 
+    // this.arlaPendente = this.provider.tamanhoArla();
+    // this.abastecimentoPendente = this.provider.tamanhoAbastecimento();
+    // this.despesasPendente = this.provider.tamanhoDespesas();
+    // this.receitasPendente = this.provider.tamanhoReceitas();   
 
   }
 

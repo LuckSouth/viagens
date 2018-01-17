@@ -3,6 +3,10 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class StorageProvider {
+  arrayAbastecimento = [];
+  arrayArla = [];
+  arrayDespesas = [];
+  arrayReceitas = [];
 
   isLoggedIn;
 
@@ -60,7 +64,11 @@ export class StorageProvider {
     precoBomb2: "",
   }
 
-  lista: any[];
+  listaAbastecimento: any[];
+  listaArla: any[];
+  listaDespesas: any[];
+  listaReceitas: any[];  
+
   chaveAbastecimento: string = "abastecimento";
   chaveArla: string = "arla";
   chaveDespesas: string = "despesas";
@@ -71,9 +79,42 @@ export class StorageProvider {
     this.storage.ready().then(() => {
       this.storage.get(this.chaveAbastecimento).then((registros) => {
         if (registros) {
-          this.lista = registros;
+          this.listaAbastecimento = registros;
         } else {
-          this.lista = [];
+          this.listaAbastecimento = [];
+        }
+      });
+
+    });
+  
+    this.storage.ready().then(() => {
+      this.storage.get(this.chaveArla).then((registros) => {
+        if (registros) {
+          this.listaArla = registros;
+        } else {
+          this.listaArla = [];
+        }
+      });
+
+    });
+
+    this.storage.ready().then(() => {
+      this.storage.get(this.chaveDespesas).then((registros) => {
+        if (registros) {
+          this.listaDespesas = registros;
+        } else {
+          this.listaDespesas = [];
+        }
+      });
+
+    });
+
+    this.storage.ready().then(() => {
+      this.storage.get(this.chaveReceitas).then((registros) => {
+        if (registros) {
+          this.listaReceitas = registros;
+        } else {
+          this.listaReceitas = [];
         }
       });
 
@@ -81,9 +122,41 @@ export class StorageProvider {
 
   }
 
+
+  tamanhoAbastecimento(){
+    this.arrayAbastecimento = this.listar()
+    return this.arrayAbastecimento.length
+  }
+
+  tamanhoArla(){
+    this.arrayArla = this.listarArla()
+    return this.arrayArla.length
+  }
+  tamanhoDespesas(){
+    this.arrayDespesas= this.listarDespesa()
+    return this.arrayDespesas.length
+  }
+  tamanhoReceitas(){
+    this.arrayReceitas = this.listar()
+    return this.arrayReceitas.length
+  }
+
+
   //  Vai retornar a lista
   listar() {
-    return this.lista;
+    return this.listaAbastecimento;
+  }
+
+ 
+
+  listarArla() {
+    return this.listaArla;
+  }
+  listarDespesa() {
+    return this.listaDespesas;
+  }
+  listarReceitas() {
+    return this.listaReceitas;
   }
 
 
@@ -108,8 +181,8 @@ export class StorageProvider {
   // Adicionar Despesas
   adicionarDespesas() {
     this.storage.ready().then(() => {
-      this.lista.push(this.despesas);
-      this.storage.set(this.chaveDespesas, this.lista);
+      this.listaDespesas.push(this.despesas);
+      this.storage.set(this.chaveDespesas, this.listaDespesas);
     });
 
   }
@@ -117,23 +190,23 @@ export class StorageProvider {
   // Adicionar o registro á lista, e persistir ela no BD através do método SET
   adicionarReceitas() {
     this.storage.ready().then(() => {
-      this.lista.push(this.receitas);
-      this.storage.set(this.chaveReceitas, this.lista);
+      this.listaReceitas.push(this.receitas);
+      this.storage.set(this.chaveReceitas, this.listaReceitas);
     });
   }
   // Adicionar Arla
   adicionarArla() {
     this.storage.ready().then(() => {
-      this.lista.push(this.arla);
-      this.storage.set(this.chaveArla, this.lista);
+      this.listaArla.push(this.arla);
+      this.storage.set(this.chaveArla, this.listaArla);
     });
   }
 
 
   adicionarAbastecimento() {
     this.storage.ready().then(() => {
-      this.lista.push(this.abastecimento);
-      this.storage.set(this.chaveAbastecimento, this.lista);
+      this.listaAbastecimento.push(this.abastecimento);
+      this.storage.set(this.chaveAbastecimento, this.listaAbastecimento);
     });
   }
 
