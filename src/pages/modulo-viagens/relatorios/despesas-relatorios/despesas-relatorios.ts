@@ -11,17 +11,19 @@ import { StorageProvider } from '../../../../providers/storage/storage';
 })
 export class DespesasRelatoriosPage {
 
-  storages;
+  storages: any[];
 
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public storageProvider: StorageProvider) {
+      // this.storages = this.storageProvider.listar();
+
 
   }
 
-  ionViewDidLoad() {
-    this.storages = this.storageProvider.listar();
-  }
+    ionViewDidEnter() {
+      this.storages = this.storageProvider.listar();
+    }
 
 }

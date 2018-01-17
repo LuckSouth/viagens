@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { StorageProvider } from '../../../../providers/storage/storage';
 import { DespesasRelatoriosPage } from '../despesas-relatorios/despesas-relatorios';
 import { ReceitasRelatoriosPage } from '../receitas-relatorios/receitas-relatorios';
 import { ArlaRelatoriosPage } from '../arla-relatorios/arla-relatorios';
@@ -18,9 +17,9 @@ export class RelatoriosPage {
 
 
   constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    public storageProvider: StorageProvider
-  ) {}
+    public navParams: NavParams) { 
+
+    }
 
   relatoriosDespesas = DespesasRelatoriosPage;
   relatoriosReceitas = ReceitasRelatoriosPage;

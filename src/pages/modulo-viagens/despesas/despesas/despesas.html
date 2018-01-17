@@ -32,5 +32,5 @@
         <ion-input type="float" type="number" [(ngModel)]="storageProvider.despesas.valorDespesas"></ion-input>
       </ion-item> 
   </ion-list> 
-  <button ion-button full (click)="storageProvider.adicionarDespesas();storageProvider.entrar();showAlert()" [disabled]="!valida()">Adicionar</button>
+  <button ion-button full (click)="storageProvider.adicionarDespesas();showAlert()" [disabled]="!valida()">Adicionar</button>
 </ion-content>

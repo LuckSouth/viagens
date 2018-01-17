@@ -11,17 +11,21 @@ import { StorageProvider } from '../../../../providers/storage/storage';
 })
 export class ReceitasRelatoriosPage {
 
-  storages;
+  storages: any[];
 
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public storageProvider: StorageProvider) {
+      // this.storages = this.storageProvider.listar();
+
 
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     this.storages = this.storageProvider.listar();
   }
+
+ 
 
 }

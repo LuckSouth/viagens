@@ -3,14 +3,14 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class StorageProvider {
-  login = true;
+  isLoggedIn;
 
   //Dados despesas
   despesas = {
     id: 1,
-    despesas: '',
-    dataDespesas: '',
-    valorDespesas: ''
+    despesas: "",
+    dataDespesas: "",
+    valorDespesas: ""
   }
 
   //Dados Receitas
@@ -64,7 +64,7 @@ export class StorageProvider {
     this.storage.ready().then(() => {
       this.storage.get(this.chave).then((registros) => {
         if (registros) {
-          this.lista = registros
+          this.lista = registros;
         } else {
           this.lista = [];
         }
@@ -74,24 +74,27 @@ export class StorageProvider {
 
   }
 
-
   //  Vai retornar a lista
   listar() {
     return this.lista;
   }
 
-  entrar() {
+  //Verificação Login
+  loginUser() {
     this.storage.ready().then(() => {
-      this.lista.push(this.login);
+      this.lista.push(this.isLoggedIn);
       this.storage.set(this.chave, this.lista);
     });
   }
+
+
   // Adicionar Despesas
   adicionarDespesas() {
     this.storage.ready().then(() => {
       this.lista.push(this.despesas);
       this.storage.set(this.chave, this.lista);
     });
+
   }
 
   // Adicionar o registro á lista, e persistir ela no BD através do método SET
@@ -137,6 +140,7 @@ export class StorageProvider {
   //     }
   //   }
   // }
+
 
 
 }

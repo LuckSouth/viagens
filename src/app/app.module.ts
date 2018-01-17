@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 
 import { MyApp } from './app.component';
+
+import { InicioPage } from '../pages/inicio/inicio';
 import { HomePage } from '../pages/modulo-viagens/home/home/home';
 import { PrincipalPage } from '../pages/principal/principal/principal';
 import { ViagensPage } from '../pages/modulo-viagens/viagens/viagens';
@@ -47,13 +49,16 @@ import { Camera } from "@ionic-native/camera";
 import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage'
+import { LoginPage } from '../pages/login/login';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { NavParams } from 'ionic-angular/navigation/nav-params';
 
 
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    LoginPage,
     PrincipalPage,
     ViagensPage,
     ReceitasFornecedorPage,
@@ -79,8 +84,8 @@ import { StorageProvider } from '../providers/storage/storage'
     DespesasRelatoriosPage,
     ReceitasRelatoriosPage,
     ArlaRelatoriosPage,
-    AbastecimentoRelatoriosPage
-    
+    AbastecimentoRelatoriosPage,
+    InicioPage
   ],
   imports: [
     BrowserModule,
@@ -92,7 +97,7 @@ import { StorageProvider } from '../providers/storage/storage'
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    LoginPage,
     PrincipalPage,
     ViagensPage,
     ReceitasFornecedorPage,
@@ -118,7 +123,8 @@ import { StorageProvider } from '../providers/storage/storage'
     DespesasRelatoriosPage,
     ReceitasRelatoriosPage,
     ArlaRelatoriosPage,
-    AbastecimentoRelatoriosPage
+    AbastecimentoRelatoriosPage,
+    InicioPage    
   ],
   providers: [
     StatusBar,
@@ -127,7 +133,8 @@ import { StorageProvider } from '../providers/storage/storage'
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FotoServicoProvider,
     ScreenOrientation,
-    StorageProvider
+    StorageProvider,
+    GooglePlus
   ]
 })
 export class AppModule {}
