@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { FirebaseListObservable, AngularFireDatabase } from "angularfire2/database-deprecated";
 
 import { StorageProvider } from '../../../providers/storage/storage'
 
@@ -17,7 +16,6 @@ export class RelatoriosPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public banco: AngularFireDatabase,
     public storageProvider: StorageProvider
   ) {
   }
@@ -29,7 +27,7 @@ export class RelatoriosPage {
   // adicionar(){
   //   if(this.storage.despesa != "" && this.storage.valor != ""){
   //   this.storageProvider.adicionar(this.storage);  
-  //   // this.storage = {despesa:'',data:'',valor:''}    
+  //   this.storage = {despesa:'',data:'',valor:''}    
   //   }
 
   // }
