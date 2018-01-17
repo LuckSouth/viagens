@@ -2,13 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { StorageProvider } from '../../../../providers/storage/storage';
-import { RelatoriosPage } from '../../relatorios/relatorios';
 import { DadosProvider } from "../../../../providers/dados/dados";
-interface IStorage {
-  despesa: string;
-  data: string;
-  valor: string;
-}
+
 
 
 @IonicPage()
@@ -21,10 +16,6 @@ export class DespesasPage {
   despesa="";
   motorista = "bino"
 
-  storage: IStorage = { despesa: '', data: '', valor: '' };
-  storages: IStorage[];
-  editando: boolean = false;
-  storageEditando: IStorage;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,

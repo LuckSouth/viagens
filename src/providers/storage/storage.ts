@@ -3,12 +3,20 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class StorageProvider {
-  title: any;
+
+  isLoggedIn;
+
+  //Dados despesas
+  despesas = {
+    id: 1,
+    despesas: "",
+    dataDespesas: "",
+    valorDespesas: ""
+  }
 
   //Dados Receitas
-
   receitas = {
-    title: "Receitas",
+    id: 2,
     fornecedorOrigem: "",
     fornecedorDestino: "",
     produto: "",
@@ -23,18 +31,9 @@ export class StorageProvider {
   }
 
 
-  //Dados despesas
-  despesas = {
-    title: 'Despesas',
-    despesas: '',
-    dataDespesas: '',
-    valorDespesas: ''
-  }
-
-
   //Dados arla
   arla = {
-    title: 'Arla',
+    id: 3,
     dataArla: "",
     postoArla: "",
     tipoArla: "",
@@ -45,8 +44,11 @@ export class StorageProvider {
   }
 
 
+
+
   //Dados abastecimento
   abastecimento = {
+    id: 4,
     tipoAbastecimento: "",
     postoAbastecimento: "",
     dataAbastecimento: "",
@@ -58,13 +60,16 @@ export class StorageProvider {
     precoBomb2: "",
   }
 
-
   lista: any[];
-  chave: string = "storages";
+  chaveAbastecimento: string = "abastecimento";
+  chaveArla: string = "arla";
+  chaveDespesas: string = "despesas";
+  chaveReceitas: string = "receitas";
+
 
   constructor(private storage: Storage) {
     this.storage.ready().then(() => {
-      this.storage.get(this.chave).then((registros) => {
+      this.storage.get(this.chaveAbastecimento).then((registros) => {
         if (registros) {
           this.lista = registros;
         } else {
@@ -81,26 +86,46 @@ export class StorageProvider {
     return this.lista;
   }
 
+
+
+  recuperaTamanho() {
+    this.storage.length().then(result => {
+      console.log(result)
+      return result
+    });
+
+  }
+
+  //Verificação Login
+  // loginUser() {
+  //   this.storage.ready().then(() => {
+  //     this.lista.push(this.isLoggedIn);
+  //     this.storage.set(this.chave, this.lista);
+  //   });
+  // }
+
+
+  // Adicionar Despesas
+  adicionarDespesas() {
+    this.storage.ready().then(() => {
+      this.lista.push(this.despesas);
+      this.storage.set(this.chaveDespesas, this.lista);
+    });
+
+  }
+
   // Adicionar o registro á lista, e persistir ela no BD através do método SET
   adicionarReceitas() {
     this.storage.ready().then(() => {
-      this.lista.push(this.receitas, this.title);
-      this.storage.set(this.chave, this.lista);
-    });
-  }
-  // Adicionar Despesas
-  adicionarDespesas() {
-    this.title = "Despesas";
-    this.storage.ready().then(() => {
-      this.lista.push(this.despesas);
-      this.storage.set(this.chave, this.lista);
+      this.lista.push(this.receitas);
+      this.storage.set(this.chaveReceitas, this.lista);
     });
   }
   // Adicionar Arla
   adicionarArla() {
     this.storage.ready().then(() => {
       this.lista.push(this.arla);
-      this.storage.set(this.chave, this.lista);
+      this.storage.set(this.chaveArla, this.lista);
     });
   }
 
@@ -108,30 +133,30 @@ export class StorageProvider {
   adicionarAbastecimento() {
     this.storage.ready().then(() => {
       this.lista.push(this.abastecimento);
-      this.storage.set(this.chave, this.lista);
+      this.storage.set(this.chaveAbastecimento, this.lista);
     });
   }
 
   // 1º vai ser o "Storage" que quer atualizar -- 2º os "Dados" que vai chegar do formulário
   // Atualizar determinados registros
-  atualizar(storage, dados) {
-    for (let chave in this.lista) {
-      if (this.lista[chave] == storage) {
-        this.lista[chave] = dados;
-        this.storage.set(this.chave, this.lista);
-      }
-    }
-  }
+  // atualizar(storage, dados) {
+  //   for (let chave in this.lista) {
+  //     if (this.lista[chave] == storage) {
+  //       this.lista[chave] = dados;
+  //       this.storage.set(this.chave, this.lista);
+  //     }
+  //   }
+  // }
 
-  // Deletar Storage
-  deletar(storage) {
-    for (let chave in this.lista) {
-      if (this.lista[chave] == storage) {
-        this.lista.splice(parseInt(chave), 1);
-        this.storage.set(this.chave, this.lista);
-      }
-    }
-  }
-
-
+  // // Deletar Storage
+  // deletar(storage) {
+  //   for (let chave in this.lista) {
+  //     if (this.lista[chave] == storage) {
+  //       this.lista.splice(parseInt(chave), 1);
+  //       this.storage.set(this.chave, this.lista);
+  //     }
+  //   }
 }
+
+
+

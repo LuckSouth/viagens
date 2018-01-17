@@ -1,0 +1,31 @@
+<ion-content padding>
+
+  <ion-card *ngFor="let storage of storages">
+    <span *ngIf="storage.id == 3">
+      <ion-card-header>
+        <span id="titulo">Arla</span>
+        <br>
+
+      </ion-card-header>
+
+
+      <ion-card-content>
+        <span id="local">{{storage.dataArla}}</span>
+        <br>
+        <span id="valor">{{storage.postoArla}} </span>
+        <br>
+        <span id="horario">{{storage.tipoArla}}</span>
+        <br>
+        <span id="local">{{storage.km}}</span>
+        <br>
+        <span id="valor">{{storage.litrosArla}} </span>
+        <br>
+        <span id="horario">{{storage.litrosPrecoArla}}</span>
+        <br>
+        <span id="horario">{{storage.selectArla}}</span>
+        <br>
+      </ion-card-content>
+    </span>
+  </ion-card>
+
+</ion-content>

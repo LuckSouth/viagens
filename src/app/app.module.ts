@@ -9,8 +9,9 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { FormsModule } from '@angular/forms';     
 import { CustomFormsModule } from 'ng2-validation';
 
- 
 import { MyApp } from './app.component';
+
+import { InicioPage } from '../pages/inicio/inicio';
 import { HomePage } from '../pages/modulo-viagens/home/home/home';
 import { PrincipalPage } from '../pages/principal/principal/principal';
 import { ViagensPage } from '../pages/modulo-viagens/viagens/viagens';
@@ -35,7 +36,11 @@ import { AbastecimentoFotoOdometroPage } from '../pages/modulo-viagens/abastecim
 import { RotasArlaPage } from '../pages/modulo-viagens/arla-32/rotas-arla/rotas-arla';
 import { RotasReceitasPage } from '../pages/modulo-viagens/receitas/rotas-receitas/rotas-receitas';
 
-import { RelatoriosPage } from '../pages/modulo-viagens/relatorios/relatorios';
+import { RelatoriosPage } from '../pages/modulo-viagens/relatorios/relatorios-page/relatorios';
+import { ReceitasRelatoriosPage } from '../pages/modulo-viagens/relatorios/receitas-relatorios/receitas-relatorios';
+import { DespesasRelatoriosPage } from '../pages/modulo-viagens/relatorios/despesas-relatorios/despesas-relatorios';
+import { AbastecimentoRelatoriosPage } from '../pages/modulo-viagens/relatorios/abastecimento-relatorios/abastecimento-relatorios';
+import { ArlaRelatoriosPage } from '../pages/modulo-viagens/relatorios/arla-relatorios/arla-relatorios';
 
 import { ArlaPagPage } from '../pages/modulo-viagens/arla-32/arla-pag/arla-pag';
 import { ArlaPostoPage } from '../pages/modulo-viagens/arla-32/arla-posto/arla-posto';
@@ -47,10 +52,17 @@ import { StorageProvider } from '../providers/storage/storage'
 import { DadosProvider } from '../providers/dados/dados';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import {  Network} from "@ionic-native/network";
+
+import { LoginPage } from '../pages/login/login';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { NavParams } from 'ionic-angular/navigation/nav-params';
+
+
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    LoginPage,
     PrincipalPage,
     ViagensPage,
     ReceitasFornecedorPage,
@@ -72,8 +84,12 @@ import {  Network} from "@ionic-native/network";
     AbastecimentoFotoBomba_1Page,
     AbastecimentoFotoBomba_2Page,
     AbastecimentoFotoOdometroPage,
-    RelatoriosPage
-    
+    RelatoriosPage,
+    DespesasRelatoriosPage,
+    ReceitasRelatoriosPage,
+    ArlaRelatoriosPage,
+    AbastecimentoRelatoriosPage,
+    InicioPage
   ],
   imports: [
     BrowserModule,
@@ -86,7 +102,7 @@ import {  Network} from "@ionic-native/network";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    LoginPage,
     PrincipalPage,
     ViagensPage,
     ReceitasFornecedorPage,
@@ -108,7 +124,12 @@ import {  Network} from "@ionic-native/network";
     AbastecimentoFotoBomba_1Page,
     AbastecimentoFotoBomba_2Page,
     AbastecimentoFotoOdometroPage,
-    RelatoriosPage
+    RelatoriosPage,
+    DespesasRelatoriosPage,
+    ReceitasRelatoriosPage,
+    ArlaRelatoriosPage,
+    AbastecimentoRelatoriosPage,
+    InicioPage    
   ],
   providers: [
     StatusBar,
@@ -120,7 +141,8 @@ import {  Network} from "@ionic-native/network";
     StorageProvider,
     DadosProvider,
     HttpClient,
-    Network
+    Network,
+    GooglePlus
   ]
 })
 export class AppModule {}

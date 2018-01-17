@@ -7,6 +7,7 @@ import { StorageProvider } from '../../../../providers/storage/storage';
 import { DadosProvider } from '../../../../providers/dados/dados';
 
 
+
 @IonicPage()
 @Component({
   selector: 'page-rotas-arla',
