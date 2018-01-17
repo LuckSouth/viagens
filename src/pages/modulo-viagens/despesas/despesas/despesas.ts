@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 
 import { StorageProvider } from '../../../../providers/storage/storage';
 import { DadosProvider } from "../../../../providers/dados/dados";
-
+import { ViagensPage } from "../../viagens/viagens";
 
 
 @IonicPage()
@@ -23,6 +23,10 @@ export class DespesasPage {
     public storageProvider: StorageProvider,
     public dados: DadosProvider) {
 
+  }
+
+  viagens() {
+    this.navCtrl.push(ViagensPage);
   }
 
   valida() {
@@ -47,6 +51,7 @@ export class DespesasPage {
 
 
   salvar(){
-    this.dados.despesa(this.motorista,this.storageProvider.despesas.despesas,this.storageProvider.despesas.dataDespesas, this.storageProvider.despesas.valorDespesas)
+    this.dados.despesa(this.motorista,this.storageProvider.despesas.despesas,this.storageProvider.despesas.dataDespesas, this.storageProvider.despesas.valorDespesas);
+    this.storageProvider.adicionarDespesas()
   }
 }

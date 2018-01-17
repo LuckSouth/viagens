@@ -23,7 +23,7 @@ export class DespesasRelatoriosPage {
   }
 
     ionViewDidEnter() {
-      this.storages = this.storageProvider.listar();
+      this.storages = this.storageProvider.listarDespesa();
     }
 
 }

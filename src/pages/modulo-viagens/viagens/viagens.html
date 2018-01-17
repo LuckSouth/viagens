@@ -13,7 +13,7 @@
 
       <div class="row">
         <div class="column" (click)="linkAbastecimento()">Abastecer
-          <button ion-fab class="fab">{{ionViewDidLoad()}}</button>
+          <button ion-fab class="fab">{{abastecimentoPendente}}</button>
           <img class="imagem" src="assets/images/abastecimento.svg" />
         </div>
 
@@ -23,13 +23,13 @@
       </div>
 
       <div class="row">
-        <div class="column" (click)="checkNetwork();linkArla32()">Arla 32
-          <button ion-fab class="fab">{{naoEnviadas}}</button>
+        <div class="column" (click)="linkArla32()">Arla 32
+          <button ion-fab class="fab">{{arlaPendente}}</button>
           <img class="imagem" src="assets/images/arla.svg" />
         </div>
 
         <div class="column" (click)="linkDespesas()">Gastos
-          <button ion-fab class="fab">{{naoEnviadas}}</button>
+          <button ion-fab class="fab">{{despesasPendente}}</button>
           <img class="imagem" src="assets/images/gastos.svg" />
         </div>
 
@@ -37,8 +37,8 @@
 
 
       <div class="row">
-        <div class="column" (click)="checkNetwork();linkReceitas()">Receitas
-          <button ion-fab class="fab">{{naoEnviadas}}</button>
+        <div class="column" (click)="linkReceitas()">Receitas
+          <button ion-fab class="fab">{{receitasPendente}}</button>
           <img class="imagem" src="assets/images/receitas.svg" />
         </div>
 

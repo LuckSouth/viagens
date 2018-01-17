@@ -26,14 +26,13 @@ export class RotasArlaPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public storageProvider: StorageProvider) {
-
-    public firebaseProvider: FirebaseProvider,
     public storageProvider: StorageProvider,
     public dados: DadosProvider) {
 
-
   }
+
+
+
 
   salvar() {
     this.dados.arla(
@@ -45,7 +44,7 @@ export class RotasArlaPage {
       this.arlaPagPage.storageProvider.arla.postoArla,
       this.arlaPagPage.storageProvider.arla.dataArla,
       this.arlaPagPage.storageProvider.arla.km,
- 
+
     )
     console.log("salvar chamado")
 

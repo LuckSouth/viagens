@@ -19,7 +19,7 @@ export class ArlaRelatoriosPage {
   }
 
   ionViewDidEnter() {
-    this.storages = this.storageProvider.listar();
+    this.storages = this.storageProvider.listarArla();
   }
 
 }
