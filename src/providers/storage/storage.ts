@@ -5,8 +5,14 @@ import { Storage } from '@ionic/storage';
 export class StorageProvider {
 
   login = {
-    isLoggedIn:""
+    isLoggedIn: false
   }
+  arrayAbastecimento = [];
+  arrayArla = [];
+  arrayDespesas = [];
+  arrayReceitas = [];
+
+  isLoggedIn;
 
   //Dados despesas
   despesas = {
@@ -28,7 +34,8 @@ export class StorageProvider {
     caixa: "",
     qntFaturado: "",
     qntDescarregado: "",
-    valorUnitario: ""
+    valorUnitario: "",
+    idSubUnidade: ""
   }
 
 
@@ -45,6 +52,8 @@ export class StorageProvider {
   }
 
 
+
+
   //Dados abastecimento
   abastecimento = {
     id: 4,
@@ -59,19 +68,49 @@ export class StorageProvider {
     precoBomb2: "",
   }
 
-  lista: any[];
+
+  listaAbastecimento: any[];
+  listaArla: any[];
+  listaDespesas: any[];
+  listaReceitas: any[];
   listaAuth: any[];
-  chave: string = "storages";
-  chaveAuth: string = "Auth"
+
+  chaveAuth: string = "Auth";
+  chaveAbastecimento: string = "abastecimento";
+  chaveArla: string = "arla";
+  chaveDespesas: string = "despesas";
+  chaveReceitas: string = "receitas";
 
 
   constructor(private storage: Storage) {
     this.storage.ready().then(() => {
-      this.storage.get(this.chave).then((registros) => {
+      this.storage.get(this.chaveAbastecimento).then((registros) => {
         if (registros) {
-          this.lista = registros;
+          this.listaAbastecimento = registros;
         } else {
-          this.lista = [];
+          this.listaAbastecimento = [];
+        }
+      });
+
+    });
+
+    this.storage.ready().then(() => {
+      this.storage.get(this.chaveArla).then((registros) => {
+        if (registros) {
+          this.listaArla = registros;
+        } else {
+          this.listaArla = [];
+        }
+      });
+
+    });
+
+    this.storage.ready().then(() => {
+      this.storage.get(this.chaveDespesas).then((registros) => {
+        if (registros) {
+          this.listaDespesas = registros;
+        } else {
+          this.listaDespesas = [];
         }
       });
 
@@ -84,38 +123,101 @@ export class StorageProvider {
         } else {
           this.listaAuth = [];
         }
+      })
+    })
+
+    this.storage.ready().then(() => {
+      this.storage.get(this.chaveReceitas).then((registros) => {
+        if (registros) {
+          this.listaReceitas = registros;
+        } else {
+          this.listaReceitas = [];
+        }
       });
 
     });
 
   }
 
+  listarAuth() {
+    // return new Promise((resolve, reject) => {
+    return this.listaAuth;
+
+    // })
+  }
+
+  listarArla() {
+    return this.listaArla;
+  }
+  listarDespesa() {
+    return this.listaDespesas;
+  }
+  listarReceitas() {
+    return this.listaReceitas;
+  }
+
+
+  tamanhoAbastecimento() {
+    this.arrayAbastecimento = this.listar()
+    return this.arrayAbastecimento.length
+  }
+
+  tamanhoArla() {
+    this.arrayArla = this.listarArla()
+    return this.arrayArla.length
+  }
+  tamanhoDespesas() {
+    this.arrayDespesas = this.listarDespesa()
+    return this.arrayDespesas.length
+  }
+  tamanhoReceitas() {
+    this.arrayReceitas = this.listarReceitas()
+    return this.arrayReceitas.length
+  }
+
+
   //  Vai retornar a lista
   listar() {
-    return this.lista;
+    return this.listaAbastecimento;
   }
 
-  listarAuth() {
-    return new Promise((resolve, reject) => {
-      this.listaAuth;
-
-    })
-  }
 
   //Verificação Login
+
   loginUser() {
     this.storage.ready().then(() => {
       this.listaAuth.push(this.login);
       this.storage.set(this.chaveAuth, this.listaAuth);
-    });
+    })
   }
+
+
+
+
+
+
+  recuperaTamanho() {
+    this.storage.length().then(result => {
+      console.log(result)
+      return result
+    });
+
+  }
+
+  //Verificação Login
+  // loginUser() {
+  //   this.storage.ready().then(() => {
+  //     this.lista.push(this.isLoggedIn);
+  //     this.storage.set(this.chave, this.lista);
+  //   });
+  // }
 
 
   // Adicionar Despesas
   adicionarDespesas() {
     this.storage.ready().then(() => {
-      this.lista.push(this.despesas);
-      this.storage.set(this.chave, this.lista);
+      this.listaDespesas.push(this.despesas);
+      this.storage.set(this.chaveDespesas, this.listaDespesas);
     });
 
   }
@@ -123,36 +225,36 @@ export class StorageProvider {
   // Adicionar o registro á lista, e persistir ela no BD através do método SET
   adicionarReceitas() {
     this.storage.ready().then(() => {
-      this.lista.push(this.receitas);
-      this.storage.set(this.chave, this.lista);
+      this.listaReceitas.push(this.receitas);
+      this.storage.set(this.chaveReceitas, this.listaReceitas);
     });
   }
   // Adicionar Arla
   adicionarArla() {
     this.storage.ready().then(() => {
-      this.lista.push(this.arla);
-      this.storage.set(this.chave, this.lista);
+      this.listaArla.push(this.arla);
+      this.storage.set(this.chaveArla, this.listaArla);
     });
   }
 
 
   adicionarAbastecimento() {
     this.storage.ready().then(() => {
-      this.lista.push(this.abastecimento);
-      this.storage.set(this.chave, this.lista);
+      this.listaAbastecimento.push(this.abastecimento);
+      this.storage.set(this.chaveAbastecimento, this.listaAbastecimento);
     });
   }
 
   // 1º vai ser o "Storage" que quer atualizar -- 2º os "Dados" que vai chegar do formulário
   // Atualizar determinados registros
-  // atualizar(storage, dados) {
-  //   for (let chave in this.lista) {
-  //     if (this.lista[chave] == storage) {
-  //       this.lista[chave] = dados;
-  //       this.storage.set(this.chave, this.lista);
-  //     }
-  //   }
-  // }
+  atualizar(key) {
+    // for (let chave in this.listaAuth) {
+    //   if (this.listaAuth[chave] == storage) {
+        // this.listaAuth[chave] = dados;
+        this.storage.set(key, this.login);
+    //   }
+    // }
+  }
 
   // // Deletar Storage
   // deletar(storage) {
@@ -162,8 +264,4 @@ export class StorageProvider {
   //       this.storage.set(this.chave, this.lista);
   //     }
   //   }
-  // }
-
-
-
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { StorageProvider } from '../../../../providers/storage/storage';
+import { DadosProvider } from "../../../../providers/dados/dados";
+import { ViagensPage } from "../../viagens/viagens";
 
 
 @IonicPage()
@@ -11,13 +13,20 @@ import { StorageProvider } from '../../../../providers/storage/storage';
 })
 export class DespesasPage {
 
+  despesa="";
+  motorista = "bino"
 
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public storageProvider: StorageProvider) {
+    public storageProvider: StorageProvider,
+    public dados: DadosProvider) {
 
+  }
+
+  viagens() {
+    this.navCtrl.push(ViagensPage);
   }
 
   valida() {
@@ -38,5 +47,13 @@ export class DespesasPage {
     toast.present();
 
     this.navCtrl.pop();
+  }
+
+
+  salvar(){
+    this.dados.despesa(this.motorista,this.storageProvider.despesas.despesas,this.storageProvider.despesas.dataDespesas, this.storageProvider.despesas.valorDespesas);
+    this.storageProvider.adicionarDespesas();
+    this.navCtrl.pop();
+
   }
 }

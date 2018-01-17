@@ -29,7 +29,7 @@
 <div *ngIf="apareceBandeja()">
   <ion-item>
     <ion-label floating>Bandeja</ion-label>
-    <ion-select [(ngModel)]="storageProvider.receitas.idUnidadeBandeja" (click)="valida()">  
+    <ion-select [(ngModel)]="storageProvider.receitas.idSubUnidade" (click)="valida()">  
       <ion-option value="5">BD - Bandeja</ion-option>
       <ion-option value="11">B1 - Bandeja c/12</ion-option>
       <ion-option value="9">B2 - Bandeja c/20</ion-option>
@@ -43,7 +43,7 @@
 <div *ngIf="apareceCaixa()">
   <ion-item>
     <ion-label floating>Caixa</ion-label>
-    <ion-select [(ngModel)]="storageProvider.receitas.caixa" (click)="valida()"> 
+    <ion-select [(ngModel)]="storageProvider.receitas.idSubUnidade" (click)="valida()"> 
       <ion-option value="6">CX - Caixa </ion-option>
       <ion-option value="14">CC - Caixa 06 BD / 30 Ovos</ion-option>
       <ion-option value="15">C1 - Caixa 10 BD / 20 Ovos</ion-option>

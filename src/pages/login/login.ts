@@ -8,7 +8,7 @@ import { Storage } from '@ionic/storage/es2015/storage';
 
 
 @IonicPage()
-@Component({  
+@Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
@@ -22,14 +22,14 @@ export class LoginPage {
   userId: any;
   imageUrl: any;
 
-  isLoggedIn:boolean = false;
+  isLoggedIn: boolean = false;
   listaAuth: any = ["123"];
   chaveAuth: string = "Auth"
 
 
   constructor(
-    public navParams: NavParams, 
-    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public navCtrl: NavController,
     private googlePlus: GooglePlus,
     public storageProvider: StorageProvider,
     public storage: Storage
@@ -42,49 +42,56 @@ export class LoginPage {
           this.listaAuth = ["123"];
         }
       });
-  
+
     });
 
-}
+  }
 
-ngAfterViewInit(){
-  
-  return console.log(this.storageProvider.listarAuth());
-}
+  ngAfterViewInit() {
 
-  login() {    
+    return console.log(this.storageProvider.listarAuth());
+  }
+
+  login() {
     this.isLoggedIn = true;
-    this.storageProvider.login.isLoggedIn = "true";
-    console.log(this.listaAuth);
+    // this.storageProvider.loginUser();
+    this.storageProvider.login.isLoggedIn = true;
+    this.storageProvider.atualizar("Auth");
     this.googlePlus.login({})
-    .then(res => {
-      console.log(res);
-      this.name = res.name;
-      this.email = res.email;
-      this.familyName = res.familyName;
-      this.givenName = res.givenName;
-      this.userId = res.userId;
-      this.imageUrl = res.imageUrl;
-    })
-    .then(res => this.navCtrl.push(PrincipalPage))
-    .catch(err => console.error(err))
+      .then(res => {
+        console.log(res);
+        this.name = res.name;
+        this.email = res.email;
+        this.familyName = res.familyName;
+        this.givenName = res.givenName;
+        this.userId = res.userId;
+        this.imageUrl = res.imageUrl;
+      })
+      .then(res => {
+        this.navCtrl.push(PrincipalPage);
+      })
+      .catch(err => console.error(err))
 
   }
-    
+
 
   logout() {
-  this.googlePlus.logout()
-    .then(res => {
-      console.log(res);
-      this.name = "";
-      this.email = "";
-      this.familyName = "";
-      this.givenName = "";
-      this.userId = "";
-      this.imageUrl = "";
-      this.isLoggedIn = true;
-    })
-    .catch(err => console.error(err));
+    this.storageProvider.login.isLoggedIn = false;
+    this.storageProvider.atualizar("Auth");
+    this.googlePlus.logout()
+      .then(res => {
+        console.log(res);
+        this.name = "";
+        this.email = "";
+        this.familyName = "";
+        this.givenName = "";
+        this.userId = "";
+        this.imageUrl = "";
+        this.isLoggedIn = true;
+      }).then(res => {
+
+      })
+      .catch(err => console.error(err));
   }
 }
 

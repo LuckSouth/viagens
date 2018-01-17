@@ -16,7 +16,7 @@ import { InicioPage } from '../pages/inicio/inicio';
 })
 export class MyApp {
 
-  rootPage: any = PrincipalPage;
+  rootPage: any = LoginPage;
   // principal: any = PrincipalPage;
   // login: any = DespesasPage;
   storages: any;

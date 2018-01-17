@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageProvider } from '../../providers/storage/storage';
+import { PrincipalPage } from '../principal/principal/principal';
 
 
 @IonicPage()
@@ -17,9 +18,14 @@ export class InicioPage {
       public storageProvider: StorageProvider) {
   }
 
-  ionViewDidLoad() {
-    this.storages = this.storageProvider.listarAuth();
-    console.log(this.storageProvider.listarAuth());
+  ionViewDidEnter() {
+    // this.storages = this.storageProvider.listarAuth();
+    // console.log(this.storageProvider.listarAuth());
+    this.navCtrl.push(PrincipalPage)
+  }
+
+  mudar(){
+    this.navCtrl.push(PrincipalPage)
   }
 
 }

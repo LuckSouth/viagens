@@ -28,7 +28,7 @@ export class ReceitasQntPage {
       }
 
     }else{
-      if (this.storageProvider.receitas.idUnidadeMedida == "" || this.storageProvider.receitas.idUnidadeBandeja == "" && this.storageProvider.receitas.caixa == "" || this.storageProvider.receitas.qntFaturado == "" || this.storageProvider.receitas.qntDescarregado == "" || this.storageProvider.receitas.valorUnitario == "") {
+      if (this.storageProvider.receitas.idUnidadeMedida == "" || this.storageProvider.receitas.idSubUnidade == "" && this.storageProvider.receitas.idSubUnidade == "" || this.storageProvider.receitas.qntFaturado == "" || this.storageProvider.receitas.qntDescarregado == "" || this.storageProvider.receitas.valorUnitario == "") {
         return false
       } else {
         return true

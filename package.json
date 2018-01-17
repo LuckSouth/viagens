@@ -64,13 +64,14 @@
       "cordova-plugin-camera": {},
       "cordova-plugin-screen-orientation": {},
       "cordova-sqlite-storage": {},
-      "cordova-plugin-googleplus": {
-        "REVERSED_CLIENT_ID": "myreversedclientid"
-      }
+      "cordova-plugin-network-information": {}
     },
-    "platforms": [
-      "android",
-      "browser"
-    ]
-  }
+    "cordova-plugin-googleplus": {
+      "REVERSED_CLIENT_ID": "myreversedclientid"
+    }
+  },
+  "platforms": [
+    "android",
+    "browser"
+  ]
 }

@@ -10,7 +10,7 @@ import { StorageProvider } from '../../../../providers/storage/storage';
   templateUrl: 'receitas-relatorios.html',
 })
 export class ReceitasRelatoriosPage {
-
+  tamanho;
   storages: any[];
 
 
@@ -23,7 +23,8 @@ export class ReceitasRelatoriosPage {
   }
 
   ionViewDidEnter() {
-    this.storages = this.storageProvider.listar();
+    this.tamanho = this.storageProvider.tamanhoArla()    
+    this.storages = this.storageProvider.listarReceitas();
   }
 
  

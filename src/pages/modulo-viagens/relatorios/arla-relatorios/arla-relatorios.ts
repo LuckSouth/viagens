@@ -7,19 +7,23 @@ import { StorageProvider } from '../../../../providers/storage/storage';
   selector: 'page-arla-relatorios',
   templateUrl: 'arla-relatorios.html',
 })
-export class ArlaRelatoriosPage {
 
+
+export class ArlaRelatoriosPage {
+  
+  tamanho;
   storages: any[];
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public storageProvider: StorageProvider) {
-      // this.storages = this.storageProvider.listar();
+    // this.storages = this.storageProvider.listar();
 
   }
 
   ionViewDidEnter() {
-    this.storages = this.storageProvider.listar();
+    this.storages = this.storageProvider.listarArla();
+    this.tamanho = this.storageProvider.tamanhoArla()
   }
 
 }
