@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { Slides } from 'ionic-angular';
 import { ArlaPagPage } from '../arla-pag/arla-pag';
 import { ArlaPostoPage } from '../arla-posto/arla-posto';
-import { FirebaseProvider } from '../../../../providers/firebase/firebase';
 import { StorageProvider } from '../../../../providers/storage/storage';
 import { DadosProvider } from '../../../../providers/dados/dados';
 
@@ -26,6 +25,8 @@ export class RotasArlaPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
+    public storageProvider: StorageProvider) {
+
     public firebaseProvider: FirebaseProvider,
     public storageProvider: StorageProvider,
     public dados: DadosProvider) {

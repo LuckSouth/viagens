@@ -9,10 +9,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { FormsModule } from '@angular/forms';     
 import { CustomFormsModule } from 'ng2-validation';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database-deprecated';
-import { firebaseConfig } from "./credenciaisfirebase";
-
+ 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/modulo-viagens/home/home/home';
 import { PrincipalPage } from '../pages/principal/principal/principal';
@@ -45,12 +42,11 @@ import { ArlaPostoPage } from '../pages/modulo-viagens/arla-32/arla-posto/arla-p
 
 import { Camera } from "@ionic-native/camera";
 import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
-import { FirebaseProvider } from '../providers/firebase/firebase';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage'
 import { DadosProvider } from '../providers/dados/dados';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-
+import {  Network} from "@ionic-native/network";
 @NgModule({
   declarations: [
     MyApp,
@@ -84,8 +80,6 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
     IonicModule.forRoot(MyApp),
     CustomFormsModule,
     FormsModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
     IonicStorageModule.forRoot(),
     HttpClientModule
   ],
@@ -120,15 +114,13 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
     StatusBar,
     SplashScreen,
     Camera,
-    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FotoServicoProvider,
     ScreenOrientation,
-    FirebaseProvider,
-    AngularFireDatabase,
     StorageProvider,
     DadosProvider,
     HttpClient,
+    Network
   ]
 })
 export class AppModule {}
