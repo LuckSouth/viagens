@@ -51,7 +51,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage'
 import { DadosProvider } from '../providers/dados/dados';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-import {  Network} from "@ionic-native/network";
+// import {  Network} from "@ionic-native/network";
 
 import { LoginPage } from '../pages/login/login';
 import { GooglePlus } from '@ionic-native/google-plus';
@@ -141,7 +141,7 @@ import { NavParams } from 'ionic-angular/navigation/nav-params';
     StorageProvider,
     DadosProvider,
     HttpClient,
-    Network,
+    // Network,
     GooglePlus
   ]
 })

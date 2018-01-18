@@ -7,7 +7,7 @@ import { DespesasPage } from '../despesas/despesas/despesas';
 import { RotasArlaPage } from '../arla-32/rotas-arla/rotas-arla';
 import { RotasReceitasPage } from '../receitas/rotas-receitas/rotas-receitas';
 import { DadosProvider } from "../../../providers/dados/dados";
-import { Network } from "@ionic-native/network";
+// import { Network } from "@ionic-native/network";
 import { Storage } from "@ionic/storage";
 import { StorageProvider } from "../../../providers/storage/storage";
 import { RelatoriosPage } from "../relatorios/relatorios-page/relatorios";
@@ -21,7 +21,7 @@ export class ViagensPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public dados: DadosProvider,
-    public network: Network,
+    // public network: Network,
     public storage: Storage,
     public provider: StorageProvider) {
   }
