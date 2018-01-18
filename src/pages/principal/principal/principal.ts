@@ -12,8 +12,7 @@ import { StorageProvider } from '../../../providers/storage/storage';
   templateUrl: 'principal.html',
 })
 export class PrincipalPage {
-
-  storages;
+  storages
   listaAuth: any[];
 
   constructor(public navCtrl: NavController,
@@ -28,12 +27,15 @@ export class PrincipalPage {
     // this.storageProvider.listarAuth().then(res => {
     //   console.log(this.storageProvider.listarAuth());
     // })
-    console.log(this.storageProvider.listarAuth());
+    this.storages =  this.storageProvider.listarAuth();
+    console.log(this.storages)
   }
 
 
 
   linkViagens() {
+    // this.storageProvider.isLoggedIn = false;
+    // this.storageProvider.atualizar("Auth");
     this.navCtrl.push(ViagensPage);
   }
 }

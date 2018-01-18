@@ -16,12 +16,8 @@ import { InicioPage } from '../pages/inicio/inicio';
 })
 export class MyApp {
 
-  rootPage: any = LoginPage;
-  // principal: any = PrincipalPage;
-  // login: any = DespesasPage;
+  rootPage: any = InicioPage;
   storages: any;
-  lista: any[];
-  chave: string = "storages";
   listaAuth: any[];
   
 
@@ -34,48 +30,18 @@ export class MyApp {
     public storage: Storage
   ) {
 
-    // this.storage.get("Auth").then((registros) => {
-    //   if (registros) {
-    //     this.listaAuth = registros;
-    //   } else {
-    //     this.listaAuth = [];
-    //   };
-    // });
-
-    // console.log(this.listaAuth);
-
-    // this.storages = this.storage.get(this.chave)
-
-    // if(this.storages.isLoggedIn == false){
-    //   this.rootPage = PrincipalPage;
-    // }else{
-    //   this.rootPage = LoginPage;
-    // }
-
+  
     platform.ready().then(() => {
       this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);
       statusBar.styleDefault();
       splashScreen.hide();
     });
 
-      // this.storage.ready().then(() => {
-      //   this.storage.get(this.chave).then((registros) => {
-      //     console.log(this.lista);
-      //     if (registros) {
-      //       this.lista = registros
-      //     } else {
-      //       this.lista = [];
-      //     }
-      //   });
-
-      // });
-
 }
 
 // ionViewDidLoad(){
 //   console.log(this.lista);
 // }
-
 
   
 

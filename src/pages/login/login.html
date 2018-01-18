@@ -1,26 +1,32 @@
-<ion-header>
+<!-- <ion-header>
 
-  <ion-navbar>
+  <ion-toolbar>
     <ion-title>login</ion-title>
-  </ion-navbar>
+  </ion-toolbar>
 
-</ion-header>
+</ion-header> -->
 
 
 <ion-content padding>
   <div *ngIf="isLoggedIn; else loginTemplate">
     <h1>Welcome, {{name}}!</h1>
-    <p>Email: {{email}}<br>
-      Family Name: {{familyName}}<br>
-      Given Name: {{givenName}}<br>
-      User ID: {{userId}}</p>
-    <p><ion-avatar item-left>
+    <p>Email: {{email}}
+      <br> Family Name: {{familyName}}
+      <br> Given Name: {{givenName}}
+      <br> User ID: {{userId}}</p>
+    <p>
+      <ion-avatar item-left>
         <img src="{{imageUrl}}">
-       </ion-avatar></p>
-    <p><button ion-button (click)="this.logout()">Logout Gmail</button></p>
+      </ion-avatar>
+    </p>
+    <p>
+      <button ion-button (click)="this.logout()">Logout Gmail</button>
+    </p>
   </div>
 
   <ng-template #loginTemplate>
-    <p><button ion-button (click)="this.login()">Login Gmail</button></p>
+    <p>
+      <button ion-button (click)="this.login()">Login Gmail</button>
+    </p>
   </ng-template>
 </ion-content>

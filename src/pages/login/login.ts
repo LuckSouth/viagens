@@ -55,8 +55,6 @@ export class LoginPage {
   login() {
     this.isLoggedIn = true;
     // this.storageProvider.loginUser();
-    this.storageProvider.login.isLoggedIn = true;
-    this.storageProvider.atualizar("Auth");
     this.googlePlus.login({})
       .then(res => {
         console.log(res);
@@ -68,6 +66,8 @@ export class LoginPage {
         this.imageUrl = res.imageUrl;
       })
       .then(res => {
+        this.storageProvider.isLoggedIn = true;
+        this.storageProvider.atualizar("Auth");
         this.navCtrl.push(PrincipalPage);
       })
       .catch(err => console.error(err))
@@ -76,8 +76,6 @@ export class LoginPage {
 
 
   logout() {
-    this.storageProvider.login.isLoggedIn = false;
-    this.storageProvider.atualizar("Auth");
     this.googlePlus.logout()
       .then(res => {
         console.log(res);
@@ -89,7 +87,8 @@ export class LoginPage {
         this.imageUrl = "";
         this.isLoggedIn = true;
       }).then(res => {
-
+        this.storageProvider.isLoggedIn = false;
+        this.storageProvider.atualizar("Auth");
       })
       .catch(err => console.error(err));
   }

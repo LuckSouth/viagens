@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { MyApp } from '../../app/app.component';
+import { PrincipalPage } from '../../pages/principal/principal/principal';
 
 @Injectable()
 export class StorageProvider {
 
-  login = {
-    isLoggedIn: false
-  }
+  page: MyApp;
+  isLoggedIn: boolean = false;
+
   arrayAbastecimento = [];
   arrayArla = [];
   arrayDespesas = [];
   arrayReceitas = [];
-
-  isLoggedIn;
 
   //Dados despesas
   despesas = {
@@ -141,6 +141,7 @@ export class StorageProvider {
 
   listarAuth() {
     // return new Promise((resolve, reject) => {
+    // this.page.rootPage = PrincipalPage
     return this.listaAuth;
 
     // })
@@ -186,7 +187,7 @@ export class StorageProvider {
 
   loginUser() {
     this.storage.ready().then(() => {
-      this.listaAuth.push(this.login);
+      this.listaAuth.push(this.isLoggedIn);
       this.storage.set(this.chaveAuth, this.listaAuth);
     })
   }
@@ -250,8 +251,8 @@ export class StorageProvider {
   atualizar(key) {
     // for (let chave in this.listaAuth) {
     //   if (this.listaAuth[chave] == storage) {
-        // this.listaAuth[chave] = dados;
-        this.storage.set(key, this.login);
+    // this.listaAuth[chave] = dados;
+    this.storage.set(key, this.isLoggedIn);
     //   }
     // }
   }

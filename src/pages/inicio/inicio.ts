@@ -12,19 +12,20 @@ import { PrincipalPage } from '../principal/principal/principal';
 export class InicioPage {
 
   storages: any[];
+  listaAuth: any[];
 
-  constructor(public navCtrl: NavController, 
-      public navParams: NavParams,
-      public storageProvider: StorageProvider) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public storageProvider: StorageProvider) {
   }
 
   ionViewDidEnter() {
     // this.storages = this.storageProvider.listarAuth();
-    // console.log(this.storageProvider.listarAuth());
     this.navCtrl.push(PrincipalPage)
+
   }
 
-  mudar(){
+  mudar() {
     this.navCtrl.push(PrincipalPage)
   }
 
