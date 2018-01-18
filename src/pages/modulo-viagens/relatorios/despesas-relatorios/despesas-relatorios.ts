@@ -10,7 +10,7 @@ import { StorageProvider } from '../../../../providers/storage/storage';
   templateUrl: 'despesas-relatorios.html',
 })
 export class DespesasRelatoriosPage {
-
+  tamanho;  
   storages: any[];
 
 
@@ -24,6 +24,8 @@ export class DespesasRelatoriosPage {
 
     ionViewDidEnter() {
       this.storages = this.storageProvider.listarDespesa();
+      this.tamanho = this.storageProvider.tamanhoArla()
+      
     }
 
 }

@@ -1,7 +1,10 @@
 <ion-content padding>
 
+
+  <span *ngIf= "tamanho < 1" class="vazio"> Nenhum dado encontrado</span>
+  
+
   <ion-card *ngFor="let storage of storages">
-    <span *ngIf="storage.id == 4">
       <ion-card-header>
         <span id="titulo">Abastecimento</span>
         <br>
@@ -29,7 +32,6 @@
         <span id="horario">{{storage.precoBomb2}}</span>
         <br>
       </ion-card-content>
-    </span>
   </ion-card>
 
 </ion-content>
