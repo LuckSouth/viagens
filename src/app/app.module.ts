@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 
-import { FormsModule } from '@angular/forms';     
+import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 
 import { MyApp } from './app.component';
@@ -49,6 +49,7 @@ import { Camera } from "@ionic-native/camera";
 import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage'
+import { NativeStorage } from '@ionic-native/native-storage';
 import { DadosProvider } from '../providers/dados/dados';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 // import {  Network} from "@ionic-native/network";
@@ -56,6 +57,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { LoginPage } from '../pages/login/login';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { NavParams } from 'ionic-angular/navigation/nav-params';
+import { NavController } from 'ionic-angular/navigation/nav-controller';
 
 
 
@@ -68,13 +70,13 @@ import { NavParams } from 'ionic-angular/navigation/nav-params';
     ReceitasFornecedorPage,
     ReceitasQntPage,
     ReceitasFotoPage,
-    DespesasPage, 
+    DespesasPage,
     GeralPage,
     AbastecimentoPagamentoPage,
     AbastecimentoOdometroPage,
     AbastecimentoBomba1Page,
     AbastecimentoBomba2Page,
-    RotasAbastecimentoPage, 
+    RotasAbastecimentoPage,
     RotasArlaPage,
     RotasReceitasPage,
     GeralDadosViagemPage,
@@ -106,16 +108,16 @@ import { NavParams } from 'ionic-angular/navigation/nav-params';
     PrincipalPage,
     ViagensPage,
     ReceitasFornecedorPage,
-    ReceitasQntPage,    
+    ReceitasQntPage,
     ReceitasFotoPage,
     DespesasPage,
     GeralPage,
     AbastecimentoPagamentoPage,
     AbastecimentoOdometroPage,
     AbastecimentoBomba1Page,
-    RotasAbastecimentoPage, 
-    AbastecimentoBomba2Page, 
-    RotasReceitasPage, 
+    RotasAbastecimentoPage,
+    AbastecimentoBomba2Page,
+    RotasReceitasPage,
     RotasArlaPage,
     GeralDadosViagemPage,
     GeralDadosMotoristaPage,
@@ -129,20 +131,22 @@ import { NavParams } from 'ionic-angular/navigation/nav-params';
     ReceitasRelatoriosPage,
     ArlaRelatoriosPage,
     AbastecimentoRelatoriosPage,
-    InicioPage    
+    InicioPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Camera,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     FotoServicoProvider,
     ScreenOrientation,
     StorageProvider,
     DadosProvider,
     HttpClient,
     // Network,
-    GooglePlus
+    GooglePlus,
+    NativeStorage,
+    NavController
   ]
 })
-export class AppModule {}
+export class AppModule { }

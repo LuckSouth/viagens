@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams } from 'ionic-angular';
-import { PrincipalPage } from '../principal/principal/principal';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { GooglePlus } from '@ionic-native/google-plus';
-import { StorageProvider } from '../../providers/storage/storage';
 import { Storage } from '@ionic/storage/es2015/storage';
+import { NativeStorage } from '@ionic-native/native-storage';
+
+import { PrincipalPage } from '../principal/principal/principal';
+import { StorageProvider } from '../../providers/storage/storage';
 
 
 @IonicPage()
@@ -32,7 +34,8 @@ export class LoginPage {
     public navCtrl: NavController,
     private googlePlus: GooglePlus,
     public storageProvider: StorageProvider,
-    public storage: Storage
+    public storage: Storage,
+    public nativeStorage: NativeStorage
   ) {
     this.storage.ready().then(() => {
       this.storage.get(this.chaveAuth).then((registros) => {
@@ -52,45 +55,37 @@ export class LoginPage {
     return console.log(this.storageProvider.listarAuth());
   }
 
-  login() {
-    this.isLoggedIn = true;
-    // this.storageProvider.loginUser();
-    this.googlePlus.login({})
-      .then(res => {
-        console.log(res);
-        this.name = res.name;
-        this.email = res.email;
-        this.familyName = res.familyName;
-        this.givenName = res.givenName;
-        this.userId = res.userId;
-        this.imageUrl = res.imageUrl;
-      })
-      .then(res => {
-        this.storageProvider.isLoggedIn = true;
-        this.storageProvider.atualizar("Auth");
-        this.navCtrl.push(PrincipalPage);
-      })
-      .catch(err => console.error(err))
+  doGoogleLogin() {
 
+    this.googlePlus.login({
+      'scopes': '', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
+      'webClientId': 'webClientId.apps.googleusercontent.com', // optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
+      'offline': true
+    })
+      .then(function (user) {
+
+        this.nativeStorage.setItem('user', {
+          name: user.displayName,
+          email: user.email,
+          picture: user.imageUrl
+        })
+          .then(function () {
+            this.navCtrl.push(PrincipalPage);
+          }, function (error) {
+            console.log(error);
+          })
+      });
   }
 
 
   logout() {
     this.googlePlus.logout()
-      .then(res => {
-        console.log(res);
-        this.name = "";
-        this.email = "";
-        this.familyName = "";
-        this.givenName = "";
-        this.userId = "";
-        this.imageUrl = "";
-        this.isLoggedIn = true;
-      }).then(res => {
-        this.storageProvider.isLoggedIn = false;
-        this.storageProvider.atualizar("Auth");
+      .then(function (response) {
+        this.nativeStorage.remove('user');
+        this.navCtrl.push(LoginPage);
+      }, function (error) {
+        console.log(error);
       })
-      .catch(err => console.error(err));
   }
 }
 
