@@ -3,11 +3,11 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { StorageProvider } from "../../providers/storage/storage";
 @Injectable()
 export class DadosProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public storage: StorageProvider) {
     console.log('Hello DadosProvider Provider');
   }
 
@@ -35,17 +35,33 @@ export class DadosProvider {
       options: any = { "key": "despesa", "despesa": despesa, "motorista": motorista, "data": data, "valor": valor },
       url: any = this.baseURI + "manage-data.php";
 
-    this.http.post(url, JSON.stringify(options), headers)
-      .subscribe((data: any) => {
-        console.log(data)
-        // If the request was successful notify the user
-        console.log(data)
-        this.hideForm = true;
-      },
-      (error: any) => {
-        console.log(error)
-      });
+
+    try {
+      this.http.post(url, JSON.stringify(options), headers)
+        .subscribe((data: any) => {
+          console.log(data)
+          // If the request was successful notify the user
+          // console.log(data)
+          this.hideForm = true;
+        },
+        (error: any) => {
+          // console.log(error.statusText);
+
+          if (error.statusText == "OK") {
+            console.log("fazer nada")
+          } else {
+            console.log('tratar erros');
+            this.storage.adicionarDespesas()
+          }
+
+
+        });
+    } catch (error) {
+      console.log('catch')
+    }
+
   }
+
 
   abastecimento(
     motorista: string,
@@ -83,7 +99,12 @@ export class DadosProvider {
         this.hideForm = true;
       },
       (error: any) => {
-        console.log(error)
+        if (error.statusText == "OK") {
+          console.log("fazer nada")
+        } else {
+          console.log('tratar erros');
+          this.storage.adicionarAbastecimento()
+        }
       });
   }
 
@@ -108,7 +129,7 @@ export class DadosProvider {
         "km": km,
         "litros": litros,
         "preco": preco
-      
+
       },
       url: any = this.baseURI + "manage-data.php";
 
@@ -120,7 +141,12 @@ export class DadosProvider {
         this.hideForm = true;
       },
       (error: any) => {
-        console.log(error)
+        if (error.statusText == "OK") {
+          console.log("fazer nada")
+        } else {
+          console.log('tratar erros');
+          this.storage.adicionarArla()
+        }
       });
   }
 
@@ -136,7 +162,7 @@ export class DadosProvider {
     idUnidadeMedida: string,
     qntFaturado: string,
     qntDescarregado: string,
-    valorUnitario:string,
+    valorUnitario: string,
     idSubUnidade: string,
   ): void {
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -163,7 +189,12 @@ export class DadosProvider {
         this.hideForm = true;
       },
       (error: any) => {
-        console.log(error)
+        if (error.statusText == "OK") {
+          console.log("fazer nada")
+        } else {
+          console.log('tratar erros');
+          this.storage.adicionarReceitas()
+        }
       });
   }
 

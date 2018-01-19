@@ -81,7 +81,7 @@ export class RotasArlaPage {
     if (this.contador == 3) {
       this.salvar()
       //Armazenar no Storage
-      this.storageProvider.adicionarArla();
+      // this.storageProvider.adicionarArla();
 
       let toast = this.toastCtrl.create({
         message: 'Arla32 adicionada com sucesso',

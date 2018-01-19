@@ -56,6 +56,7 @@ import {  Network} from "@ionic-native/network";
 import { LoginPage } from '../pages/login/login';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { NavParams } from 'ionic-angular/navigation/nav-params';
+import { EnviarProvider } from '../providers/enviar/enviar';
 
 
 
@@ -142,7 +143,8 @@ import { NavParams } from 'ionic-angular/navigation/nav-params';
     DadosProvider,
     HttpClient,
     Network,
-    GooglePlus
+    GooglePlus,
+    EnviarProvider
   ]
 })
 export class AppModule {}

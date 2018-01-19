@@ -100,7 +100,7 @@ export class RotasReceitasPage {
       this.salvar();
 
       //Armazenar no Storage
-      this.storageProvider.adicionarReceitas();
+      // this.storageProvider.adicionarReceitas();
 
 
       // Toast
