@@ -11,7 +11,11 @@ import { Network } from "@ionic-native/network";
 import { Storage } from "@ionic/storage";
 import { StorageProvider } from "../../../providers/storage/storage";
 import { RelatoriosPage } from "../relatorios/relatorios-page/relatorios";
+<<<<<<< HEAD
 
+=======
+import { EnviarProvider } from "../../../providers/enviar/enviar";
+>>>>>>> 34058acd2f3b71d25d37613418443a00653b6686
 @IonicPage()
 @Component({
   selector: 'page-viagens',
@@ -26,7 +30,8 @@ export class ViagensPage {
     public dados: DadosProvider,
     public network: Network,
     public storage: Storage,
-    public provider: StorageProvider) {
+    public provider: StorageProvider,
+    public enviar: EnviarProvider) {
   }
 
 
@@ -67,6 +72,8 @@ export class ViagensPage {
     this.despesasPendente = this.provider.tamanhoDespesas();
     this.receitasPendente = this.provider.tamanhoReceitas();
 
+    this.enviar.enviar();
+
   }
 
   ngAfterViewInit() {
@@ -76,7 +83,18 @@ export class ViagensPage {
     // this.despesasPendente = this.provider.tamanhoDespesas();
     // this.receitasPendente = this.provider.tamanhoReceitas();   
 
+
+    this.network.onConnect().subscribe(data => {
+      console.log(data)
+    }, error => console.error(error));
+
+    this.network.onDisconnect().subscribe(data => {
+      console.log(data)
+    }, error => console.error(error));
+
+    console.log(this.network.type)
   }
+
 
 
   // Ínicio Network
@@ -104,6 +122,8 @@ export class ViagensPage {
   // });
 
   // Fim Network
+
+
 
 }
 
