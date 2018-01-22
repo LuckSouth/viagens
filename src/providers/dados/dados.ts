@@ -30,7 +30,7 @@ export class DadosProvider {
       });
   }
 
-  despesa(motorista: string, despesa: string, data: string, valor: string): void {
+  despesa(motorista: string, despesa: string, data: string, valor: string, opcional?:boolean): void {
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
       options: any = { "key": "despesa", "despesa": despesa, "motorista": motorista, "data": data, "valor": valor },
       url: any = this.baseURI + "manage-data.php";
@@ -51,7 +51,10 @@ export class DadosProvider {
             console.log("fazer nada")
           } else {
             console.log('tratar erros');
-            this.storage.adicionarDespesas()
+
+            if(opcional != true){
+              this.storage.adicionarDespesas()
+            }
           }
 
 
