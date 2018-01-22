@@ -75,7 +75,8 @@ export class DadosProvider {
     litrosBomba1: string,
     precoBomba1: string,
     litrosBomba2: string,
-    precoBomba2: string
+    precoBomba2: string,
+    opcional?:boolean
 
   ): void {
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -119,6 +120,7 @@ export class DadosProvider {
     km: string,
     litros: string,
     preco: string,
+    opcional?:boolean
 
   ): void {
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -166,6 +168,7 @@ export class DadosProvider {
     qntDescarregado: string,
     valorUnitario: string,
     idSubUnidade: string,
+    opcional?:boolean
   ): void {
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
       options: any = {
