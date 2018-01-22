@@ -7,12 +7,17 @@ import { PrincipalPage } from '../../pages/principal/principal/principal';
 export class StorageProvider {
 
   page: MyApp;
-  isLoggedIn: boolean = false;
 
   arrayAbastecimento = [];
   arrayArla = [];
   arrayDespesas = [];
   arrayReceitas = [];
+
+  login = {
+    isLoggedIn: false,
+    name: "",
+    email:""
+  }
 
   //Dados despesas
   despesas = {
@@ -187,7 +192,7 @@ export class StorageProvider {
 
   loginUser() {
     this.storage.ready().then(() => {
-      this.listaAuth.push(this.isLoggedIn);
+      this.listaAuth.push(this.login);
       this.storage.set(this.chaveAuth, this.listaAuth);
     })
   }
@@ -252,7 +257,7 @@ export class StorageProvider {
     // for (let chave in this.listaAuth) {
     //   if (this.listaAuth[chave] == storage) {
     // this.listaAuth[chave] = dados;
-    this.storage.set(key, this.isLoggedIn);
+    this.storage.set(key, this.login);
     //   }
     // }
   }

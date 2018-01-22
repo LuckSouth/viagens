@@ -50,42 +50,41 @@ export class LoginPage {
 
   }
 
-  ngAfterViewInit() {
+  ionViewDidEnter() {
 
-    return console.log(this.storageProvider.listarAuth());
+
   }
 
-  doGoogleLogin() {
+  login() {
 
-    this.googlePlus.login({
-      'scopes': '', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
-      'webClientId': 'webClientId.apps.googleusercontent.com', // optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
-      'offline': true
-    })
-      .then(function (user) {
-
-        this.nativeStorage.setItem('user', {
-          name: user.displayName,
-          email: user.email,
-          picture: user.imageUrl
-        })
-          .then(function () {
-            this.navCtrl.push(PrincipalPage);
-          }, function (error) {
-            console.log(error);
-          })
-      });
+    this.googlePlus.login({})
+      .then(res => {
+        this.storageProvider.login.name = res.name;
+        this.storageProvider.login.email = res.email;
+        // this.familyName = res.familyName;
+        // this.givenName = res.givenName;
+        // this.userId = res.userId;
+        // this.imageUrl = res.imageUrl;
+        this.storageProvider.login.isLoggedIn = true;
+        this.storageProvider.atualizar("Auth");
+      })
+      .then(res => this.navCtrl.push(PrincipalPage))
+      .catch(err => console.error(err))
   }
 
 
   logout() {
+
     this.googlePlus.logout()
-      .then(function (response) {
-        this.nativeStorage.remove('user');
-        this.navCtrl.push(LoginPage);
-      }, function (error) {
-        console.log(error);
+      .then(res => {
+        this.storageProvider.login.name = "";
+        this.storageProvider.login.email = "";
+        this.storageProvider.login.isLoggedIn = false;
+        this.storageProvider.atualizar("Auth");
+        // this.nativeStorage.remove('user');
       })
+      .then(res => this.navCtrl.push(LoginPage))
+      .catch(err => console.error(err))
   }
 }
 

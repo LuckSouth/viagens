@@ -49,7 +49,7 @@ export class PrincipalPage {
 
 
   linkViagens() {
-    // this.storageProvider.isLoggedIn = false;
+    // this.storageProvider.login.isLoggedIn = false;
     // this.storageProvider.atualizar("Auth");
     this.navCtrl.push(ViagensPage);
   }

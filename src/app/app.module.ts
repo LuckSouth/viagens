@@ -145,8 +145,8 @@ import { NavController } from 'ionic-angular/navigation/nav-controller';
     HttpClient,
     // Network,
     GooglePlus,
-    NativeStorage,
-    NavController
+    NativeStorage
+    // NavController
   ]
 })
 export class AppModule { }
