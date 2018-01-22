@@ -23,10 +23,8 @@ export class ReceitasRelatoriosPage {
   }
 
   ionViewDidEnter() {
-    this.tamanho = this.storageProvider.tamanhoArla()    
+    this.tamanho = this.storageProvider.tamanhoReceitas()    
     this.storages = this.storageProvider.listarReceitas();
   }
-
- 
 
 }

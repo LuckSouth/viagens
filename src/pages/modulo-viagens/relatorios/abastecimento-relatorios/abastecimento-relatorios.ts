@@ -8,20 +8,20 @@ import { StorageProvider } from '../../../../providers/storage/storage';
   templateUrl: 'abastecimento-relatorios.html',
 })
 export class AbastecimentoRelatoriosPage {
-  tamanho;  
+  tamanho;
   storages: any[];
-  
-  constructor(public navCtrl: NavController, 
+
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public storageProvider: StorageProvider) {
-      // this.storages = this.storageProvider.listar();
+    // this.storages = this.storageProvider.listar();
 
   }
 
   ionViewDidEnter() {
     this.storages = this.storageProvider.listar();
-    this.tamanho = this.storageProvider.tamanhoArla()
-    
+    this.tamanho = this.storageProvider.tamanhoAbastecimento()
+
   }
 
 }

@@ -23,7 +23,7 @@ export class MyApp {
   lista: any[];
   chave: string = "storages";
 
-  
+
 
   constructor(
     platform: Platform,
@@ -48,35 +48,35 @@ export class MyApp {
       splashScreen.hide();
     });
 
-      // this.storage.ready().then(() => {
-      //   this.storage.get(this.chave).then((registros) => {
-      //     console.log(this.lista);
-      //     if (registros) {
-      //       this.lista = registros
-      //     } else {
-      //       this.lista = [];
-      //     }
-      //   });
+    // this.storage.ready().then(() => {
+    //   this.storage.get(this.chave).then((registros) => {
+    //     console.log(this.lista);
+    //     if (registros) {
+    //       this.lista = registros
+    //     } else {
+    //       this.lista = [];
+    //     }
+    //   });
 
-      // });
+    // });
 
-}
+  }
 
-// ionViewDidLoad(){
-//   console.log(this.lista);
-// }
+  // ionViewDidLoad(){
+  //   console.log(this.lista);
+  // }
 
 
-  
+
 
   // ionViewDidLoad() {
-    
+
   //   return new Promise((resolve, reject) => {
   //     this.storages.listar();
   //   })
   //   .then(res =>  {
   //     this.storages = this.storageProvider.listar();
-    
+
   //     if(this.storages.login == true){
   //       this.rootPage = PrincipalPage
   //     }else{
@@ -84,6 +84,6 @@ export class MyApp {
   //     }
   //     console.log(this.rootPage)
   //   });
-  
+
   // } 
 }

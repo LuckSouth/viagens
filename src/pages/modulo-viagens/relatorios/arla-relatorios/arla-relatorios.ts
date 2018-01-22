@@ -10,7 +10,7 @@ import { StorageProvider } from '../../../../providers/storage/storage';
 
 
 export class ArlaRelatoriosPage {
-  
+
   tamanho;
   storages: any[];
 

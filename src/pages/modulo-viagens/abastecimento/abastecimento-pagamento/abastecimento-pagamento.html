@@ -9,8 +9,8 @@
   <ion-item>
     <ion-label>Tipo</ion-label>
     <ion-select [(ngModel)]="storageProvider.abastecimento.tipoAbastecimento" (click)="valida()">
-      <ion-option value="externo">Externo</ion-option>
-      <ion-option value="interno">Interno</ion-option>
+      <ion-option value="Externo">Externo</ion-option>
+      <ion-option value="Interno">Interno</ion-option>
     </ion-select>
   </ion-item>
 
@@ -28,7 +28,7 @@
     <ion-label>Tipo de pagamento</ion-label>
     <ion-select [(ngModel)]="storageProvider.abastecimento.tipoPagmtAbastecimento" (click)="valida()">
       <ion-option value="Dinheiro">Dinheiro</ion-option>
-      <ion-option value="crédito">Crédito</ion-option>
+      <ion-option value="Crédito">Crédito</ion-option>
       <ion-option value="Débito"> Débito</ion-option>
       <ion-option value="Cheque">Cheque</ion-option>
     </ion-select>
