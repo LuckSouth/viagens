@@ -67,7 +67,7 @@ export class StorageProvider {
   listaAbastecimento: any[];
   listaArla: any[];
   listaDespesas: any[];
-  listaReceitas: any[];  
+  listaReceitas: any[];
 
   chaveAbastecimento: string = "abastecimento";
   chaveArla: string = "arla";
@@ -86,7 +86,7 @@ export class StorageProvider {
       });
 
     });
-  
+
     this.storage.ready().then(() => {
       this.storage.get(this.chaveArla).then((registros) => {
         if (registros) {
@@ -123,20 +123,20 @@ export class StorageProvider {
   }
 
 
-  tamanhoAbastecimento(){
+  tamanhoAbastecimento() {
     this.arrayAbastecimento = this.listar()
     return this.arrayAbastecimento.length
   }
 
-  tamanhoArla(){
+  tamanhoArla() {
     this.arrayArla = this.listarArla()
     return this.arrayArla.length
   }
-  tamanhoDespesas(){
-    this.arrayDespesas= this.listarDespesa()
+  tamanhoDespesas() {
+    this.arrayDespesas = this.listarDespesa()
     return this.arrayDespesas.length
   }
-  tamanhoReceitas(){
+  tamanhoReceitas() {
     this.arrayReceitas = this.listarReceitas()
     return this.arrayReceitas.length
   }
@@ -147,7 +147,7 @@ export class StorageProvider {
     return this.listaAbastecimento;
   }
 
- 
+
 
   listarArla() {
     return this.listaArla;
@@ -223,13 +223,17 @@ export class StorageProvider {
 
   // // Deletar Storage
   // deletar(storage) {
-  //   for (let chave in this.lista) {
-  //     if (this.lista[chave] == storage) {
-  //       this.lista.splice(parseInt(chave), 1);
-  //       this.storage.set(this.chave, this.lista);
+  //   for (let chave in this.listaReceitas) {
+  //     if (this.listaReceitas[chave] == storage) {
+  //       this.listaReceitas.splice(parseInt(chave), 1);
+  //       this.storage.set(this.chaveReceitas, this.listaReceitas);
   //     }
   //   }
+  // }
+
+    delete(id){
+        return this.storage.remove(id).
+        then(()=> true)
+    }
+
 }
-
-
-

@@ -66,7 +66,7 @@ export class ViagensPage {
     this.despesasPendente = this.provider.tamanhoDespesas();
     this.receitasPendente = this.provider.tamanhoReceitas();
 
-    this.enviar.conferirConexao();
+    this.enviar.enviar();
 
   }
 
