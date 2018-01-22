@@ -57,7 +57,6 @@ export class DadosProvider {
             }
           }
 
-
         });
     } catch (error) {
       console.log('catch')
