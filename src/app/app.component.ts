@@ -18,14 +18,14 @@ import { InicioPage } from '../pages/inicio/inicio';
   templateUrl: 'app.html'
 })
 export class MyApp {
-
+  
   rootPage: any;
   storages: any;
   listaAuth;
   chaveAuth: string = "Auth"; 
   listaDespesas = {};
-
-
+  
+  
   constructor(
     platform: Platform,
     statusBar: StatusBar,
@@ -36,8 +36,8 @@ export class MyApp {
     public nativeStorage: NativeStorage,
     // public navCtrl: NavController
   ) {
-
-
+    
+    
     platform.ready().then(() => {
 
       this.storage.ready().then(() => {
@@ -50,10 +50,10 @@ export class MyApp {
             this.rootPage = LoginPage;
           }
           // if (registros) {
-          //   this.listaAuth = registros;
+            //   this.listaAuth = registros;
           //   console.log(this.listaAuth);
           // } else {
-          //   this.listaAuth = [];
+            //   this.listaAuth = [];
           //   // console.log(this.listaAuth);
           // }
         })
@@ -64,6 +64,6 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-
+    
   }
 }

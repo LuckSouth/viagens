@@ -56,6 +56,8 @@ export class LoginPage {
   }
 
   login() {
+    this.storageProvider.login.isLoggedIn = true;
+    this.storageProvider.atualizar("Auth");
 
     this.googlePlus.login({})
       .then(res => {
@@ -65,8 +67,6 @@ export class LoginPage {
         // this.givenName = res.givenName;
         // this.userId = res.userId;
         // this.imageUrl = res.imageUrl;
-        this.storageProvider.login.isLoggedIn = true;
-        this.storageProvider.atualizar("Auth");
       })
       .then(res => this.navCtrl.push(PrincipalPage))
       .catch(err => console.error(err))
