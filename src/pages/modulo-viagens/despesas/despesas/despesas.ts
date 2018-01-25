@@ -51,8 +51,7 @@ export class DespesasPage {
 
 
   salvar(){
-    this.dados.despesa(this.motorista,this.storageProvider.despesas.despesas,this.storageProvider.despesas.dataDespesas, this.storageProvider.despesas.valorDespesas);
-    this.storageProvider.adicionarDespesas();
+    this.dados.despesa(this.storageProvider.despesas.motorista,this.storageProvider.despesas.despesas,this.storageProvider.despesas.dataDespesas, this.storageProvider.despesas.valorDespesas);
     this.navCtrl.pop();
 
   }

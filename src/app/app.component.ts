@@ -18,7 +18,7 @@ import { Storage } from '@ionic/storage';
 })
 export class MyApp {
   
-  rootPage: any;
+  rootPage: any = PrincipalPage;
   storages: any;
   listaAuth;
   chaveAuth: string = "Auth"; 

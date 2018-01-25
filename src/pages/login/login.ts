@@ -72,13 +72,13 @@ export class LoginPage {
 
 
   logout() {
-
+    
+    this.storageProvider.login.isLoggedIn = false;
+    this.storageProvider.atualizar("Auth");
     this.googlePlus.logout()
       .then(res => {
         this.storageProvider.login.name = "";
         this.storageProvider.login.email = "";
-        this.storageProvider.login.isLoggedIn = false;
-        this.storageProvider.atualizar("Auth");
       })
       .then(res => this.navCtrl.push(LoginPage))
       .catch(err => console.error(err))

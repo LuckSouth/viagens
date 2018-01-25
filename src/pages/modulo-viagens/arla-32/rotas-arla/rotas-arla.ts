@@ -18,7 +18,6 @@ export class RotasArlaPage {
   @ViewChild(ArlaPagPage) arlaPagPage: ArlaPagPage;
   @ViewChild(ArlaPostoPage) arlaPostoPage: ArlaPostoPage;
 
-  motorista = "Richosvaldo"
 
   contador: number = 1;
 
@@ -35,7 +34,7 @@ export class RotasArlaPage {
 
   salvar() {
     this.dados.arla(
-      this.motorista,
+      this.arlaPagPage.storageProvider.arla.motorista,
       this.arlaPagPage.storageProvider.arla.litrosArla,
       this.arlaPagPage.storageProvider.arla.litrosPrecoArla,
       this.arlaPagPage.storageProvider.arla.selectArla,

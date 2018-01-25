@@ -21,6 +21,7 @@ export class StorageProvider {
 
   //Dados despesas
   despesas = {
+    motorista: "bino",
     id: 1,
     despesas: "",
     dataDespesas: "",
@@ -29,6 +30,7 @@ export class StorageProvider {
 
   //Dados Receitas
   receitas = {
+    motorista: "bino",
     id: 2,
     fornecedorOrigem: "",
     fornecedorDestino: "",
@@ -46,6 +48,7 @@ export class StorageProvider {
 
   //Dados arla
   arla = {
+    motorista: "bino",
     id: 3,
     dataArla: "",
     postoArla: "",
@@ -61,6 +64,7 @@ export class StorageProvider {
 
   //Dados abastecimento
   abastecimento = {
+    motorista: "bino",
     id: 4,
     tipoAbastecimento: "",
     postoAbastecimento: "",
