@@ -15,7 +15,7 @@ import { AbastecimentoRelatoriosPage } from '../abastecimento-relatorios/abastec
 })
 export class RelatoriosPage {
 
-
+  storages;
   constructor(public navCtrl: NavController,
     public navParams: NavParams) { 
 
@@ -25,6 +25,5 @@ export class RelatoriosPage {
   relatoriosReceitas = ReceitasRelatoriosPage;
   relatoriosArla = ArlaRelatoriosPage;
   relatoriosAbastecimento = AbastecimentoRelatoriosPage;
-
 
 }

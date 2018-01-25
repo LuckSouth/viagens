@@ -49,6 +49,7 @@ export class DadosProvider {
 
           if (error.statusText == "OK") {
             console.log("fazer nada")
+            this.storage.delete(this.storage.chaveDespesas)
           } else {
             console.log('tratar erros');
 

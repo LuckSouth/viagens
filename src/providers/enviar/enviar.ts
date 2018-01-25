@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Network } from "@ionic-native/network";
+// import { Network } from "@ionic-native/network";
 import { AlertController } from "ionic-angular";
 import { StorageProvider } from "../../providers/storage/storage";
 import { DadosProvider } from "../dados/dados";
@@ -13,20 +13,19 @@ export class EnviarProvider {
   arla = []
   receitas = []
 
-  constructor(public network: Network,
-    public storage: StorageProvider,
+  constructor(public storageProvider: StorageProvider,
     public dados: DadosProvider,
     public alertCtrl: AlertController) {
   }
 
   enviar() {
-    if (this.storage.tamanhoDespesas() > 0) {
+    if (this.storageProvider.tamanhoDespesas() > 0) {
 
-      this.despesas = this.storage.listaDespesas
+      this.despesas = this.storageProvider.listaDespesas
 
-      for (var index = 0; index <= this.storage.tamanhoDespesas(); index++) {
+      for (var index = 0; index <= this.storageProvider.tamanhoDespesas(); index++) {
         console.log('enviar arquivos no cache');
-        this.despesas = this.storage.listaDespesas
+        this.despesas = this.storageProvider.listaDespesas
 
         this.dados.despesa(
           this.despesas[index].motorista,
@@ -36,9 +35,7 @@ export class EnviarProvider {
           true
 
         )
-        if (index == this.storage.tamanhoDespesas()) {
-          this.storage.delete(this.storage.chaveDespesas);
-        }
+       
 
       }
     }
@@ -47,13 +44,13 @@ export class EnviarProvider {
 
     //Abastecimento
 
-    if (this.storage.tamanhoAbastecimento() > 0) {
+    if (this.storageProvider.tamanhoAbastecimento() > 0) {
 
-      this.abastecimento = this.storage.listaAbastecimento
+      this.abastecimento = this.storageProvider.listaAbastecimento
 
-      for (var index = 0; index <= this.storage.tamanhoAbastecimento(); index++) {
+      for (var index = 0; index <= this.storageProvider.tamanhoAbastecimento(); index++) {
         console.log('enviar arquivos no cache');
-        this.abastecimento = this.storage.listaAbastecimento
+        this.abastecimento = this.storageProvider.listaAbastecimento
 
         this.dados.abastecimento(
           this.abastecimento[index].motorista,
@@ -70,9 +67,6 @@ export class EnviarProvider {
 
 
         )
-        if (index == this.storage.tamanhoAbastecimento()) {
-          this.storage.delete(this.storage.chaveAbastecimento);
-        }
 
       }
 
@@ -81,12 +75,12 @@ export class EnviarProvider {
 
     //Arla
 
-    if (this.storage.tamanhoArla() > 0) {
+    if (this.storageProvider.tamanhoArla() > 0) {
 
-      this.arla = this.storage.listaArla
+      this.arla = this.storageProvider.listaArla
 
-      for (var index = 0; index <= this.storage.tamanhoArla(); index++) {
-        this.abastecimento = this.storage.listaArla
+      for (var index = 0; index <= this.storageProvider.tamanhoArla(); index++) {
+        this.abastecimento = this.storageProvider.listaArla
         this.dados.arla(
           this.arla[index].motorista,
           this.arla[index].tipoPosto,
@@ -100,10 +94,6 @@ export class EnviarProvider {
 
 
         )
-        if (index == this.storage.tamanhoAbastecimento()) {
-          this.storage.delete(this.storage.chaveArla);
-
-        }
 
       }
 
@@ -114,12 +104,12 @@ export class EnviarProvider {
 
     //Receitas
 
-    if (this.storage.tamanhoReceitas() > 0) {
+    if (this.storageProvider.tamanhoReceitas() > 0) {
 
-      this.arla = this.storage.listaArla
+      this.arla = this.storageProvider.listaArla
 
-      for (var index = 0; index <= this.storage.tamanhoReceitas(); index++) {
-        this.receitas = this.storage.listaReceitas
+      for (var index = 0; index <= this.storageProvider.tamanhoReceitas(); index++) {
+        this.receitas = this.storageProvider.listaReceitas
         this.dados.receitas(
           this.arla[index].motorista,
           this.arla[index].fornecedorOrigem,
@@ -135,12 +125,9 @@ export class EnviarProvider {
 
 
         )
-        if (index == this.storage.tamanhoReceitas()) {
-          this.storage.delete(this.storage.chaveReceitas);
-        }
 
       }
-        console.log(this.storage.tamanhoReceitas)
+        console.log(this.storageProvider.tamanhoReceitas)
 
     }
 

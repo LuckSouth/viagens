@@ -7,15 +7,11 @@ import { DespesasPage } from '../despesas/despesas/despesas';
 import { RotasArlaPage } from '../arla-32/rotas-arla/rotas-arla';
 import { RotasReceitasPage } from '../receitas/rotas-receitas/rotas-receitas';
 import { DadosProvider } from "../../../providers/dados/dados";
-import { Network } from "@ionic-native/network";
+// import { Network } from "@ionic-native/network";
 import { Storage } from "@ionic/storage";
 import { StorageProvider } from "../../../providers/storage/storage";
 import { RelatoriosPage } from "../relatorios/relatorios-page/relatorios";
-<<<<<<< HEAD
-
-=======
 import { EnviarProvider } from "../../../providers/enviar/enviar";
->>>>>>> 34058acd2f3b71d25d37613418443a00653b6686
 @IonicPage()
 @Component({
   selector: 'page-viagens',
@@ -23,22 +19,30 @@ import { EnviarProvider } from "../../../providers/enviar/enviar";
 })
 
 export class ViagensPage {
+  
+  abastecimentoPendente;
+  arlaPendente;
+  despesasPendente;
+  receitasPendente;
+
+  storages;
+
 
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public dados: DadosProvider,
-    public network: Network,
+    // public network: Network,
     public storage: Storage,
-    public provider: StorageProvider,
+    public storageProvider: StorageProvider,
     public enviar: EnviarProvider) {
   }
 
 
-  abastecimentoPendente;
-  arlaPendente;
-  despesasPendente;
-  receitasPendente;
+
+  ionViewDidLoad() {
+    console.log(this.storageProvider.listarAuth());
+  }
 
   linkAbastecimento() {
     this.navCtrl.push(RotasAbastecimentoPage);
@@ -67,10 +71,10 @@ export class ViagensPage {
     // this.naoEnviadas = this.provider.recuperaTamanho();
     // return this.provider.recuperaTamanho();
 
-    this.arlaPendente = this.provider.tamanhoArla();
-    this.abastecimentoPendente = this.provider.tamanhoAbastecimento();
-    this.despesasPendente = this.provider.tamanhoDespesas();
-    this.receitasPendente = this.provider.tamanhoReceitas();
+    this.arlaPendente = this.storageProvider.tamanhoArla();
+    this.abastecimentoPendente = this.storageProvider.tamanhoAbastecimento();
+    this.despesasPendente = this.storageProvider.tamanhoDespesas();
+    this.receitasPendente = this.storageProvider.tamanhoReceitas();
 
     this.enviar.enviar();
 
@@ -84,15 +88,15 @@ export class ViagensPage {
     // this.receitasPendente = this.provider.tamanhoReceitas();   
 
 
-    this.network.onConnect().subscribe(data => {
-      console.log(data)
-    }, error => console.error(error));
+    // this.network.onConnect().subscribe(data => {
+    //   console.log(data)
+    // }, error => console.error(error));
 
-    this.network.onDisconnect().subscribe(data => {
-      console.log(data)
-    }, error => console.error(error));
+    // this.network.onDisconnect().subscribe(data => {
+    //   console.log(data)
+    // }, error => console.error(error));
 
-    console.log(this.network.type)
+    // console.log(this.network.type)
   }
 
 

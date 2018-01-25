@@ -24,7 +24,6 @@ export class RotasReceitasPage {
   contador: number = 1;
   cameraButton: boolean;
   fotoReceitas: string = "dsfsdf";
-  motorista: string = "Vin Diesel";
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
@@ -38,7 +37,7 @@ export class RotasReceitasPage {
   salvar() {
  
       this.dados.receitas(
-        this.motorista,
+        this.storageProvider.receitas.motorista,
         this.storageProvider.receitas.fornecedorOrigem,
         this.storageProvider.receitas.fornecedorDestino,
         this.storageProvider.receitas.produto,

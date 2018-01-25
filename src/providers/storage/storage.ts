@@ -1,17 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { MyApp } from '../../app/app.component';
+import { PrincipalPage } from '../../pages/principal/principal/principal';
 
 @Injectable()
 export class StorageProvider {
+
+  page: MyApp;
+
   arrayAbastecimento = [];
   arrayArla = [];
   arrayDespesas = [];
   arrayReceitas = [];
 
-  isLoggedIn;
+  login = {
+    isLoggedIn: false,
+    name: "",
+    email:""
+  }
 
   //Dados despesas
   despesas = {
+    motorista: "bino",
     id: 1,
     despesas: "",
     dataDespesas: "",
@@ -20,6 +30,7 @@ export class StorageProvider {
 
   //Dados Receitas
   receitas = {
+    motorista: "bino",
     id: 2,
     fornecedorOrigem: "",
     fornecedorDestino: "",
@@ -37,6 +48,7 @@ export class StorageProvider {
 
   //Dados arla
   arla = {
+    motorista: "bino",
     id: 3,
     dataArla: "",
     postoArla: "",
@@ -52,6 +64,7 @@ export class StorageProvider {
 
   //Dados abastecimento
   abastecimento = {
+    motorista: "bino",
     id: 4,
     tipoAbastecimento: "",
     postoAbastecimento: "",
@@ -64,11 +77,14 @@ export class StorageProvider {
     precoBomb2: "",
   }
 
+
   listaAbastecimento: any[];
   listaArla: any[];
   listaDespesas: any[];
   listaReceitas: any[];
+  listaAuth: any[];
 
+  chaveAuth: string = "Auth";
   chaveAbastecimento: string = "abastecimento";
   chaveArla: string = "arla";
   chaveDespesas: string = "despesas";
@@ -110,6 +126,16 @@ export class StorageProvider {
     });
 
     this.storage.ready().then(() => {
+      this.storage.get(this.chaveAuth).then((registros) => {
+        if (registros) {
+          this.listaAuth = registros;
+        } else {
+          this.listaAuth = [];
+        }
+      })
+    })
+
+    this.storage.ready().then(() => {
       this.storage.get(this.chaveReceitas).then((registros) => {
         if (registros) {
           this.listaReceitas = registros;
@@ -120,6 +146,24 @@ export class StorageProvider {
 
     });
 
+  }
+
+  listarAuth() {
+    // return new Promise((resolve, reject) => {
+    // this.page.rootPage = PrincipalPage
+    return this.listaAuth;
+
+    // })
+  }
+
+  listarArla() {
+    return this.listaArla;
+  }
+  listarDespesa() {
+    return this.listaDespesas;
+  }
+  listarReceitas() {
+    return this.listaReceitas;
   }
 
 
@@ -147,17 +191,17 @@ export class StorageProvider {
     return this.listaAbastecimento;
   }
 
+  //Verificação Login
+
+  loginUser() {
+    this.storage.ready().then(() => {
+      this.listaAuth.push(this.login);
+      this.storage.set(this.chaveAuth, this.listaAuth);
+    })
+  }
 
 
-  listarArla() {
-    return this.listaArla;
-  }
-  listarDespesa() {
-    return this.listaDespesas;
-  }
-  listarReceitas() {
-    return this.listaReceitas;
-  }
+
 
 
 
@@ -212,14 +256,14 @@ export class StorageProvider {
 
   // 1º vai ser o "Storage" que quer atualizar -- 2º os "Dados" que vai chegar do formulário
   // Atualizar determinados registros
-  // atualizar(storage, dados) {
-  //   for (let chave in this.lista) {
-  //     if (this.lista[chave] == storage) {
-  //       this.lista[chave] = dados;
-  //       this.storage.set(this.chave, this.lista);
-  //     }
-  //   }
-  // }
+  atualizar(key) {
+    // for (let chave in this.listaAuth) {
+    //   if (this.listaAuth[chave] == storage) {
+    // this.listaAuth[chave] = dados;
+    this.storage.set(key, this.login);
+    //   }
+    // }
+  }
 
   // // Deletar Storage
   // deletar(storage) {
