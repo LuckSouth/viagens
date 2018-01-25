@@ -125,7 +125,7 @@ export class RotasAbastecimentoPage {
     this.contador += 1;
     if (this.contador == 8) {
       this.salvar()
-      this.storageProvider.adicionarAbastecimento();
+      // this.storageProvider.adicionarAbastecimento();
 
       let toast = this.toastCtrl.create({
         message: 'Abastecimento adicionada com sucesso',

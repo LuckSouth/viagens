@@ -3,7 +3,6 @@ import { IonicPage, NavParams } from 'ionic-angular';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Storage } from '@ionic/storage/es2015/storage';
-import { NativeStorage } from '@ionic-native/native-storage';
 
 import { PrincipalPage } from '../principal/principal/principal';
 import { StorageProvider } from '../../providers/storage/storage';
@@ -35,7 +34,6 @@ export class LoginPage {
     private googlePlus: GooglePlus,
     public storageProvider: StorageProvider,
     public storage: Storage,
-    public nativeStorage: NativeStorage
   ) {
     this.storage.ready().then(() => {
       this.storage.get(this.chaveAuth).then((registros) => {
@@ -81,7 +79,6 @@ export class LoginPage {
         this.storageProvider.login.email = "";
         this.storageProvider.login.isLoggedIn = false;
         this.storageProvider.atualizar("Auth");
-        // this.nativeStorage.remove('user');
       })
       .then(res => this.navCtrl.push(LoginPage))
       .catch(err => console.error(err))

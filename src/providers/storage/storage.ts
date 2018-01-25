@@ -187,7 +187,6 @@ export class StorageProvider {
     return this.listaAbastecimento;
   }
 
-
   //Verificação Login
 
   loginUser() {
@@ -264,10 +263,17 @@ export class StorageProvider {
 
   // // Deletar Storage
   // deletar(storage) {
-  //   for (let chave in this.lista) {
-  //     if (this.lista[chave] == storage) {
-  //       this.lista.splice(parseInt(chave), 1);
-  //       this.storage.set(this.chave, this.lista);
+  //   for (let chave in this.listaReceitas) {
+  //     if (this.listaReceitas[chave] == storage) {
+  //       this.listaReceitas.splice(parseInt(chave), 1);
+  //       this.storage.set(this.chaveReceitas, this.listaReceitas);
   //     }
   //   }
+  // }
+
+    delete(id){
+        return this.storage.remove(id).
+        then(()=> true)
+    }
+
 }

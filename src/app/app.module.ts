@@ -49,7 +49,6 @@ import { Camera } from "@ionic-native/camera";
 import { FotoServicoProvider } from '../providers/foto-servico/foto-servico';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage'
-import { NativeStorage } from '@ionic-native/native-storage';
 import { DadosProvider } from '../providers/dados/dados';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 // import {  Network} from "@ionic-native/network";
@@ -58,6 +57,7 @@ import { LoginPage } from '../pages/login/login';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { NavParams } from 'ionic-angular/navigation/nav-params';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
+import { EnviarProvider } from '../providers/enviar/enviar';
 
 
 
@@ -143,10 +143,8 @@ import { NavController } from 'ionic-angular/navigation/nav-controller';
     StorageProvider,
     DadosProvider,
     HttpClient,
-    // Network,
     GooglePlus,
-    NativeStorage
-    // NavController
+    EnviarProvider
   ]
 })
 export class AppModule { }

@@ -4,14 +4,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PrincipalPage } from '../pages/principal/principal/principal';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-import { NativeStorage } from '@ionic-native/native-storage';
 // import { NavController } from 'ionic-angular/navigation/nav-controller';
 
 import { StorageProvider } from '../providers/storage/storage';
 import { DespesasPage } from '../pages/modulo-viagens/despesas/despesas/despesas';
 import { LoginPage } from '../pages/login/login';
-import { Storage } from '@ionic/storage';
 import { InicioPage } from '../pages/inicio/inicio';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -32,8 +31,7 @@ export class MyApp {
     splashScreen: SplashScreen,
     private screenOrientation: ScreenOrientation,
     public storageProvider: StorageProvider,
-    public storage: Storage,
-    public nativeStorage: NativeStorage,
+    public storage: Storage
     // public navCtrl: NavController
   ) {
     

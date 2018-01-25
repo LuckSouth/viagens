@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { NativeStorage } from '@ionic-native/native-storage';
 
 import { ViagensPage } from '../../modulo-viagens/viagens/viagens';
 import { StorageProvider } from '../../../providers/storage/storage';
@@ -28,22 +27,13 @@ export class PrincipalPage {
   constructor(public navCtrl: NavController,
       public navParams: NavParams,
       public storageProvider: StorageProvider,
-      public storage: Storage,
-      public nativeStorage: NativeStorage
     ) {
 
   }
 
 
    ionViewDidEnter() {
-     this.nativeStorage.getItem("user").then(res => {
-      this.name = res.name;
-      this.email = res.email;
-      this.familyName = res.familyName;
-      this.givenName = res.givenName;
-      this.userId = res.userId;
-      this.imageUrl = res.imageUrl;
-     })
+   
   }
 
 
