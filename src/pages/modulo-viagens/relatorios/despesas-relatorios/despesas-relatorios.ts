@@ -22,10 +22,12 @@ export class DespesasRelatoriosPage {
 
   }
 
-  ionViewDidEnter() {
-    this.storages = this.storageProvider.listarDespesa();
-    this.tamanho = this.storageProvider.tamanhoDespesas()
-
-  }
+    ionViewDidEnter() {
+      this.storages = this.storageProvider.listar();
+      console.log(this.storages);
+      this.storages = this.storageProvider.listarDespesa();
+      this.tamanho = this.storageProvider.tamanhoArla()
+      
+    }
 
 }

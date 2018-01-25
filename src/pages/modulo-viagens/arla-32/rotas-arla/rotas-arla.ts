@@ -7,7 +7,6 @@ import { StorageProvider } from '../../../../providers/storage/storage';
 import { DadosProvider } from '../../../../providers/dados/dados';
 
 
-
 @IonicPage()
 @Component({
   selector: 'page-rotas-arla',
@@ -19,7 +18,6 @@ export class RotasArlaPage {
   @ViewChild(ArlaPagPage) arlaPagPage: ArlaPagPage;
   @ViewChild(ArlaPostoPage) arlaPostoPage: ArlaPostoPage;
 
-  motorista = "Richosvaldo"
 
   contador: number = 1;
 
@@ -36,7 +34,7 @@ export class RotasArlaPage {
 
   salvar() {
     this.dados.arla(
-      this.motorista,
+      this.arlaPagPage.storageProvider.arla.motorista,
       this.arlaPagPage.storageProvider.arla.litrosArla,
       this.arlaPagPage.storageProvider.arla.litrosPrecoArla,
       this.arlaPagPage.storageProvider.arla.selectArla,
@@ -49,8 +47,7 @@ export class RotasArlaPage {
     console.log("salvar chamado")
 
   }
-
-
+  
   ngAfterViewInit() {
     this.slides.lockSwipes(true);
 

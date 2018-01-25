@@ -30,7 +30,6 @@ export class RotasAbastecimentoPage {
   permissao: boolean;
   litrosBomb1;
   abastecimento = "";
-  motorista = "Dick vigarista" //Somente para teste
 
 
   constructor(public navCtrl: NavController,
@@ -47,7 +46,7 @@ export class RotasAbastecimentoPage {
 
   salvar() {
     this.dados.abastecimento(
-      this.motorista,
+      this.abastecimentoPagamento.storageProvider.abastecimento.motorista,
       this.abastecimentoPagamento.storageProvider.abastecimento.tipoAbastecimento,
       this.abastecimentoPagamento.storageProvider.abastecimento.postoAbastecimento,
       this.abastecimentoPagamento.storageProvider.abastecimento.dataAbastecimento,
